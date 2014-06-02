@@ -17,7 +17,7 @@ case class ParsedString(value: String) extends Parsed
 object QuickParse {
 
   def long(value: String): Option[Long] = {
-    def hasLongChars(s: String) = s.forall(c => isDigit(c) || c == '-' || c == '+')
+    def hasLongChars(s: String) = s.forall(c => isDigit(c) || c == '-')
     if (value != null && hasLongChars(value)) Try(value.toLong).toOption else None
   }
 
