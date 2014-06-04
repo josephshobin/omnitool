@@ -43,12 +43,12 @@ Can encode and decode specific examples $specific
   def emptyList = prop { (delimiter: Char) =>
     val encoded = StringDelimited.encode(Nil, delimiter)
     encoded must beEqualTo("")
-    StringDelimited.decode(encoded, delimiter).toEither must beRight(List(""))
+    StringDelimited.decode(encoded, delimiter)  must_== Success(List(""))
   }
 
   def encodeThenDecode = prop { (values: List[String], delimiter: Char) => (values.length > 0) ==> {
     val withDelimiters = values.map(addDelimiters(delimiter))
-    StringDelimited.decode(StringDelimited.encode(List("a", "b", "c"), delimiter), delimiter).toEither must beRight(List("a", "b", "c"))
+    StringDelimited.decode(StringDelimited.encode(List("a", "b", "c"), delimiter), delimiter)  must_== Success(List("a", "b", "c"))
     StringDelimited.decode(StringDelimited.encode(withDelimiters, delimiter), delimiter).toEither must beRight.like {
       case parsed: List[String] => {
         parsed must containTheSameElementsAs(withDelimiters)
@@ -62,7 +62,7 @@ Can encode and decode specific examples $specific
     val encodedOuter = StringDelimited.encode(encodedInner, ',')
     
     val decodedOuter = StringDelimited.decode(encodedOuter, ',')
-    decodedOuter.toEither must beRight(encodedInner)
+    decodedOuter must_== Success(encodedInner)
     decodedOuter.toOption.get.map(s => StringDelimited.decode(s, ':').toOption).flatten must beEqualTo(values)
   }}
 
