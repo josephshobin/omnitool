@@ -5,5 +5,5 @@ uniformDependencySettings
 libraryDependencies :=
   depend.scalaz() ++
   Seq(
-    "au.com.cba.omnia" %% "omnia-test" % "2.0.0-20140507011446-f9e9d08" % "test"
+    "au.com.cba.omnia" %% "omnia-test" % "2.1.0-20140604032817-d3b19f6" % "test"
   )
