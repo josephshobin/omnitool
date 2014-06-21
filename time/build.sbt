@@ -12,16 +12,13 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import sbt._
+uniform.project("omnitool-time", "au.com.cba.omnia.omnitool.time")
 
-object OmnitoolBuild extends Build {
-  lazy val root =
-    Project(id = "omnitool", base = file("."))
-      .aggregate(core, parser)
+uniformDependencySettings
 
-  lazy val core = Project("omnitool-core", base = file("core"))
-
-  lazy val parser = Project("omnitool-parser", base = file("parser")).dependsOn(core)
-
-  lazy val time = Project("omnitool-time", base = file("time"))
-}
+libraryDependencies :=
+  depend.time() ++
+  depend.scalaz() ++
+  depend.testing() ++ Seq(
+    "au.com.cba.omnia" %% "omnia-test" % "2.1.0-20140604032817-d3b19f6" % "test"
+  )

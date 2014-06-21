@@ -12,6 +12,12 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-uniform.project("omnitool", "au.com.cba.omnia.omnitool")
+package au.com.cba.omnia.omnitool.time
 
-uniformDependencySettings
+import org.joda.time._
+import org.scalacheck._, Gen._, Arbitrary._
+
+object Arbitraries {
+  implicit lazy val ArbitraryTimePoint: Arbitrary[TimePoint] =
+    Arbitrary(arbitrary[Long] map (l => TimePoint(math.abs(l))))
+}
