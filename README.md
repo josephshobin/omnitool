@@ -1,6 +1,6 @@
 # Omnitool
 
-[![Build Status](https://magnum.travis-ci.com/CommBank/omnitool.svg?token=A3xq7fpHLyey1yCrNASy&branch=master)](https://magnum.travis-ci.com/CommBank/omnitool)
+[![Build Status](https://travis-ci.org/CommBank/omnitool.svg?branch=master)](https://travis-ci.org/CommBank/omnitool)
 [![Gitter chat](https://badges.gitter.im/CommBank.png)](https://gitter.im/CommBank)
 
 Utility functions for:
