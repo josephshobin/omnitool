@@ -15,23 +15,28 @@
 package au.com.cba.omnia.omnitool.time
 
 import com.github.nscala_time.time.OrderingImplicits._
+
 import org.joda.time._
 
 /**
- * A collection of `scala.math.Ordering` instances for use
- * in explicit sort orders methods when the default nscala
- * instances don't cut it (or don't exist).
- */
+  * A collection of `Ordering` instances for use
+  * in explicit sort orders methods when the default nscala
+  * instances don't cut it (or don't exist).
+  */
 object DateOrder {
+  /** Chronological ordering for [[org.joda.time.LocalDate]].*/
   lazy val LocalDateChronological: Ordering[LocalDate] =
     implicitly[Ordering[LocalDate]]
 
+  /** Reverse Chronological ordering for [[org.joda.time.LocalDate]].*/
   lazy val LocalDateReverseChronological: Ordering[LocalDate] =
     LocalDateChronological.reverse
 
+  /** Chronological ordering for [[TimePoint]].*/
   lazy val TimePointChronological: Ordering[TimePoint] =
     Ordering.fromLessThan(_.instant < _.instant)
 
+  /** Reverse chronological ordering for [[TimePoint]].*/
   lazy val TimePointReverseChronological: Ordering[TimePoint] =
     TimePointChronological.reverse
 }

@@ -17,9 +17,7 @@ package au.com.cba.omnia.omnitool.time
 import org.joda.time._
 import org.joda.time.format._
 
-/**
- * A collection of joda-time DateTimeFormatters.
- */
+/** A collection of joda-time DateTimeFormatters. */
 object DateFormat {
   /** DateTimeFormatter for `yyyy-MM-dd`, e.g. `2012-03-27`. */
   lazy val yyyyMMdd: DateTimeFormatter =

@@ -21,22 +21,28 @@ import org.joda.time.format._
 
 import scalaz._, Scalaz._
 
-/**
-  * A collection of methods to safely parse [[org.joda.time.DateTime]]s from Strings.
-  */
+/** A collection of methods to safely parse DateTimes from Strings.*/
 object TimeParser {
+  /**
+    * List of default formats to try and parse.
+    * 
+    * It first tries day, month and then year from [[DateFormat]].
+    */
   val defaultFormats = List(DateFormat.day, DateFormat.month, DateFormat.year)
 
+  /** Parses a string as DateTime using the specified pattern.*/
   def parse(s: String, pattern: String): ValidationNel[String, DateTime] = {
     val formatter = DateTimeFormat.forPattern(pattern)
     Try(DateTime.parse(s, formatter).success)
       .getOrElse(s"Failed to parse $s as $pattern".failNel)
   }
 
+  /** Parses a string as DateTime using the specified formatter.*/
   def parse(s: String, formatter: DateTimeFormatter): ValidationNel[String, DateTime] =
     Try(DateTime.parse(s, formatter).success)
       .getOrElse(s"Failed to parse $s using the given formatter".failNel)
 
+  /** Parses a string as DateTime using the default formatters.*/
   def parseDefault(s: String): ValidationNel[String, DateTime] = {
     def f(formatter: DateTimeFormatter) = parse(s, formatter).toOption
     defaultFormats

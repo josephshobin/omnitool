@@ -22,3 +22,26 @@ libraryDependencies :=
   depend.testing() ++ Seq(
     "au.com.cba.omnia" %% "omnia-test" % "2.1.0-20140604032817-d3b19f6" % "test"
   )
+
+autoAPIMappings := true
+
+apiMappings ++= {
+  val cp: Seq[Attributed[File]] = (fullClasspath in Compile).value
+  def findManagedDependency(organization: String, name: String): File = {
+    ( for {
+      entry <- cp
+      module <- entry.get(moduleID.key)
+      if module.organization == organization
+      if module.name.startsWith(name)
+      jarFile = entry.data
+    } yield jarFile
+    ).head
+  }
+  Map(
+    findManagedDependency("joda-time", "joda-time") -> url("http://www.joda.org/joda-time/apidocs/"),
+    findManagedDependency(
+      "org.scalaz", "scalaz-core") ->
+      url(s"http://scalaz.github.io/scalaz/scalaz-2.10-${depend.versions.scalaz}/doc/"
+    )
+  )
+}
