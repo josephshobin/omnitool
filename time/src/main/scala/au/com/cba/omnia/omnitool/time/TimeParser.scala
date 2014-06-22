@@ -31,23 +31,22 @@ object TimeParser {
   val defaultFormats = List(DateFormat.day, DateFormat.month, DateFormat.year)
 
   /** Parses a string as DateTime using the specified pattern.*/
-  def parse(s: String, pattern: String): ValidationNel[String, DateTime] = {
+  def parse(s: String, pattern: String): String \/ DateTime = \/.fromTryCatchThrowable {
     val formatter = DateTimeFormat.forPattern(pattern)
-    Try(DateTime.parse(s, formatter).success)
-      .getOrElse(s"Failed to parse $s as $pattern".failNel)
-  }
+    DateTime.parse(s, formatter)
+  }.leftMap(_ => s"Failed to parse $s as $pattern")
 
   /** Parses a string as DateTime using the specified formatter.*/
-  def parse(s: String, formatter: DateTimeFormatter): ValidationNel[String, DateTime] =
-    Try(DateTime.parse(s, formatter).success)
-      .getOrElse(s"Failed to parse $s using the given formatter".failNel)
+  def parse(s: String, formatter: DateTimeFormatter): String \/ DateTime = \/.fromTryCatchThrowable {
+    DateTime.parse(s, formatter)
+  }.leftMap(_ => s"Failed to parse $s using the given formatter")
 
   /** Parses a string as DateTime using the default formatters.*/
-  def parseDefault(s: String): ValidationNel[String, DateTime] = {
+  def parseDefault(s: String): String \/ DateTime = {
     def f(formatter: DateTimeFormatter) = parse(s, formatter).toOption
     defaultFormats
       .collectFirst(Function.unlift(f))
-      .map(_.success)
-      .getOrElse(s"Failed to parse $s using default formats".failNel)
+      .map(_.right)
+      .getOrElse(s"Failed to parse $s using default formats".left)
   }
 }

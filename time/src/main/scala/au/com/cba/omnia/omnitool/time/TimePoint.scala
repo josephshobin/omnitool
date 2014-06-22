@@ -70,14 +70,14 @@ object TimePoint {
   def apply(dt: DateTime): TimePoint = TimePoint(dt.getMillis)
 
   /** Parses a string as TimePoint using the specified pattern.*/
-  def from(s: String, pattern: String): ValidationNel[String, TimePoint] =
+  def from(s: String, pattern: String): String \/ TimePoint =
     TimeParser.parse(s, pattern).map(TimePoint(_))
 
   /** Parses a string as TimePoint using the specified formatter.*/
-  def from(s: String, formatter: DateTimeFormatter): ValidationNel[String, TimePoint] =
+  def from(s: String, formatter: DateTimeFormatter): String \/ TimePoint =
     TimeParser.parse(s, formatter).map(TimePoint(_))
   
   /** Parses a string as TimePoint using the default formatters.*/
-  def fromDefault(s: String): ValidationNel[String, TimePoint] =
+  def fromDefault(s: String): String \/ TimePoint =
     TimeParser.parseDefault(s).map(TimePoint(_))
 }
