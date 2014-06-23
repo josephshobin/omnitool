@@ -42,7 +42,7 @@ object DateFormat {
   /** DateTimeFormatter for `yyyy`, e.g. `2012`. */
   lazy val year: DateTimeFormatter = yyyy
 
-  /** DateTimeFormatter for week of year, e.g. `2012-week43`. */
+  /** DateTimeFormatter for week of year, e.g. `2012-week-43`. */
   lazy val week: DateTimeFormatter =
     new DateTimeFormatterBuilder()
       .appendYear(4,4)
