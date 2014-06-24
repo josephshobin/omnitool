@@ -19,7 +19,9 @@ import scalaz.{NonEmptyList, Validation}
 
 object Validated {
   def safe[T](a: => T): Validated[T] =
-    Validation.fromTryCatch(a).leftMap(exception => NonEmptyList(exception.toString))
+    Validation
+      .fromTryCatchThrowable[T, Exception](a)
+      .leftMap(exception => NonEmptyList(exception.toString))
 }
 
 case class RichValidated[T](validated: Validated[T]) {
