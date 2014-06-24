@@ -35,8 +35,8 @@ A TimeParser can:
     TimePoint.defaultFormats.foreach { pattern =>
       val s = dt.toString(pattern)
       val fs = s ++ "aa"
-      TimeParser.parse(s, pattern) must_== DateTime.parse(s, pattern).success
-      TimeParser.parse(fs, pattern) must_== s"Failed to parse $fs using the given formatter".failNel
+      TimeParser.parse(s, pattern) must_== DateTime.parse(s, pattern).right
+      TimeParser.parse(fs, pattern) must_== s"Failed to parse $fs using the given formatter".left
     }
   }
 
@@ -44,21 +44,21 @@ A TimeParser can:
     List("yyyy-MM-dd", "yyyy-MM").foreach { pattern =>
       val s = dt.toString(pattern)
       val fs = s ++ "aa"
-      TimeParser.parse(s, pattern) must_== DateTime.parse(s, DateTimeFormat.forPattern(pattern)).success
-      TimeParser.parse(fs, pattern) must_== s"Failed to parse $fs as $pattern".failNel
+      TimeParser.parse(s, pattern) must_== DateTime.parse(s, DateTimeFormat.forPattern(pattern)).right
+      TimeParser.parse(fs, pattern) must_== s"Failed to parse $fs as $pattern".left
     }
 
     val s = "2013-06-09"
     val pattern = "aaa"
-    TimeParser.parse(s, pattern) must_== s"Failed to parse $s as $pattern".failNel
+    TimeParser.parse(s, pattern) must_== s"Failed to parse $s as $pattern".left
   }
 
   def parseDefault = prop { (dt: DateTime) =>
     TimeParser.defaultFormats.foreach { pattern =>
       val s = dt.toString(pattern)
       val fs = s ++ "aa"
-      TimeParser.parseDefault(s) must_== DateTime.parse(s, pattern).success
-      TimeParser.parseDefault(fs) must_== s"Failed to parse $fs using default formats".failNel
+      TimeParser.parseDefault(s) must_== DateTime.parse(s, pattern).right
+      TimeParser.parseDefault(fs) must_== s"Failed to parse $fs using default formats".left
     }
   }
 }
