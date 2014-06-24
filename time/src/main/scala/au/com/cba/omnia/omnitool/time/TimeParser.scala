@@ -14,8 +14,6 @@
 
 package au.com.cba.omnia.omnitool.time
 
-import scala.util.Try
-
 import org.joda.time._
 import org.joda.time.format._
 
@@ -31,15 +29,17 @@ object TimeParser {
   val defaultFormats = List(DateFormat.day, DateFormat.month, DateFormat.year)
 
   /** Parses a string as DateTime using the specified pattern.*/
-  def parse(s: String, pattern: String): String \/ DateTime = \/.fromTryCatchThrowable {
-    val formatter = DateTimeFormat.forPattern(pattern)
-    DateTime.parse(s, formatter)
-  }.leftMap(_ => s"Failed to parse $s as $pattern")
+  def parse(s: String, pattern: String): String \/ DateTime =
+    \/.fromTryCatchThrowable[DateTime, Exception] {
+      val formatter = DateTimeFormat.forPattern(pattern)
+      DateTime.parse(s, formatter)
+    }.leftMap(_ => s"Failed to parse $s as $pattern")
 
   /** Parses a string as DateTime using the specified formatter.*/
-  def parse(s: String, formatter: DateTimeFormatter): String \/ DateTime = \/.fromTryCatchThrowable {
-    DateTime.parse(s, formatter)
-  }.leftMap(_ => s"Failed to parse $s using the given formatter")
+  def parse(s: String, formatter: DateTimeFormatter): String \/ DateTime =
+    \/.fromTryCatchThrowable[DateTime, Exception] {
+      DateTime.parse(s, formatter)
+    }.leftMap(_ => s"Failed to parse $s using the given formatter")
 
   /** Parses a string as DateTime using the default formatters.*/
   def parseDefault(s: String): String \/ DateTime = {
