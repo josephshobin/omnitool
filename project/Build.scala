@@ -17,7 +17,7 @@ import sbt._
 object OmnitoolBuild extends Build {
   lazy val root =
     Project(id = "omnitool", base = file("."))
-      .aggregate(core, parser)
+      .aggregate(core, parser, time)
 
   lazy val core = Project("omnitool-core", base = file("core"))
 
