@@ -1,4 +1,4 @@
 name: omnitool
 exclude: [Gemfile]
 markdown: kramdown
-releaseVersion:  "1.2.0-20140714061557-6131b76"
+releaseVersion:  "1.2.0-20140806132457-35e1aa9"
