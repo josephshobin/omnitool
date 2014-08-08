@@ -29,4 +29,5 @@ Time
    and parsing code. Use this instead of `DateTime`time if you need to serialise a time value.
 * `TimeParser` - safe parses from string to `DateTime`.
 * `DateFormat` - default string patters for time such as `yyyy-MM-dd`.
+* `DateFormatInfo` - query string parsers for information that is not easily available through public API.
 * `DateOrder` - ordering for different time classes.

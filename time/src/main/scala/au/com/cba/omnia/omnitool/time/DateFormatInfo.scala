@@ -29,7 +29,7 @@ object DateFormatInfo {
     * This method will not always succeed in finding the fields. It will fail if
     * the formatter cannot parse a date time string which it printed. As far as
     * I know, this will only happen with formatters which cannot always
-    * unambiguusly parse valid timeStamps. We should avoid formatters like this.
+    * unambiguously parse valid timeStamps. We should avoid formatters like this.
     */
   def fields(format: DateTimeFormatter): Option[List[DateTimeFieldType]] = {
     // The DateTimeFormat does not reveal much info about the stucture of the pattern
@@ -38,7 +38,7 @@ object DateFormatInfo {
     val bucket  = new LoquaciousDateTimeParserBucket(format)
     val dateStr = format.print(new DateTime(0))
     val newPos  = format.getParser.parseInto(bucket, dateStr, 0)
-    val fields  = bucket.fieldTypes
+    val fields  = bucket.fields
 
     if (newPos != dateStr.length) None
     else                          Some(fields)
@@ -56,8 +56,15 @@ class LoquaciousDateTimeParserBucket(format: DateTimeFormatter)
     extends DateTimeParserBucket(0, format.getChronology, format.getLocale,
       format.getPivotYear, format.getDefaultYear) {
 
-  /** After the first parse, this variable will contain the field types used during parsing */
-  var fieldTypes = List.empty[DateTimeFieldType]
+  private var fieldTypes = List.empty[DateTimeFieldType]
+
+  /**
+    * After the first parse, this variable will contain the field types used during parsing
+    *
+    * This field is never reset, so it becomes useless if the same instance is
+    * used for a second parse.
+    */
+  def fields = fieldTypes
 
   override def saveField(field: DateTimeField, value: Int): Unit = {
     fieldTypes = field.getType :: fieldTypes
@@ -65,12 +72,12 @@ class LoquaciousDateTimeParserBucket(format: DateTimeFormatter)
   }
 
   override def saveField(fieldType: DateTimeFieldType, value: Int): Unit = {
-    fieldTypes = fieldType +: fieldTypes
+    fieldTypes = fieldType :: fieldTypes
     super.saveField(fieldType, value)
   }
 
   override def saveField(fieldType: DateTimeFieldType, text: String, locale: Locale): Unit = {
-    fieldTypes = fieldType +: fieldTypes
+    fieldTypes = fieldType :: fieldTypes
     super.saveField(fieldType, text, locale)
   }
 }

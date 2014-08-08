@@ -21,7 +21,7 @@ import org.joda.time._
 import org.joda.time.format._
 import org.scalacheck._, Gen._
 
-import Arbitraries._
+import au.com.cba.omnia.omnitool.time.Arbitraries._
 
 case class FormatterWithFields(formatter: DateTimeFormatter, fields: Seq[DateTimeFieldType])
 

@@ -48,15 +48,15 @@ object Arbitraries {
   def builderFromParts(parts: Seq[String \/ DateTimeFieldType]): DateTimeFormatterBuilder = {
     def addPart(builder: DateTimeFormatterBuilder, x: String \/ DateTimeFieldType) =
       x.fold(
-        l =>                                                    builder.appendLiteral(l),
+        l =>                                                  builder.appendLiteral(l),
         t =>
-        if      (t equals DateTimeFieldType.year)               builder.appendYear(4, 4)
-        else if (t equals DateTimeFieldType.monthOfYear)        builder.appendMonthOfYear(2)
-        else if (t equals DateTimeFieldType.dayOfMonth)         builder.appendDayOfMonth(2)
-        else if (t equals DateTimeFieldType.hourOfDay)          builder.appendHourOfDay(2)
-        else if (t equals DateTimeFieldType.minuteOfHour)       builder.appendMinuteOfHour(2)
-        else if (t equals DateTimeFieldType.secondOfMinute)     builder.appendSecondOfMinute(2)
-        else                                                    throw new Exception(s"Unexpected field type: $t")
+          if      (t equals DateTimeFieldType.year)           builder.appendYear(4, 4)
+          else if (t equals DateTimeFieldType.monthOfYear)    builder.appendMonthOfYear(2)
+          else if (t equals DateTimeFieldType.dayOfMonth)     builder.appendDayOfMonth(2)
+          else if (t equals DateTimeFieldType.hourOfDay)      builder.appendHourOfDay(2)
+          else if (t equals DateTimeFieldType.minuteOfHour)   builder.appendMinuteOfHour(2)
+          else if (t equals DateTimeFieldType.secondOfMinute) builder.appendSecondOfMinute(2)
+          else                                                throw new Exception(s"Unexpected field type: $t")
       )
 
     parts.foldLeft(new DateTimeFormatterBuilder())(addPart(_, _))
