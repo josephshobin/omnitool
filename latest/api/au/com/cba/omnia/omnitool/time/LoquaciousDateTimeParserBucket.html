@@ -42,7 +42,7 @@
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Overrides DateTimeParserBucket, allowing us to see what fields are set by <span class="extype" name="org.joda.time.format.DateTimeFormatter">org.joda.time.format.DateTimeFormatter</span></p><p>WARNING: mutable and non thread-safe. Also, this class does not reset the
 list of field types after parsing, so the list of field types is good for
 one parse only.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/35e1aa90d1db8035cf9a35753904fe458ed1266e//time/src/main/scala/au/com/cba/omnia/omnitool/time/DateFormatInfo.scala" target="_blank">DateFormatInfo.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/c96c574745d6a4c24202010d08edf5a311ccf6d1//time/src/main/scala/au/com/cba/omnia/omnitool/time/DateFormatInfo.scala" target="_blank">DateFormatInfo.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="org.joda.time.format.DateTimeParserBucket">DateTimeParserBucket</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -282,19 +282,21 @@ one parse only.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="au.com.cba.omnia.omnitool.time.LoquaciousDateTimeParserBucket#fieldTypes" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="fieldTypes:List[org.joda.time.DateTimeFieldType]"></a>
-      <a id="fieldTypes:List[DateTimeFieldType]"></a>
+    </li><li name="au.com.cba.omnia.omnitool.time.LoquaciousDateTimeParserBucket#fields" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fields:List[org.joda.time.DateTimeFieldType]"></a>
+      <a id="fields:List[DateTimeFieldType]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">var</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">fieldTypes</span><span class="result">: <span class="extype" name="scala.collection.immutable.List">List</span>[<span class="extype" name="org.joda.time.DateTimeFieldType">DateTimeFieldType</span>]</span>
+        <span class="name">fields</span><span class="result">: <span class="extype" name="scala.collection.immutable.List">List</span>[<span class="extype" name="org.joda.time.DateTimeFieldType">DateTimeFieldType</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">After the first parse, this variable will contain the field types used during parsing</p>
+      <p class="shortcomment cmt">After the first parse, this variable will contain the field types used during parsing</p><div class="fullcomment"><div class="comment cmt"><p>After the first parse, this variable will contain the field types used during parsing</p><p>This field is never reset, so it becomes useless if the same instance is
+used for a second parse.
+</p></div></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
