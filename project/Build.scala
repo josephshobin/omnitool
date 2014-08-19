@@ -35,7 +35,7 @@ object OmnitoolBuild extends Build {
           uniform.ghsettings ++
         Seq(publishArtifact := false)
     )
-      .aggregate(core, parser, time)
+      .aggregate(core, parser, time, fileProject)
 
   lazy val core = Project(
     id ="omnitool-core",
@@ -86,4 +86,24 @@ object OmnitoolBuild extends Build {
           )
       )
   )
+
+  lazy val fileProject = Project( // called fileProject to avoid conflict with existing file method
+    id ="omnitool-file",
+    base = file("file"),
+    settings =
+      standardSettings ++
+        uniform.project("omnitool-file", "au.com.cba.omnia.omnitool.file") ++
+        Seq(
+          libraryDependencies :=
+            depend.testing() ++
+            Seq(
+              "au.com.cba.omnia"        %% "omnia-test"    % "2.1.0-20140604032817-d3b19f6" % "test",
+              "com.google.code.findbugs" % "jsr305"        % "2.0.3", // Needed for guava.
+              "com.google.guava"         % "guava"         % "16.0.1",
+              // the scala library must be pulled in or we can't compile. SBT should do this automatically, so this seems like a bug in something
+              "org.scala-lang"           % "scala-library" % scalaVersion.value
+            )
+        )
+  )
+
 }
