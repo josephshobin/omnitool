@@ -221,6 +221,12 @@ object Result {
   /** Equal type class instance. */
   implicit def equal[A, B] = Equal.equalA[Result[A, B]]
 
+  /** Functor type class instance.  The functor maps over the value type, not the error type. */
+  implicit def functor[E] = new Functor[({type l[a] = Result[E, a]})#l] {
+    def map[A, B](fa: Result[E, A])(f: A => B): Result[E, B] =
+      fa.map(f)
+  }
+
   /** Bifunctor type class instance. */
   implicit def bifunctor = new Bifunctor[Result] {
     override def bimap[A, B, C, D](result: Result[A, B])(f: A => C, g: B => D): Result[C, D] =
