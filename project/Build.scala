@@ -25,6 +25,8 @@ object OmnitoolBuild extends Build {
     uniformDependencySettings ++
     uniform.docSettings("https://github.com/CommBank/edge")
 
+  val omniaTestVersion = "2.1.0-20140929063823-a5f21f0"
+
   lazy val root =
     Project(
       id = "omnitool",
@@ -47,7 +49,7 @@ object OmnitoolBuild extends Build {
         libraryDependencies :=
           depend.scalaz() ++ depend.testing() ++
           Seq(
-            "au.com.cba.omnia" %% "omnia-test" % "2.1.0-20140604032817-d3b19f6" % "test"
+            "au.com.cba.omnia" %% "omnia-test" % omniaTestVersion % "test"
           )
       )
   )
@@ -62,7 +64,7 @@ object OmnitoolBuild extends Build {
         libraryDependencies :=
           depend.scalaz() ++
           Seq(
-            "au.com.cba.omnia" %% "omnia-test" % "2.1.0-20140604032817-d3b19f6" % "test"
+            "au.com.cba.omnia" %% "omnia-test" % omniaTestVersion % "test"
           )
       )
   ).dependsOn(core)
@@ -82,7 +84,7 @@ object OmnitoolBuild extends Build {
           depend.scalaz() ++
           depend.testing() ++
           Seq(
-            "au.com.cba.omnia" %% "omnia-test" % "2.1.0-20140604032817-d3b19f6" % "test"
+            "au.com.cba.omnia" %% "omnia-test" % omniaTestVersion % "test"
           )
       )
   )
@@ -97,7 +99,7 @@ object OmnitoolBuild extends Build {
           libraryDependencies :=
             depend.testing() ++
             Seq(
-              "au.com.cba.omnia"        %% "omnia-test"    % "2.1.0-20140604032817-d3b19f6" % "test",
+              "au.com.cba.omnia"        %% "omnia-test"    % omniaTestVersion % "test",
               "com.google.code.findbugs" % "jsr305"        % "2.0.3", // Needed for guava.
               "com.google.guava"         % "guava"         % "16.0.1",
               // the scala library must be pulled in or we can't compile. SBT should do this automatically, so this seems like a bug in something
