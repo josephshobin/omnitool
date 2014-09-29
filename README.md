@@ -8,7 +8,7 @@
 Usage
 -----
 
-See https://commbank.github.com.io/omnitool
+See https://commbank.github.io/omnitool
 
 Core
 ----
