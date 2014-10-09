@@ -14,7 +14,7 @@
 
 package au.com.cba.omnia.omnitool.file.ops
 
-import java.io.{File, FileOutputStream}
+import java.io.{File, FileOutputStream, OutputStream}
 
 import java.util.zip.GZIPOutputStream
 
@@ -77,9 +77,22 @@ object Temp {
     * The temporary file reference should not escape `action`.
     */
   def withTempCompressed[A](source: File, fileName: String, action: File => A): A =
+    withTempModified(source, fileName, new GZIPOutputStream(_), action)
+
+  /**
+    * Run an action on a temporary modified copy of a file.
+    *
+    * The modification is done through a function `InputStream => InputStream`.
+    *
+    * The temporary file reference should not escape `action`.
+    */
+  def withTempModified[A](
+    source: File, fileName: String, modify: OutputStream => OutputStream,
+    action: File => A
+  ): A =
     withTempFile(fileName, tempFile => {
       // there must be a more convienient canonical way of doing this in scala ...
-      val writer = new GZIPOutputStream(new FileOutputStream(tempFile))
+      val writer = modify(new FileOutputStream(tempFile))
       try {
         Files.copy(source, writer)
         writer.flush

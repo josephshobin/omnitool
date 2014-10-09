@@ -36,6 +36,9 @@ withTempFile should:
 
 withTempCompressed should:
   provide gzipped version of file                        $zipped
+
+withTempModified should:
+  provide identical file if modification function is id  $identity
 """
 
   def unoccupied = {
@@ -82,5 +85,22 @@ withTempCompressed should:
       })
     })
     ok
+  }
+
+  def identity = {
+    Temp.withTempFile("raw", raw => {
+      Files.write("contents", raw, Charsets.UTF_8)
+      Temp.withTempModified(raw, "copy", in => in, copy => {
+        val reader = new FileInputStream(copy)
+        try {
+          val bytes = Array.ofDim[Byte](10)
+          val numRead = reader.read(bytes)
+          (new String(bytes, 0, numRead)) must_== "contents"
+        }
+        finally {
+          reader.close
+        }
+      })
+    })
   }
 }
