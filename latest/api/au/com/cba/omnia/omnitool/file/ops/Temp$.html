@@ -41,7 +41,7 @@
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Low-level operations with temporary files or directories.</p><p>Low-level operations on temporary files that we find useful elsewhere.
 There is no attempt to turn this into a desirable File API.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/ad59fc6c34c1236814e6d803c28ca19976338bfd//file/src/main/scala/au/com/cba/omnia/omnitool/file/ops/Temp.scala" target="_blank">Temp.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/4a9aa95ad60b71c86eec6e047ffb13b0fb8e7e4f//file/src/main/scala/au/com/cba/omnia/omnitool/file/ops/Temp.scala" target="_blank">Temp.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -439,6 +439,20 @@ finishes. However, the file is not automatically created on disk, as it is
 assumed that <code>action</code> will create the file itself. For convienience,
 the file's parent directory is automatically created on disk for the
 duration of <code>action</code>.
+</p></div></div>
+    </li><li name="au.com.cba.omnia.omnitool.file.ops.Temp#withTempModified" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="withTempModified[A](source:java.io.File,fileName:String,modify:java.io.OutputStream=&gt;java.io.OutputStream,action:java.io.File=&gt;A):A"></a>
+      <a id="withTempModified[A](File,String,(OutputStream)⇒OutputStream,(File)⇒A):A"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withTempModified</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="source">source: <span class="extype" name="java.io.File">File</span></span>, <span name="fileName">fileName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="modify">modify: (<span class="extype" name="java.io.OutputStream">OutputStream</span>) ⇒ <span class="extype" name="java.io.OutputStream">OutputStream</span></span>, <span name="action">action: (<span class="extype" name="java.io.File">File</span>) ⇒ <span class="extype" name="au.com.cba.omnia.omnitool.file.ops.Temp.withTempModified.A">A</span></span>)</span><span class="result">: <span class="extype" name="au.com.cba.omnia.omnitool.file.ops.Temp.withTempModified.A">A</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Run an action on a temporary modified copy of a file.</p><div class="fullcomment"><div class="comment cmt"><p>Run an action on a temporary modified copy of a file.</p><p>The modification is done through a function <code>InputStream =&gt; InputStream</code>.</p><p>The temporary file reference should not escape <code>action</code>.
 </p></div></div>
     </li></ol>
             </div>
