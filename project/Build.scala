@@ -37,7 +37,7 @@ object OmnitoolBuild extends Build {
           uniform.ghsettings ++
         Seq(publishArtifact := false)
     )
-      .aggregate(core, parser, time, fileProject)
+      .aggregate(core, parser, time, fileProject, log)
 
   lazy val core = Project(
     id ="omnitool-core",
@@ -108,4 +108,23 @@ object OmnitoolBuild extends Build {
         )
   )
 
+  lazy val log = Project(
+    id ="omnitool-log",
+    base = file("log"),
+    settings =
+      standardSettings ++
+      uniform.project("omnitool-log", "au.com.cba.omnia.omnitool.log") ++
+      Seq(
+        apiMappings in (ScalaUnidoc, unidoc) <++= (fullClasspath in Compile).map(cp => Seq(
+          assignApiUrl(cp, "log4j", "log4j", "http://logging.apache.org/log4j/1.2/apidocs/")
+        ).flatten.toMap),
+        libraryDependencies :=
+          depend.logging() ++
+          Seq(
+            "au.com.cba.omnia"        %% "omnia-test"    % omniaTestVersion % "test",
+            // the scala library must be pulled in or we can't compile. SBT should do this automatically, so this seems like a bug in something
+            "org.scala-lang"           % "scala-library" % scalaVersion.value
+          )
+      )
+  )
 }

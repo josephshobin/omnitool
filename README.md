@@ -31,3 +31,10 @@ Time
 * `DateFormat` - default string patters for time such as `yyyy-MM-dd`.
 * `DateFormatInfo` - query string parsers for information that is not easily available through public API.
 * `DateOrder` - ordering for different time classes.
+
+
+Log
+---
+
+`omnitool-log` provides some convienience methods on [log4j](http://logging.apache.org/log4j/1.2/) `Loggers`.
+
