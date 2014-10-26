@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>VersionInfo - au.com.cba.omnia.omnitool.file.VersionInfo</title>
-          <meta name="description" content="VersionInfo - au.com.cba.omnia.omnitool.file.VersionInfo" />
-          <meta name="keywords" content="VersionInfo au.com.cba.omnia.omnitool.file.VersionInfo" />
+          <title>RichLogger - au.com.cba.omnia.omnitool.log.RichLogger</title>
+          <meta name="description" content="RichLogger - au.com.cba.omnia.omnitool.log.RichLogger" />
+          <meta name="keywords" content="RichLogger au.com.cba.omnia.omnitool.log.RichLogger" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -12,7 +12,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../../index.html';
-            var hash = 'au.com.cba.omnia.omnitool.file.VersionInfo$';
+            var hash = 'au.com.cba.omnia.omnitool.log.RichLogger';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -22,24 +22,38 @@
    	  </script>
     
         </head>
-        <body class="value">
+        <body class="type">
       <div id="definition">
-        <img src="../../../../../../lib/object_big.png" />
-        <p id="owner"><a href="../../../../../package.html" class="extype" name="au">au</a>.<a href="../../../../package.html" class="extype" name="au.com">com</a>.<a href="../../../package.html" class="extype" name="au.com.cba">cba</a>.<a href="../../package.html" class="extype" name="au.com.cba.omnia">omnia</a>.<a href="../package.html" class="extype" name="au.com.cba.omnia.omnitool">omnitool</a>.<a href="package.html" class="extype" name="au.com.cba.omnia.omnitool.file">file</a></p>
-        <h1>VersionInfo</h1>
+        <a href="RichLogger$.html" title="Go to companion"><img src="../../../../../../lib/class_to_object_big.png" /></a>
+        <p id="owner"><a href="../../../../../package.html" class="extype" name="au">au</a>.<a href="../../../../package.html" class="extype" name="au.com">com</a>.<a href="../../../package.html" class="extype" name="au.com.cba">cba</a>.<a href="../../package.html" class="extype" name="au.com.cba.omnia">omnia</a>.<a href="../package.html" class="extype" name="au.com.cba.omnia.omnitool">omnitool</a>.<a href="package.html" class="extype" name="au.com.cba.omnia.omnitool.log">log</a></p>
+        <h1><a href="RichLogger$.html" title="Go to companion">RichLogger</a></h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">object</span>
+        <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">VersionInfo</span>
+        <span class="name">RichLogger</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/48a9e223180c59cccf07e95698d1f5d94c93d0c0//file/target/scala-2.10/src_managed/main/info.scala" target="_blank">info.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Convienience methods on log4j <span class="extype" name="org.apache.log4j.Logger">org.apache.log4j.Logger</span>.</p><p>The user can call <a href="#child(name:String,options:org.apache.log4j.Logger=&gt;Unit*):org.apache.log4j.Logger" class="extmbr" name="au.com.cba.omnia.omnitool.log.RichLogger#child">RichLogger.child</a> to create a child of another
+logger with different configuration, or they can call <a href="#set(options:org.apache.log4j.Logger=&gt;Unit*):Unit" class="extmbr" name="au.com.cba.omnia.omnitool.log.RichLogger#set">RichLogger.set</a>
+to change the configuration of an existing logger.</p><p>The user can pass in any number of functions which change a logger's
+configuration. They can use <a href="RichLogger$.html#logToFile(file:String,pattern:String,maxFileSize:String):org.apache.log4j.Logger=&gt;Unit" class="extmbr" name="au.com.cba.omnia.omnitool.log.RichLogger#logToFile">RichLogger.logToFile</a> and <a href="RichLogger$.html#logInfo:org.apache.log4j.Logger=&gt;Unit" class="extmbr" name="au.com.cba.omnia.omnitool.log.RichLogger#logInfo">RichLogger.logInfo</a>,
+or create their own configuration functions.</p><p>Example usage, creating a child logger that outputs info messages
+to a file, but does not ouput to any of the parent logger appenders:</p><pre><span class="kw">import</span> org.apache.log4j.Logger
+<span class="kw">import</span> au.com.cba.omnia.omnitool.log.RichLogger._
+
+<span class="kw">val</span> mylogger = Logger.getLogger(<span class="lit">"mylogger"</span>)
+
+mylogger.child(<span class="lit">"stats"</span>,
+  _.setAdditivity(<span class="kw">false</span>), <span class="cmt">// a config function that just calls a Logger method</span>
+  logToFile(<span class="lit">"myfile"</span>),    <span class="cmt">// the logToFile config function below</span>
+  logInfo                 <span class="cmt">// the logInfo config function below</span>
+)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/48a9e223180c59cccf07e95698d1f5d94c93d0c0//log/src/main/scala/au/com/cba/omnia/omnitool/log/RichLogger.scala" target="_blank">RichLogger.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -59,7 +73,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="au.com.cba.omnia.omnitool.file.VersionInfo"><span>VersionInfo</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="au.com.cba.omnia.omnitool.log.RichLogger"><span>RichLogger</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -77,7 +91,23 @@
 
       <div id="template">
         <div id="allMembers">
-        
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="au.com.cba.omnia.omnitool.log.RichLogger#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;(logger:org.apache.log4j.Logger):au.com.cba.omnia.omnitool.log.RichLogger"></a>
+      <a id="&lt;init&gt;:RichLogger"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">RichLogger</span><span class="params">(<span name="logger">logger: <span class="extype" name="org.apache.log4j.Logger">Logger</span></span>)</span>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
 
         
 
@@ -163,6 +193,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="au.com.cba.omnia.omnitool.log.RichLogger#child" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="child(name:String,options:org.apache.log4j.Logger=&gt;Unit*):org.apache.log4j.Logger"></a>
+      <a id="child(String,(Logger)⇒Unit*):Logger"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">child</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="options">options: (<span class="extype" name="org.apache.log4j.Logger">Logger</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span>*</span>)</span><span class="result">: <span class="extype" name="org.apache.log4j.Logger">Logger</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a child of the logger with additional configuration</p>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -182,19 +225,6 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="au.com.cba.omnia.omnitool.file.VersionInfo#date" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="date:String"></a>
-      <a id="date:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">date</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4>
-      
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -253,19 +283,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="au.com.cba.omnia.omnitool.file.VersionInfo#git" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="git:String"></a>
-      <a id="git:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">git</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4>
-      
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -331,6 +348,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="au.com.cba.omnia.omnitool.log.RichLogger#set" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="set(options:org.apache.log4j.Logger=&gt;Unit*):Unit"></a>
+      <a id="set((Logger)⇒Unit*):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">set</span><span class="params">(<span name="options">options: (<span class="extype" name="org.apache.log4j.Logger">Logger</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set configuration options on a logger</p>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -357,19 +387,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="au.com.cba.omnia.omnitool.file.VersionInfo#version" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="version:String"></a>
-      <a id="version:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">version</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4>
-      
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
