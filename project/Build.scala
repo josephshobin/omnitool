@@ -27,7 +27,7 @@ object OmnitoolBuild extends Build {
       updateOptions := updateOptions.value.withCachedResolution(true)
     )
 
-  val omniaTestVersion = "2.1.0-20140929063823-a5f21f0"
+  val omniaTestVersion = "2.1.0-20150102030331-f5f6e78"
 
   lazy val root =
     Project(
