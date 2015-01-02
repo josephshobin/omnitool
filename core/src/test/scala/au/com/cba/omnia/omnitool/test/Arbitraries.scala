@@ -12,8 +12,22 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-version in ThisBuild := "1.5.0"
+package au.com.cba.omnia.omnitool.test
 
-uniqueVersionSettings
+import scalaz.\&/.These
 
-licenses := Seq("Apache License, Version 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt"))
+import scalaz.scalacheck.ScalazArbitrary._
+
+import org.scalacheck.Arbitrary, Arbitrary._
+
+import au.com.cba.omnia.omnitool.{Result, Ok, Error}
+
+/** Aribtrary instances for omnitool types. */
+object Arbitraries {
+  /** Arbitrary instance for Result. */
+  implicit def ResultAribtrary[A: Arbitrary]: Arbitrary[Result[A]] =
+    Arbitrary(arbitrary[Either[These[String, Throwable], A]] map {
+      case Left(v)  => Error(v)
+      case Right(v) => Ok(v)
+    })
+}

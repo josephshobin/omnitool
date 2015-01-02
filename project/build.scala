@@ -52,7 +52,8 @@ object build extends Build {
           depend.scalaz() ++ depend.testing() ++
           Seq(
             "au.com.cba.omnia" %% "omnia-test" % omniaTestVersion % "test"
-          )
+          ),
+        publishArtifact in Test := true
       )
   )
 
