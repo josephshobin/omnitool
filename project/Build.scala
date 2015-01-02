@@ -23,7 +23,9 @@ object OmnitoolBuild extends Build {
   lazy val standardSettings =
     Defaults.defaultSettings ++
     uniformDependencySettings ++
-    uniform.docSettings("https://github.com/CommBank/edge")
+    uniform.docSettings("https://github.com/CommBank/edge") ++ Seq(
+      updateOptions := updateOptions.value.withCachedResolution(true)
+    )
 
   val omniaTestVersion = "2.1.0-20140929063823-a5f21f0"
 
