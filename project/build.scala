@@ -19,9 +19,9 @@ import sbtunidoc.Plugin._, UnidocKeys._
 import au.com.cba.omnia.uniform.core.standard.StandardProjectPlugin._
 import au.com.cba.omnia.uniform.dependency.UniformDependencyPlugin._
 
-object OmnitoolBuild extends Build {
+object build extends Build {
   lazy val standardSettings =
-    Defaults.defaultSettings ++
+    Defaults.coreDefaultSettings ++
     uniformDependencySettings ++
     uniform.docSettings("https://github.com/CommBank/edge") ++ Seq(
       updateOptions := updateOptions.value.withCachedResolution(true)
