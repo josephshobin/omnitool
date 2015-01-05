@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>Parsed - au.com.cba.omnia.omnitool.Parsed</title>
-          <meta name="description" content="Parsed - au.com.cba.omnia.omnitool.Parsed" />
-          <meta name="keywords" content="Parsed au.com.cba.omnia.omnitool.Parsed" />
+          <title>Result - au.com.cba.omnia.omnitool.Result</title>
+          <meta name="description" content="Result - au.com.cba.omnia.omnitool.Result" />
+          <meta name="keywords" content="Result au.com.cba.omnia.omnitool.Result" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -12,7 +12,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../index.html';
-            var hash = 'au.com.cba.omnia.omnitool.Parsed';
+            var hash = 'au.com.cba.omnia.omnitool.Result';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -24,9 +24,9 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img src="../../../../../lib/trait_big.png" />
+        <a href="Result$.html" title="Go to companion"><img src="../../../../../lib/trait_to_object_big.png" /></a>
         <p id="owner"><a href="../../../../package.html" class="extype" name="au">au</a>.<a href="../../../package.html" class="extype" name="au.com">com</a>.<a href="../../package.html" class="extype" name="au.com.cba">cba</a>.<a href="../package.html" class="extype" name="au.com.cba.omnia">omnia</a>.<a href="package.html" class="extype" name="au.com.cba.omnia.omnitool">omnitool</a></p>
-        <h1>Parsed</h1>
+        <h1><a href="Result$.html" title="Go to companion">Result</a></h1>
       </div>
 
       <h4 id="signature" class="signature">
@@ -35,16 +35,24 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">Parsed</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">Result</span><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/0e640c9dd242e6bf336d1ad2ed321b43ec3f97e3//core/src/main/scala/au/com/cba/omnia/omnitool/QuickParse.scala" target="_blank">QuickParse.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A data-type useful for representing the result of a possibly failing operation.</p><p>The Error result of an operation represents an initial error (either an error message or an
+exception) with the option to add more details in the form of error messages.</p><p>The reason this exists as an alternative to using the more general
+<code>Either</code>, <code>\/</code>, <code>Validation</code>, <code>Try</code> data-types is that we want to
+gain better inference (we gain most of this by specialising the
+error case), better composition (compared with <code>Try</code>, we gain most
+of this by not mixing side-effects with map/flat) and better
+library support by adding specific combinators for our given
+case.
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/0e640c9dd242e6bf336d1ad2ed321b43ec3f97e3//core/src/main/scala/au/com/cba/omnia/omnitool/Result.scala" target="_blank">Result.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
           <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a href="ParsedDouble.html" class="extype" name="au.com.cba.omnia.omnitool.ParsedDouble">ParsedDouble</a>, <a href="ParsedLong.html" class="extype" name="au.com.cba.omnia.omnitool.ParsedLong">ParsedLong</a>, <a href="ParsedString.html" class="extype" name="au.com.cba.omnia.omnitool.ParsedString">ParsedString</a></div>
+          <div class="subClasses hiddenContent"><a href="Error.html" class="extype" name="au.com.cba.omnia.omnitool.Error">Error</a>, <a href="Ok.html" class="extype" name="au.com.cba.omnia.omnitool.Ok">Ok</a></div>
         </div></div>
         
 
@@ -62,7 +70,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="au.com.cba.omnia.omnitool.Parsed"><span>Parsed</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="au.com.cba.omnia.omnitool.Result"><span>Result</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -153,6 +161,20 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="au.com.cba.omnia.omnitool.Result#addMessage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="addMessage(message:String,separator:String):au.com.cba.omnia.omnitool.Result[A]"></a>
+      <a id="addMessage(String,String):Result[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addMessage</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="separator">separator: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;: &quot;</span></span>)</span><span class="result">: <a href="" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Result.A">A</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Adds an additional error message.</p><div class="fullcomment"><div class="comment cmt"><p>Adds an additional error message. Useful for adding more context as the error goes up the stack.</p><p>The new message is prepended to any existing message.
+</p></div></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -230,6 +252,71 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="au.com.cba.omnia.omnitool.Result#flatMap" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="flatMap[B](f:A=&gt;au.com.cba.omnia.omnitool.Result[B]):au.com.cba.omnia.omnitool.Result[B]"></a>
+      <a id="flatMap[B]((A)⇒Result[B]):Result[B]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">flatMap</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="au.com.cba.omnia.omnitool.Result.A">A</span>) ⇒ <a href="" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Result.flatMap.B">B</span>]</span>)</span><span class="result">: <a href="" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Result.flatMap.B">B</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Bind through the success case, this is useful to chain potentially failing operations.</p>
+    </li><li name="au.com.cba.omnia.omnitool.Result#fold" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fold[X](ok:A=&gt;X,error:scalaz.\&amp;/.These[String,Throwable]=&gt;X):X"></a>
+      <a id="fold[X]((A)⇒X,(scalaz.\&amp;/.These[String,Throwable])⇒X):X"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fold</span><span class="tparams">[<span name="X">X</span>]</span><span class="params">(<span name="ok">ok: (<span class="extype" name="au.com.cba.omnia.omnitool.Result.A">A</span>) ⇒ <span class="extype" name="au.com.cba.omnia.omnitool.Result.fold.X">X</span></span>, <span name="error">error: (<span class="extype" name="scalaz.TheseInstances.These">scalaz.\&amp;/.These</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Throwable">Throwable</span>]) ⇒ <span class="extype" name="au.com.cba.omnia.omnitool.Result.fold.X">X</span></span>)</span><span class="result">: <span class="extype" name="au.com.cba.omnia.omnitool.Result.fold.X">X</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt"><code>Catamorphism</code> for result.</p><div class="fullcomment"><div class="comment cmt"><p><code>Catamorphism</code> for result. Concise data deconstruction that can be used as an alternative to
+pattern matching, providing stronger coverage checks.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="au.com.cba.omnia.omnitool.Result#foldAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="foldAll[X](ok:A=&gt;X,fail:String=&gt;X,exception:Throwable=&gt;X,both:(String,Throwable)=&gt;X):X"></a>
+      <a id="foldAll[X]((A)⇒X,(String)⇒X,(Throwable)⇒X,(String,Throwable)⇒X):X"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">foldAll</span><span class="tparams">[<span name="X">X</span>]</span><span class="params">(<span name="ok">ok: (<span class="extype" name="au.com.cba.omnia.omnitool.Result.A">A</span>) ⇒ <span class="extype" name="au.com.cba.omnia.omnitool.Result.foldAll.X">X</span></span>, <span name="fail">fail: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="au.com.cba.omnia.omnitool.Result.foldAll.X">X</span></span>, <span name="exception">exception: (<span class="extype" name="scala.Throwable">Throwable</span>) ⇒ <span class="extype" name="au.com.cba.omnia.omnitool.Result.foldAll.X">X</span></span>, <span name="both">both: (<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Throwable">Throwable</span>) ⇒ <span class="extype" name="au.com.cba.omnia.omnitool.Result.foldAll.X">X</span></span>)</span><span class="result">: <span class="extype" name="au.com.cba.omnia.omnitool.Result.foldAll.X">X</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt"><code>Catamorphism</code> for result and the underlying <code>These</code>.</p><div class="fullcomment"><div class="comment cmt"><p><code>Catamorphism</code> for result and the underlying <code>These</code>. Concise data deconstruction that can be
+used as an alternative to pattern matching, providing stronger coverage checks.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="au.com.cba.omnia.omnitool.Result#foldMessage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="foldMessage[X](ok:A=&gt;X,error:String=&gt;X):X"></a>
+      <a id="foldMessage[X]((A)⇒X,(String)⇒X):X"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">foldMessage</span><span class="tparams">[<span name="X">X</span>]</span><span class="params">(<span name="ok">ok: (<span class="extype" name="au.com.cba.omnia.omnitool.Result.A">A</span>) ⇒ <span class="extype" name="au.com.cba.omnia.omnitool.Result.foldMessage.X">X</span></span>, <span name="error">error: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="au.com.cba.omnia.omnitool.Result.foldMessage.X">X</span></span>)</span><span class="result">: <span class="extype" name="au.com.cba.omnia.omnitool.Result.foldMessage.X">X</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt"><code>Catamorphism</code> for the sucess case or the error message.</p><div class="fullcomment"><div class="comment cmt"><p><code>Catamorphism</code> for the sucess case or the error message.</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -243,6 +330,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="au.com.cba.omnia.omnitool.Result#getOrElse" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getOrElse(els:=&gt;A):A"></a>
+      <a id="getOrElse(⇒A):A"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getOrElse</span><span class="params">(<span name="els">els: ⇒ <span class="extype" name="au.com.cba.omnia.omnitool.Result.A">A</span></span>)</span><span class="result">: <span class="extype" name="au.com.cba.omnia.omnitool.Result.A">A</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">In the success case, get the value, otherwise return <code>els</code>, useful for defauling in error case.</p>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -269,6 +369,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="au.com.cba.omnia.omnitool.Result#map" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="map[B](f:A=&gt;B):au.com.cba.omnia.omnitool.Result[B]"></a>
+      <a id="map[B]((A)⇒B):Result[B]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">map</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="au.com.cba.omnia.omnitool.Result.A">A</span>) ⇒ <span class="extype" name="au.com.cba.omnia.omnitool.Result.map.B">B</span></span>)</span><span class="result">: <a href="" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Result.map.B">B</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Map across the success case.</p>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -308,6 +421,34 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="au.com.cba.omnia.omnitool.Result#or" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="or(other:=&gt;au.com.cba.omnia.omnitool.Result[A]):au.com.cba.omnia.omnitool.Result[A]"></a>
+      <a id="or(⇒Result[A]):Result[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">or</span><span class="params">(<span name="other">other: ⇒ <a href="" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Result.A">A</span>]</span>)</span><span class="result">: <a href="" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Result.A">A</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Take the first successful result.</p><div class="fullcomment"><div class="comment cmt"><p>Take the first successful result. Useful for chaining optional operations.</p></div></div>
+    </li><li name="au.com.cba.omnia.omnitool.Result#setMessage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setMessage(message:String):au.com.cba.omnia.omnitool.Result[A]"></a>
+      <a id="setMessage(String):Result[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setMessage</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Result.A">A</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set the error message in a failure case.</p><div class="fullcomment"><div class="comment cmt"><p>Set the error message in a failure case. Useful for providing contextual information without
+having to inspect result.</p><p>NB: This discards any existing message.
+</p></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -321,6 +462,58 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="au.com.cba.omnia.omnitool.Result#toDisjunction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toDisjunction:scalaz.\/[scalaz.\&amp;/.These[String,Throwable],A]"></a>
+      <a id="toDisjunction:\/[scalaz.\&amp;/.These[String,Throwable],A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toDisjunction</span><span class="result">: <span class="extype" name="scalaz.\/">\/</span>[<span class="extype" name="scalaz.TheseInstances.These">scalaz.\&amp;/.These</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Throwable">Throwable</span>], <span class="extype" name="au.com.cba.omnia.omnitool.Result.A">A</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Convert to scalaz.</p><div class="fullcomment"><div class="comment cmt"><p>Convert to scalaz.\/, this is useful to access its rich library.</p></div></div>
+    </li><li name="au.com.cba.omnia.omnitool.Result#toEither" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toEither:Either[scalaz.\&amp;/.These[String,Throwable],A]"></a>
+      <a id="toEither:Either[scalaz.\&amp;/.These[String,Throwable],A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toEither</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="scalaz.TheseInstances.These">scalaz.\&amp;/.These</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Throwable">Throwable</span>], <span class="extype" name="au.com.cba.omnia.omnitool.Result.A">A</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Convert to scala.</p><div class="fullcomment"><div class="comment cmt"><p>Convert to scala.Either, this is useful for interop.</p></div></div>
+    </li><li name="au.com.cba.omnia.omnitool.Result#toError" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toError:Option[scalaz.\&amp;/.These[String,Throwable]]"></a>
+      <a id="toError:Option[scalaz.\&amp;/.These[String,Throwable]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toError</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scalaz.TheseInstances.These">scalaz.\&amp;/.These</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Throwable">Throwable</span>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Convert the error case to an scala.</p><div class="fullcomment"><div class="comment cmt"><p>Convert the error case to an scala.Option.</p></div></div>
+    </li><li name="au.com.cba.omnia.omnitool.Result#toOption" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toOption:Option[A]"></a>
+      <a id="toOption:Option[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toOption</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="au.com.cba.omnia.omnitool.Result.A">A</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Convert to scala.</p><div class="fullcomment"><div class="comment cmt"><p>Convert to scala.Option, this is useful as it is common to not care how something fails.</p></div></div>
     </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <a id="toString():String"></a>
@@ -391,6 +584,19 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="au.com.cba.omnia.omnitool.Result#|||" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="|||(other:=&gt;au.com.cba.omnia.omnitool.Result[A]):au.com.cba.omnia.omnitool.Result[A]"></a>
+      <a id="|||(⇒Result[A]):Result[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bar$bar$bar" class="name">|||</span><span class="params">(<span name="other">other: ⇒ <a href="" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Result.A">A</span>]</span>)</span><span class="result">: <a href="" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Result.A">A</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Alias for <code>or</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Alias for <code>or</code>. Provides nice syntax: <code>Result.fail(&quot;bad&quot;) ||| Result.ok(10)</code></p></div></div>
     </li></ol>
             </div>
 

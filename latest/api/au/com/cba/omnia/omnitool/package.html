@@ -39,7 +39,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/ff276c19c917c5561acfe78da540824e641f810d//core/src/main/scala/au/com/cba/omnia/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/0e640c9dd242e6bf336d1ad2ed321b43ec3f97e3//core/src/main/scala/au/com/cba/omnia/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -120,6 +120,33 @@
       </span>
       </h4>
       
+    </li><li name="au.com.cba.omnia.omnitool.Error" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Error[A]extendsResult[A]withProductwithSerializable"></a>
+      <a id="Error[A]:Error[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Error.html"><span class="name">Error</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="error">error: <span class="extype" name="scalaz.TheseInstances.These">scalaz.\&amp;/.These</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Throwable">Throwable</span>]</span>)</span><span class="result"> extends <a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Error.A">A</span>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Failing <code>Result</code>, public so it can be used for pattern matching, prefer
+Result.</p>
+    </li><li name="au.com.cba.omnia.omnitool.Ok" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Ok[A]extendsResult[A]withProductwithSerializable"></a>
+      <a id="Ok[A]:Ok[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Ok.html"><span class="name">Ok</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="value">value: <span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span></span>)</span><span class="result"> extends <a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Successful <code>Result</code>, public so it can be used for pattern matching, prefer Result.</p>
     </li><li name="au.com.cba.omnia.omnitool.Parsed" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="ParsedextendsAnyRef"></a>
       <a id="Parsed:Parsed"></a>
@@ -172,6 +199,19 @@
       </span>
       </h4>
       
+    </li><li name="au.com.cba.omnia.omnitool.Result" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="Result[A]extendsAnyRef"></a>
+      <a id="Result[A]:Result[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Result.html"><span class="name">Result</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A data-type useful for representing the result of a possibly failing operation.</p>
     </li><li name="au.com.cba.omnia.omnitool.RichValidated" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="RichValidated[T]extendsProductwithSerializable"></a>
       <a id="RichValidated[T]:RichValidated[T]"></a>
@@ -231,6 +271,19 @@
       </span>
       </h4>
       <p class="comment cmt">A number parsing library that avoids the overhead of throwing/catching exceptions.</p>
+    </li><li name="au.com.cba.omnia.omnitool.Result" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Result"></a>
+      <a id="Result:Result"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Result$.html"><span class="name">Result</span></a>
+      </span>
+      </h4>
+      
     </li><li name="au.com.cba.omnia.omnitool.Validated" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Validated"></a>
       <a id="Validated:Validated"></a>
