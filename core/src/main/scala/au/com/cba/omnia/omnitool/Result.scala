@@ -217,7 +217,7 @@ object Result {
   }
 
   /** scalaz Equal instance for Result. */
-  implicit def ResultEqual[A: Equal]: Equal[Result[A]] = {
+  implicit def ResultEqual[A : Equal]: Equal[Result[A]] = {
     implicit def ThrowableEqual = Equal.equalA[Throwable]
     implicitly[Equal[These[String, Throwable] \/ A]].contramap(_.toDisjunction)
   }
