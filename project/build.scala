@@ -23,11 +23,12 @@ object build extends Build {
   lazy val standardSettings =
     Defaults.coreDefaultSettings ++
     uniformDependencySettings ++
+    strictDependencySettings ++
     uniform.docSettings("https://github.com/CommBank/edge") ++ Seq(
       updateOptions := updateOptions.value.withCachedResolution(true)
     )
 
-  val omniaTestVersion = "2.3.0-20150318033558-1034fa2"
+  val omniaTestVersion = "2.3.1-20150326002029-30adddf"
 
   lazy val root =
     Project(
@@ -102,9 +103,8 @@ object build extends Build {
           libraryDependencies :=
             depend.testing() ++
             Seq(
-              "au.com.cba.omnia"        %% "omnia-test"    % omniaTestVersion % "test",
-              "com.google.code.findbugs" % "jsr305"        % "2.0.3", // Needed for guava.
-              "com.google.guava"         % "guava"         % "16.0.1",
+              "au.com.cba.omnia"        %% "omnia-test"    % omniaTestVersion      % "test",
+              "com.google.guava"         % "guava"         % depend.versions.guava % "provided",
               // the scala library must be pulled in or we can't compile. SBT should do this automatically, so this seems like a bug in something
               "org.scala-lang"           % "scala-library" % scalaVersion.value
             )
