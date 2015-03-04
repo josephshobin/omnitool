@@ -17,7 +17,7 @@ package au.com.cba.omnia.omnitool
 import scalaz._, Scalaz._, \&/.These
 
 import scalaz.scalacheck.ScalazArbitrary._
-import scalaz.scalacheck.ScalazProperties.{monad, equal}
+import scalaz.scalacheck.ScalazProperties.{monad, equal, plus}
 
 import au.com.cba.omnia.omnitool.test.Arbitraries._
 
@@ -28,6 +28,7 @@ Result
 Result should:
   obey monad laws                                                              ${monad.laws[Result]}
   obey equal laws                                                              ${equal.laws[Result[Int]]}
+  obey plus laws                                                               ${plus.laws[Result]}
   toDisjuntion should roundtrip                                                $toDisjunctionRoundtrip
   toEither should roundtrip                                                    $toEitherRoundtrip
   toOption should always be Some for Ok                                        $toOptionOk

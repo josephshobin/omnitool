@@ -221,4 +221,10 @@ object Result {
     implicit def ThrowableEqual = Equal.equalA[Throwable]
     implicitly[Equal[These[String, Throwable] \/ A]].contramap(_.toDisjunction)
   }
+
+  /** scalaz Plus instance for Result. */
+  implicit def ResultPlus: Plus[Result] = new Plus[Result] {
+    def plus[A](a: Result[A], b: => Result[A]): Result[A] =
+      a or b
+  }
 }
