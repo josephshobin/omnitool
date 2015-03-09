@@ -56,4 +56,12 @@ trait ResultantMonad[M[_]] extends Plus[M] with Monad[M] {
       _ => rPoint(a),
       _ => alternative
     ))
+
+  trait ResultantMonadLaw extends MonadLaw with PlusLaw
+
+  def resultantMonadLaw: ResultantMonadLaw = new ResultantMonadLaw {}
+}
+
+object ResultantMonad {
+  @inline def apply[M[_]](implicit M: ResultantMonad[M]): ResultantMonad[M] = M
 }

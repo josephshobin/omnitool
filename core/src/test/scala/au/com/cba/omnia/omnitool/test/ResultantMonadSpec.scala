@@ -15,13 +15,13 @@
 package au.com.cba.omnia.omnitool.test
 
 import scalaz.\&/.{This, That}
-import scalaz.scalacheck.ScalazProperties.{monad, plus}
 
 import org.specs2.{Specification, ScalaCheck}
 import org.specs2.matcher.{TerminationMatchers, ThrownExpectations}
 
 import au.com.cba.omnia.omnitool.{Result, Ok, Error, OmnitoolTest}
 import au.com.cba.omnia.omnitool.ResultantMonadSyntax._
+import au.com.cba.omnia.omnitool.test.OmnitoolProperties.resultantMonad
 
 class ResultantMonadSpec extends OmnitoolTest with ResultantMatchers { def is = s2"""
 
@@ -29,8 +29,7 @@ Resultant Monad
 ===============
 
 Resultant Monad should:
-  obey monad laws                                                                              ${monad.laws[Resultant]}
-  obey plus laws                                                                               ${plus.laws[Resultant]}
+  obey resultant monad laws (monad and plus laws)                                              ${resultantMonad.laws[Resultant]}
   have safe mapping                                                                            $safeMap
   map                                                                                          $map
   have safe flatMap                                                                            $safeFlatMap
