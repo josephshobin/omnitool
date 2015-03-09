@@ -13,7 +13,10 @@ See https://commbank.github.io/omnitool
 Core
 ----
 
-Utility functions for:
+`omnitool-core` provides the `Result` ADT and the `ResultantMonad` for dealing with operations that
+might fail.
+
+It also has utility functions for:
 
 * Dealing with errors `Validated`
 * Dealing with releasing resources `Closeable`
