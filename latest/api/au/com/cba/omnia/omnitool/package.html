@@ -39,7 +39,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/cb277edfc1826d665b54229ec32b18190e02e168//core/src/main/scala/au/com/cba/omnia/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/47e0688d5d5e24648b7da52714afac07ce047bad//core/src/main/scala/au/com/cba/omnia/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -212,6 +212,45 @@ Result.</p>
       </span>
       </h4>
       <p class="comment cmt">A data-type useful for representing the result of a possibly failing operation.</p>
+    </li><li name="au.com.cba.omnia.omnitool.ResultantMonad" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ResultantMonad[M[_]]extendsPlus[M]withMonad[M]"></a>
+      <a id="ResultantMonad[M[_]]:ResultantMonad[M]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ResultantMonad.html"><span class="name">ResultantMonad</span></a><span class="tparams">[<span name="M">M<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="result"> extends <span class="extype" name="scalaz.Plus">Plus</span>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonad.M">M</span>] with <span class="extype" name="scalaz.Monad">Monad</span>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonad.M">M</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A specialised monad <code>M[A]</code> for some operation that produces a <code>Result[A]</code>.</p>
+    </li><li name="au.com.cba.omnia.omnitool.ResultantMonadOps" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ResultantMonadOps[M[_],A]extendsAnyRef"></a>
+      <a id="ResultantMonadOps[M[_],A]:ResultantMonadOps[M,A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ResultantMonadOps.html"><span class="name">ResultantMonadOps</span></a><span class="tparams">[<span name="M">M<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Convenient operations that you can do on a <a href="ResultantMonad.html" class="extype" name="au.com.cba.omnia.omnitool.ResultantMonad">ResultantMonad</a>.</p>
+    </li><li name="au.com.cba.omnia.omnitool.ResultantOps" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ResultantOps[O,M[_]]extendsAnyRef"></a>
+      <a id="ResultantOps[O,M[_]]:ResultantOps[O,M]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ResultantOps.html"><span class="name">ResultantOps</span></a><span class="tparams">[<span name="O">O</span>, <span name="M">M<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Convenient operations that you can do on the companion of a <a href="ResultantMonad.html" class="extype" name="au.com.cba.omnia.omnitool.ResultantMonad">ResultantMonad</a>.</p>
     </li><li name="au.com.cba.omnia.omnitool.RichValidated" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="RichValidated[T]extendsProductwithSerializable"></a>
       <a id="RichValidated[T]:RichValidated[T]"></a>
@@ -225,6 +264,19 @@ Result.</p>
       </span>
       </h4>
       
+    </li><li name="au.com.cba.omnia.omnitool.ToResultantMonadOps" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ToResultantMonadOpsextendsToMonadOpswithToPlusOps"></a>
+      <a id="ToResultantMonadOps:ToResultantMonadOps"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ToResultantMonadOps.html"><span class="name">ToResultantMonadOps</span></a><span class="result"> extends <span class="extype" name="scalaz.syntax.ToMonadOps">ToMonadOps</span> with <span class="extype" name="scalaz.syntax.ToPlusOps">ToPlusOps</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Pimps a <a href="ResultantMonad.html" class="extype" name="au.com.cba.omnia.omnitool.ResultantMonad">ResultantMonad</a> to have access to the functions in <a href="ResultantMonadOps.html" class="extype" name="au.com.cba.omnia.omnitool.ResultantMonadOps">ResultantMonadOps</a>.</p>
     </li><li name="au.com.cba.omnia.omnitool.Validated" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Validated[T]=scalaz.ValidationNel[String,T]"></a>
       <a id="Validated[T]:Validated[T]"></a>
@@ -284,6 +336,32 @@ Result.</p>
       </span>
       </h4>
       
+    </li><li name="au.com.cba.omnia.omnitool.ResultantMonad" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ResultantMonad"></a>
+      <a id="ResultantMonad:ResultantMonad"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ResultantMonad$.html"><span class="name">ResultantMonad</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="au.com.cba.omnia.omnitool.ResultantMonadSyntax" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ResultantMonadSyntax"></a>
+      <a id="ResultantMonadSyntax:ResultantMonadSyntax"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ResultantMonadSyntax$.html"><span class="name">ResultantMonadSyntax</span></a><span class="result"> extends <a href="ToResultantMonadOps.html" class="extype" name="au.com.cba.omnia.omnitool.ToResultantMonadOps">ToResultantMonadOps</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Pimps a <a href="ResultantMonad.html" class="extype" name="au.com.cba.omnia.omnitool.ResultantMonad">ResultantMonad</a> to have access to the functions in <a href="ResultantMonadOps.html" class="extype" name="au.com.cba.omnia.omnitool.ResultantMonadOps">ResultantMonadOps</a>.</p>
     </li><li name="au.com.cba.omnia.omnitool.Validated" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Validated"></a>
       <a id="Validated:Validated"></a>
