@@ -21,7 +21,7 @@ import scalaz.syntax.monad._
   *
   * The companion object should extend this class to avoid clashing with Scalaz implicits.
   */
-abstract class ResultantOps[M[_]] {
+trait ResultantOps[M[_]] {
   implicit val monad: ResultantMonad[M]
 
   /** Build an operation from a value. The resultant DB operation will not throw an exception. */

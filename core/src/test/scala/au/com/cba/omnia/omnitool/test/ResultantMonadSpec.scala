@@ -45,7 +45,6 @@ Resultant Monad should:
   ensure always perform the expected action                                                  $ensureAlwaysAction
   ensure fails if the action fails and returns either the original error or the action error $ensureError
   bracket is syntactic sugar for `ensure` and `flatMap`                                      $bracket
->>>>>>> Fixes clashes with Scalaz implicits.
 
 """
 
@@ -79,11 +78,6 @@ Resultant Monad should:
     x <+> y must equal(x or y)
   )
 
-<<<<<<< HEAD
-  def or = prop((x: Resultant[Int], y: Resultant[Int]) =>
-    x or y must equal(x ||| y)
-  )
-
   def setMessage = prop((x: Result[Int], msg: String) =>
     Resultant.result(x).setMessage(msg) must beResult(x.setMessage(msg))
   )
@@ -92,8 +86,6 @@ Resultant Monad should:
     Resultant.result(x).addMessage(msg) must beResult(x.addMessage(msg))
   )
 
-=======
->>>>>>> Fixes clashes with Scalaz implicits.
   def recoverWith =  prop((x: Resultant[Int], y: Resultant[Int]) =>
     x.recoverWith { case _ => y} must equal (x or y)
   )

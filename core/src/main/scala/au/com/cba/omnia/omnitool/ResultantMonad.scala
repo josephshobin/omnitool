@@ -21,8 +21,9 @@ import scalaz.{Monad, Plus}
 /**
   * A specialised monad `M[A]` for some operation that produces a `Result[A]`.
   *
-  * `M` needs to be a monad that is relative to [[Result]]. ResultantMonad turns a monad relative to
-  * [[Result]] into an ordinary monad.
+  * `M` needs to be a monad relative to [[Result]] via `rPoint` and `rBind`.
+  * `ResultantMonad` extends this relative monad into an ordinary monad.
+  * See the _relative monad_ concept in "Monads need not be endofunctors" by Altenkirch, Chapman & Uustalu.
   * See the `DB` monad in CommBank/answer for a concrete example.
   */
 trait ResultantMonad[M[_]] extends Plus[M] with Monad[M] {
