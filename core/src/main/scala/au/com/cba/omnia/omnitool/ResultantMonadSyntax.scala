@@ -42,10 +42,6 @@ final class ResultantMonadOps[M[_], A](val self: M[A])(implicit val M: Resultant
   def or(alternative: => M[A]): M[A] =
     M.plus(self, alternative)
 
-  /** Alias for `or`. Provides nice syntax: `DB.create("bad") ||| DB.create("good")` */
-  def |||(alternative: => M[A]): M[A] =
-    or(alternative)
-
   /**
     * Set the error message in a failure case. Useful for providing contextual information without
     * having to inspect result.
@@ -85,7 +81,7 @@ final class ResultantMonadOps[M[_], A](val self: M[A])(implicit val M: Resultant
     * If `self` was successful and `sequel` fails it returns the failure from `sequel`. Otherwise
     * the result of `self` is returned.
     */
-  def ensuring[B](sequel: M[B]): M[A] = for {
+  def ensure[B](sequel: M[B]): M[A] = for {
     r <- onException(sequel)
     _ <- sequel
   } yield r
@@ -97,11 +93,15 @@ final class ResultantMonadOps[M[_], A](val self: M[A])(implicit val M: Resultant
     */
   def bracket[B, C](after: A => M[B])(during: A => M[C]): M[C] = for {
     a <- self
-    r <- during(a) ensuring after(a)
+    r <- during(a) ensure after(a)
   } yield r
 }
 
-/** Pimps a [[ResultantMonad]] to have access to the functions in [[ResultantMonadOps]]. */
+/** Pimps a [[ResultantMonad]] to have access to the functions in [[ResultantMonadOps]].
+  *
+  * The usual use of this is to mix it into the companion object to ensure the implicit resolution
+  * priority does not clash with Scalaz.
+  */
 trait ToResultantMonadOps extends ToMonadOps with ToPlusOps {
   /** Pimps a [[ResultantMonad]] to have access to the functions in [[ResultantMonadOps]]. */
   implicit def ToResultantMonadOps[M[_], A](v: M[A])(implicit M0: ResultantMonad[M]): ResultantMonadOps[M, A] =

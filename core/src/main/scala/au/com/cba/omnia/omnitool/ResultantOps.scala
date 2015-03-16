@@ -16,27 +16,33 @@ package au.com.cba.omnia.omnitool
 
 import scalaz.syntax.monad._
 
-/** Convenient operations that you can do on the companion of a [[ResultantMonad]]. */
-final class ResultantOps[O, M[_]](self: O)(implicit val M: ResultantMonad[M]) {
+/**
+  * Convenient operations that you can do on the companion of a [[ResultantMonad]].
+  *
+  * The companion object should extend this class to avoid clashing with Scalaz implicits.
+  */
+abstract class ResultantOps[M[_]] {
+  implicit val monad: ResultantMonad[M]
+
   /** Build an operation from a value. The resultant DB operation will not throw an exception. */
   def value[A](v: => A): M[A] =
-    M.point(v)
+    monad.point(v)
 
   /** Builds an operation from a [[Result]]. */
   def result[A](v: => Result[A]): M[A] =
-    M.rPoint(v)
+    monad.rPoint(v)
 
   /** Build a failed operation from the specified message. */
   def fail[A](message: String): M[A] =
-    M.rPoint(Result.fail(message))
+    monad.rPoint(Result.fail(message))
 
   /** Build a failed M operation from the specified exception. */
   def exception[A](t: Throwable): M[A] =
-    M.rPoint(Result.exception(t))
+    monad.rPoint(Result.exception(t))
 
   /** Build a failed M operation from the specified exception and message. */
   def error[A](message: String, t: Throwable): M[A] =
-    M.rPoint(Result.error(message, t))
+    monad.rPoint(Result.error(message, t))
 
   /**
     * Fails if condition is not met
@@ -45,7 +51,7 @@ final class ResultantOps[O, M[_]](self: O)(implicit val M: ResultantMonad[M]) {
     * quite meet the required laws.
     */
   def guard(ok: Boolean, message: String): M[Unit] =
-    M.rPoint(Result.guard(ok, message))
+    monad.rPoint(Result.guard(ok, message))
 
   /**
     * Fails if condition is met
@@ -54,7 +60,7 @@ final class ResultantOps[O, M[_]](self: O)(implicit val M: ResultantMonad[M]) {
     * quite meet the required laws.
     */
   def prevent(fail: Boolean, message: String): M[Unit] =
-    M.rPoint(Result.prevent(fail, message))
+    monad.rPoint(Result.prevent(fail, message))
 
   /**
     * Ensures a M operation returning a boolean success flag fails if unsuccessful

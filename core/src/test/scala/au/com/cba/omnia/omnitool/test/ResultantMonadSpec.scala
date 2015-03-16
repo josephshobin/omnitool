@@ -14,13 +14,13 @@
 
 package au.com.cba.omnia.omnitool.test
 
+import scalaz._, Scalaz._
 import scalaz.\&/.{This, That}
 
 import org.specs2.{Specification, ScalaCheck}
 import org.specs2.matcher.{TerminationMatchers, ThrownExpectations}
 
 import au.com.cba.omnia.omnitool.{Result, Ok, Error, OmnitoolTest}
-import au.com.cba.omnia.omnitool.ResultantMonadSyntax._
 import au.com.cba.omnia.omnitool.test.Arbitraries._
 import au.com.cba.omnia.omnitool.test.OmnitoolProperties.resultantMonad
 
@@ -30,22 +30,22 @@ Resultant Monad
 ===============
 
 Resultant Monad should:
-  obey resultant monad laws (monad and plus laws)                                              ${resultantMonad.laws[Resultant]}
-  have safe mapping                                                                            $safeMap
-  map                                                                                          $map
-  have safe flatMap                                                                            $safeFlatMap
-  map accross results                                                                          $rMap
-  andThen                                                                                      $andThen
-  plus and or are the same                                                                     $plus
-  or / ||| are the same                                                                        $or
-  allow setting an error message                                                               $setMessage
-  allow adding an error message                                                                $addMessage
-  recoverWith for all cases is the same as |||                                                 $recoverWith
-  recoverWith only recovers the specified error                                                $recoverWithSpecific
-  onException does not change the result and performs the provided action on error             $onException
-  ensuring always perform the expected action                                                  $ensuringAlwaysAction
-  ensuring fails if the action fails and returns either the original error or the action error $ensuringError
-  bracket is syntactic sugar for `ensuring` and `flatMap`                                      $bracket
+  obey resultant monad laws (monad and plus laws)                                            ${resultantMonad.laws[Resultant]}
+  have safe mapping                                                                          $safeMap
+  map                                                                                        $map
+  have safe flatMap                                                                          $safeFlatMap
+  map accross results                                                                        $rMap
+  andThen                                                                                    $andThen
+  plus and or are the same                                                                   $plus
+  allow setting an error message                                                             $setMessage
+  allow adding an error message                                                              $addMessage
+  recoverWith for all cases is the same as or                                                $recoverWith
+  recoverWith only recovers the specified error                                              $recoverWithSpecific
+  onException does not change the result and performs the provided action on error           $onException
+  ensure always perform the expected action                                                  $ensureAlwaysAction
+  ensure fails if the action fails and returns either the original error or the action error $ensureError
+  bracket is syntactic sugar for `ensure` and `flatMap`                                      $bracket
+>>>>>>> Fixes clashes with Scalaz implicits.
 
 """
 
@@ -79,6 +79,7 @@ Resultant Monad should:
     x <+> y must equal(x or y)
   )
 
+<<<<<<< HEAD
   def or = prop((x: Resultant[Int], y: Resultant[Int]) =>
     x or y must equal(x ||| y)
   )
@@ -91,8 +92,10 @@ Resultant Monad should:
     Resultant.result(x).addMessage(msg) must beResult(x.addMessage(msg))
   )
 
+=======
+>>>>>>> Fixes clashes with Scalaz implicits.
   def recoverWith =  prop((x: Resultant[Int], y: Resultant[Int]) =>
-    x.recoverWith { case _ => y} must equal (x ||| y)
+    x.recoverWith { case _ => y} must equal (x or y)
   )
 
   def recoverWithSpecific = {
@@ -115,20 +118,20 @@ Resultant Monad should:
     }
   })
 
-  def ensuringAlwaysAction = prop ((x: Resultant[Int]) => {
+  def ensureAlwaysAction = prop ((x: Resultant[Int]) => {
     var flag = false
-    val actual = x.ensuring(Resultant(_ => { flag = true; Result.ok(2) }))
+    val actual = x.ensure(Resultant(_ => { flag = true; Result.ok(2) }))
 
     actual must equal(x)
     flag must beTrue
 
   })
 
-  def ensuringError = prop ((x: Resultant[Int], y: Resultant[Int]) => {
-    x.ensuring(y) must equal (x.flatMap(_ => y.flatMap(_ => x)))
+  def ensureError = prop ((x: Resultant[Int], y: Resultant[Int]) => {
+    x.ensure(y) must equal (x.flatMap(_ => y.flatMap(_ => x)))
   })
 
   def bracket = prop ((x: Resultant[Int], y: Resultant[Int], z: Resultant[Int]) =>
-    x.bracket(_ => y)(_ => z) must equal (x.flatMap(_ => z).ensuring(y))
+    x.bracket(_ => y)(_ => z) must equal (x.flatMap(_ => z).ensure(y))
   )
 }
