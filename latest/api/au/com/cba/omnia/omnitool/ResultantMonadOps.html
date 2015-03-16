@@ -39,7 +39,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Convenient operations that you can do on a <a href="ResultantMonad.html" class="extype" name="au.com.cba.omnia.omnitool.ResultantMonad">ResultantMonad</a>.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/47e0688d5d5e24648b7da52714afac07ce047bad//core/src/main/scala/au/com/cba/omnia/omnitool/ResultantMonadSyntax.scala" target="_blank">ResultantMonadSyntax.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Convenient operations that you can do on a <a href="ResultantMonad.html" class="extype" name="au.com.cba.omnia.omnitool.ResultantMonad">ResultantMonad</a>.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/60e7f1f93bd476c2a3b056b0bfb57ebb6bdc94d8//core/src/main/scala/au/com/cba/omnia/omnitool/ResultantMonadSyntax.scala" target="_blank">ResultantMonadSyntax.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -179,6 +179,20 @@
       </span>
       </h4>
       
+    </li><li name="au.com.cba.omnia.omnitool.ResultantMonadOps#addMessage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="addMessage(message:String,separator:String):M[A]"></a>
+      <a id="addMessage(String,String):M[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addMessage</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="separator">separator: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;: &quot;</span></span>)</span><span class="result">: <span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonadOps.M">M</span>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonadOps.A">A</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Adds an additional error message.</p><div class="fullcomment"><div class="comment cmt"><p>Adds an additional error message. Useful for adding more context as the error goes up the stack.</p><p>The new message is prepended to any existing message.
+</p></div></div>
     </li><li name="au.com.cba.omnia.omnitool.ResultantMonadOps#andThen" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="andThen[B](f:A=&gt;au.com.cba.omnia.omnitool.Result[B]):M[B]"></a>
       <a id="andThen[B]((A)⇒Result[B]):M[B]"></a>
@@ -457,6 +471,21 @@ the result of <code>self</code> is returned.
       </span>
       </h4>
       
+    </li><li name="au.com.cba.omnia.omnitool.ResultantMonadOps#setMessage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setMessage(message:String):M[A]"></a>
+      <a id="setMessage(String):M[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setMessage</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonadOps.M">M</span>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonadOps.A">A</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set the error message in a failure case.</p><div class="fullcomment"><div class="comment cmt"><p>Set the error message in a failure case. Useful for providing contextual information without
+having to inspect result.</p><p>NB: This discards any existing message.
+</p></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
