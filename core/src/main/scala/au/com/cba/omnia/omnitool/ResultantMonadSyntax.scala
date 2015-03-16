@@ -46,6 +46,23 @@ final class ResultantMonadOps[M[_], A](val self: M[A])(implicit val M: Resultant
   def |||(alternative: => M[A]): M[A] =
     or(alternative)
 
+  /**
+    * Set the error message in a failure case. Useful for providing contextual information without
+    * having to inspect result.
+    *
+    * NB: This discards any existing message.
+    */
+  def setMessage(message: String): M[A] =
+    rMap[A](_.setMessage(message))
+
+  /**
+    * Adds an additional error message. Useful for adding more context as the error goes up the stack.
+    *
+    * The new message is prepended to any existing message.
+    */
+  def addMessage(message: String, separator: String = ": "): M[A] =
+    rMap[A](_.addMessage(message, separator))
+
   /** Recovers from an error. */
   def recoverWith(recovery: PartialFunction[These[String, Throwable], M[A]]): M[A] =
     rFlatMap(r => r.fold(

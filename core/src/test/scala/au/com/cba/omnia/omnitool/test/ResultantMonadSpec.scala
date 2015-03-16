@@ -21,6 +21,7 @@ import org.specs2.matcher.{TerminationMatchers, ThrownExpectations}
 
 import au.com.cba.omnia.omnitool.{Result, Ok, Error, OmnitoolTest}
 import au.com.cba.omnia.omnitool.ResultantMonadSyntax._
+import au.com.cba.omnia.omnitool.test.Arbitraries._
 import au.com.cba.omnia.omnitool.test.OmnitoolProperties.resultantMonad
 
 class ResultantMonadSpec extends OmnitoolTest with ResultantMatchers { def is = s2"""
@@ -37,6 +38,8 @@ Resultant Monad should:
   andThen                                                                                      $andThen
   plus and or are the same                                                                     $plus
   or / ||| are the same                                                                        $or
+  allow setting an error message                                                               $setMessage
+  allow adding an error message                                                                $addMessage
   recoverWith for all cases is the same as |||                                                 $recoverWith
   recoverWith only recovers the specified error                                                $recoverWithSpecific
   onException does not change the result and performs the provided action on error             $onException
@@ -78,6 +81,14 @@ Resultant Monad should:
 
   def or = prop((x: Resultant[Int], y: Resultant[Int]) =>
     x or y must equal(x ||| y)
+  )
+
+  def setMessage = prop((x: Result[Int], msg: String) =>
+    Resultant.result(x).setMessage(msg) must beResult(x.setMessage(msg))
+  )
+  
+  def addMessage = prop((x: Result[Int], msg: String) =>
+    Resultant.result(x).addMessage(msg) must beResult(x.addMessage(msg))
   )
 
   def recoverWith =  prop((x: Resultant[Int], y: Resultant[Int]) =>
