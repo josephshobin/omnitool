@@ -24,22 +24,23 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img src="../../../../../lib/class_big.png" />
+        <img src="../../../../../lib/trait_big.png" />
         <p id="owner"><a href="../../../../package.html" class="extype" name="au">au</a>.<a href="../../../package.html" class="extype" name="au.com">com</a>.<a href="../../package.html" class="extype" name="au.com.cba">cba</a>.<a href="../package.html" class="extype" name="au.com.cba.omnia">omnia</a>.<a href="package.html" class="extype" name="au.com.cba.omnia.omnitool">omnitool</a></p>
         <h1>ResultantOps</h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">class</span>
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">ResultantOps</span><span class="tparams">[<span name="O">O</span>, <span name="M">M<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">ResultantOps</span><span class="tparams">[<span name="M">M<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Convenient operations that you can do on the companion of a <a href="ResultantMonad.html" class="extype" name="au.com.cba.omnia.omnitool.ResultantMonad">ResultantMonad</a>.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/60e7f1f93bd476c2a3b056b0bfb57ebb6bdc94d8//core/src/main/scala/au/com/cba/omnia/omnitool/ResultantOps.scala" target="_blank">ResultantOps.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Convenient operations that you can do on the companion of a <a href="ResultantMonad.html" class="extype" name="au.com.cba.omnia.omnitool.ResultantMonad">ResultantMonad</a>.</p><p>The companion object should extend this class to avoid clashing with Scalaz implicits.
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/84a04490e12f57ba33d4d3d2f8de58fc3a65a02a//core/src/main/scala/au/com/cba/omnia/omnitool/ResultantOps.scala" target="_blank">ResultantOps.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -77,30 +78,30 @@
 
       <div id="template">
         <div id="allMembers">
-        <div id="constructors" class="members">
-              <h3>Instance Constructors</h3>
-              <ol><li name="au.com.cba.omnia.omnitool.ResultantOps#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(self:O)(implicitM:au.com.cba.omnia.omnitool.ResultantMonad[M]):au.com.cba.omnia.omnitool.ResultantOps[O,M]"></a>
-      <a id="&lt;init&gt;:ResultantOps[O,M]"></a>
+        
+
+        
+
+        <div id="values" class="values members">
+              <h3>Abstract Value Members</h3>
+              <ol><li name="au.com.cba.omnia.omnitool.ResultantOps#monad" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="monad:au.com.cba.omnia.omnitool.ResultantMonad[M]"></a>
+      <a id="monad:ResultantMonad[M]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">new</span>
+        <span class="modifier">implicit abstract </span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">ResultantOps</span><span class="params">(<span name="self">self: <span class="extype" name="au.com.cba.omnia.omnitool.ResultantOps.O">O</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="M">M: <a href="ResultantMonad.html" class="extype" name="au.com.cba.omnia.omnitool.ResultantMonad">ResultantMonad</a>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantOps.M">M</span>]</span>)</span>
+        <span class="name">monad</span><span class="result">: <a href="ResultantMonad.html" class="extype" name="au.com.cba.omnia.omnitool.ResultantMonad">ResultantMonad</a>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantOps.M">M</span>]</span>
       </span>
       </h4>
       
     </li></ol>
             </div>
 
-        
-
-        
-
         <div id="values" class="values members">
-              <h3>Value Members</h3>
+              <h3>Concrete Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:AnyRef):Boolean"></a>
       <a id="!=(AnyRef):Boolean"></a>
@@ -166,19 +167,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="au.com.cba.omnia.omnitool.ResultantOps#M" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="M:au.com.cba.omnia.omnitool.ResultantMonad[M]"></a>
-      <a id="M:ResultantMonad[M]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">implicit </span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">M</span><span class="result">: <a href="ResultantMonad.html" class="extype" name="au.com.cba.omnia.omnitool.ResultantMonad">ResultantMonad</a>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantOps.M">M</span>]</span>
-      </span>
-      </h4>
-      
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>

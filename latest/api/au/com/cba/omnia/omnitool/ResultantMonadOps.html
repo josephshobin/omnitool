@@ -39,7 +39,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Convenient operations that you can do on a <a href="ResultantMonad.html" class="extype" name="au.com.cba.omnia.omnitool.ResultantMonad">ResultantMonad</a>.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/60e7f1f93bd476c2a3b056b0bfb57ebb6bdc94d8//core/src/main/scala/au/com/cba/omnia/omnitool/ResultantMonadSyntax.scala" target="_blank">ResultantMonadSyntax.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Convenient operations that you can do on a <a href="ResultantMonad.html" class="extype" name="au.com.cba.omnia.omnitool.ResultantMonad">ResultantMonad</a>.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/84a04490e12f57ba33d4d3d2f8de58fc3a65a02a//core/src/main/scala/au/com/cba/omnia/omnitool/ResultantMonadSyntax.scala" target="_blank">ResultantMonadSyntax.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -252,16 +252,16 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="au.com.cba.omnia.omnitool.ResultantMonadOps#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="ensuring[B](sequel:M[B]):M[A]"></a>
-      <a id="ensuring[B](M[B]):M[A]"></a>
+    </li><li name="au.com.cba.omnia.omnitool.ResultantMonadOps#ensure" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ensure[B](sequel:M[B]):M[A]"></a>
+      <a id="ensure[B](M[B]):M[A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">ensuring</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="sequel">sequel: <span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonadOps.M">M</span>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonadOps.ensuring.B">B</span>]</span>)</span><span class="result">: <span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonadOps.M">M</span>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonadOps.A">A</span>]</span>
+        <span class="name">ensure</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="sequel">sequel: <span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonadOps.M">M</span>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonadOps.ensure.B">B</span>]</span>)</span><span class="result">: <span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonadOps.M">M</span>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonadOps.A">A</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Ensures that the provided action is always run regardless of if <code>this</code> was successful.</p><div class="fullcomment"><div class="comment cmt"><p>Ensures that the provided action is always run regardless of if <code>this</code> was successful.
@@ -569,19 +569,6 @@ having to inspect result.</p><p>NB: This discards any existing message.
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="au.com.cba.omnia.omnitool.ResultantMonadOps#|||" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="|||(alternative:=&gt;M[A]):M[A]"></a>
-      <a id="|||(⇒M[A]):M[A]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $bar$bar$bar" class="name">|||</span><span class="params">(<span name="alternative">alternative: ⇒ <span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonadOps.M">M</span>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonadOps.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonadOps.M">M</span>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonadOps.A">A</span>]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Alias for <code>or</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Alias for <code>or</code>. Provides nice syntax: <code>DB.create(&quot;bad&quot;) ||| DB.create(&quot;good&quot;)</code></p></div></div>
     </li></ol>
             </div>
 
