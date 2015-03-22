@@ -212,7 +212,7 @@ object Result {
 
   /** scalaz Monad instance for Result. */
   implicit def ResultMonad: Monad[Result] = new Monad[Result] {
-    def point[A](v: => A) = ok(v)
+    def point[A](v: => A) = safe(v)
     def bind[A, B](a: Result[A])(f: A => Result[B]) = a flatMap f
   }
 

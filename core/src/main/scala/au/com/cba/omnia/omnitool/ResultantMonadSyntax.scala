@@ -20,19 +20,19 @@ import scalaz.syntax.monad._
 
 /** Convenient operations that you can do on a [[ResultantMonad]]. */
 final class ResultantMonadOps[M[_], A](val self: M[A])(implicit val M: ResultantMonad[M]) {
-  import ResultantMonadSyntax._
+  import ResultantMonadSyntax._, Result.{ResultMonad => R}
 
   /** Chain a context free result (i.e. requires no configuration) to this operation. */
   def andThen[B](f: A => Result[B]): M[B] =
-    M.rBind(self)(a => M.rPoint(a.flatMap(f)))
+    M.rBind(self)(a => R.point(M.rPoint(a.flatMap(f))))
 
   /** Maps across the result. */
   def rMap[B](f: Result[A] => Result[B]): M[B] =
-    M.rBind(self)(r => M.rPoint(f(r)))
+    M.rBind(self)(r => R.point(M.rPoint(f(r))))
 
   /** FlatMaps across the result. */
   def rFlatMap[B](f: Result[A] => M[B]): M[B] =
-    M.rBind(self)(f)
+    M.rBind(self)(r => R.point(f(r)))
 
   /**
     * Runs the first operation. If it fails, runs the second operation. Useful for chaining optional operations.

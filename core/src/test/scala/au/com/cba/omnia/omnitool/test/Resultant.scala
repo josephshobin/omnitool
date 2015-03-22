@@ -35,8 +35,10 @@ object Resultant extends ResultantOps[Resultant] with ToResultantMonadOps {
     def rPoint[A](v: => Result[A]): Resultant[A] = Resultant(_ => v)
 
     /** Similar to a `Monad.bind` but expects a `Result`. */
-    def rBind[A, B](ma: Resultant[A])(f: Result[A] => Resultant[B]): Resultant[B] =
-      Resultant(x => f(ma.f(x)).f(x))
+    def rBind[A, B](ma: Resultant[A])(f: Result[A] => Result[Resultant[B]]): Resultant[B] =
+      Resultant(x =>
+        f(ma.f(x)).fold(r => r.f(x), these => Result.these(these))
+      )
   }
 
   implicit def ResultantEqual[A]: Equal[Resultant[A]] = {

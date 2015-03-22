@@ -26,37 +26,40 @@ import scalaz.{Monad, Plus}
   * See the _relative monad_ concept in "Monads need not be endofunctors" by Altenkirch, Chapman & Uustalu.
   * See the `DB` monad in CommBank/answer for a concrete example.
   */
-trait ResultantMonad[M[_]] extends Plus[M] with Monad[M] {
+trait ResultantMonad[M[_]] extends Plus[M] with RelaKsMonad[Result, M] {
+
+  implicit def R: Monad[Result] = Result.ResultMonad
+
   /** Similar to a `Monad.point` but expects a `Result`. */
-  def rPoint[A](v: => Result[A]): M[A]
+  //def rPoint[A](v: => Result[A]): M[A]
 
   /** Similar to a `Monad.bind` but binds a `Result`. */
-  def rBind[A, B](ma: M[A])(f: Result[A] => M[B]): M[B]
+  //def rBind[A, B](ma: M[A])(f: Result[A] => M[B]): M[B]
 
-  /** `Monad.point` also called `return`. */
-  def point[A](v: => A): M[A] = rPoint(Result.safe(v))
+  // /** `Monad.point` also called `return`. */
+  // def point[A](v: => A): M[A] = rPoint(Result.safe(v))
 
-  /** `Monad.bind` also called `flatMap`. */
-  def bind[A, B](ma: M[A])(f: A => M[B]): M[B] = 
-    rBind(ma)(x => try {
-      x.map(f).fold(
-        identity,
-        errors => rPoint(Result.these[B](errors))
-      )
-    } catch {
-      case NonFatal(ex) => rPoint(Result.error("Exception occurred inside a bind", ex))
-    })
+  // /** `Monad.bind` also called `flatMap`. */
+  // def bind[A, B](ma: M[A])(f: A => M[B]): M[B] =
+  //   rBind(ma)(x => try {
+  //     x.map(f).fold(
+  //       identity,
+  //       errors => rPoint(Result.these[B](errors))
+  //     )
+  //   } catch {
+  //     case NonFatal(ex) => rPoint(Result.error("Exception occurred inside a bind", ex))
+  //   })
 
   /**
     * `MonadPlus.plus`. Evaluates `alternative` if `ma` fails.
     *
     * Returns the error of `ma` iff both `ma` and `alternative` fail.
     */
-  def plus[A](ma: M[A], alternative: => M[A]): M[A] = 
-    rBind(ma)(a => a.fold(
+  def plus[A](ma: M[A], alternative: => M[A]): M[A] =
+    rBind(ma)(a => R.point(a.fold(
       _ => rPoint(a),
       _ => alternative
-    ))
+    )))
 
   trait ResultantMonadLaw extends MonadLaw with PlusLaw
 
