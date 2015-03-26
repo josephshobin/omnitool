@@ -24,7 +24,7 @@ final class ResultantMonadOps[M[_], A](val self: M[A])(implicit val M: Resultant
 
   /** Chain a context free result (i.e. requires no configuration) to this operation. */
   def andThen[B](f: A => Result[B]): M[B] =
-    M.rBind(self)(a => R.point(M.rPoint(a.flatMap(f))))
+    M.rBind(self)(ra => R.point(M.rPoint(ra.flatMap(f))))
 
   /** Maps across the result. */
   def rMap[B](f: Result[A] => Result[B]): M[B] =

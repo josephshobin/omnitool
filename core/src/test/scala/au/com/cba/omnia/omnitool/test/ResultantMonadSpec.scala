@@ -81,7 +81,7 @@ Resultant Monad should:
   def setMessage = prop((x: Result[Int], msg: String) =>
     Resultant.result(x).setMessage(msg) must beResult(x.setMessage(msg))
   )
-  
+
   def addMessage = prop((x: Result[Int], msg: String) =>
     Resultant.result(x).addMessage(msg) must beResult(x.addMessage(msg))
   )
