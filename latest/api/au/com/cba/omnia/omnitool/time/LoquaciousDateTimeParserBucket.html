@@ -42,7 +42,7 @@
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Overrides DateTimeParserBucket, allowing us to see what fields are set by <span class="extype" name="org.joda.time.format.DateTimeFormatter">org.joda.time.format.DateTimeFormatter</span></p><p>WARNING: mutable and non thread-safe. Also, this class does not reset the
 list of field types after parsing, so the list of field types is good for
 one parse only.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/6b7977660989572edda3555455a6cbc6c7475c41//time/src/main/scala/au/com/cba/omnia/omnitool/time/DateFormatInfo.scala" target="_blank">DateFormatInfo.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/bbff72899bd5c345189cf6c265e966b70971da32//time/src/main/scala/au/com/cba/omnia/omnitool/time/DateFormatInfo.scala" target="_blank">DateFormatInfo.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="org.joda.time.format.DateTimeParserBucket">DateTimeParserBucket</span>, <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Any" class="extype" target="_top">Any</a></div>
         </div></div>
@@ -217,6 +217,19 @@ one parse only.
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="org.joda.time.format.DateTimeParserBucket#computeMillis" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="computeMillis(x$1:Boolean,x$2:CharSequence):Long"></a>
+      <a id="computeMillis(Boolean,CharSequence):Long"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">computeMillis</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="arg1">arg1: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Long" class="extype" target="_top">Long</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>DateTimeParserBucket</dd></dl></div>
     </li><li name="org.joda.time.format.DateTimeParserBucket#computeMillis" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="computeMillis(x$1:Boolean,x$2:String):Long"></a>
       <a id="computeMillis(Boolean,String):Long"></a>
@@ -459,6 +472,32 @@ used for a second parse.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="org.joda.time.format.DateTimeParserBucket#parseMillis" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="parseMillis(x$1:org.joda.time.format.DateTimeParser,x$2:CharSequence):Long"></a>
+      <a id="parseMillis(DateTimeParser,CharSequence):Long"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">parseMillis</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="org.joda.time.format.DateTimeParser">DateTimeParser</span></span>, <span name="arg1">arg1: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Long" class="extype" target="_top">Long</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>DateTimeParserBucket</dd></dl></div>
+    </li><li name="org.joda.time.format.DateTimeParserBucket#reset" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="reset():Unit"></a>
+      <a id="reset():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">reset</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>DateTimeParserBucket</dd></dl></div>
     </li><li name="org.joda.time.format.DateTimeParserBucket#restoreState" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="restoreState(x$1:Any):Boolean"></a>
       <a id="restoreState(Any):Boolean"></a>
@@ -534,19 +573,6 @@ used for a second parse.
       </span>
       <span class="symbol">
         <span class="name">setOffset</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="java.lang.Integer">Integer</span></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>DateTimeParserBucket</dd></dl></div>
-    </li><li name="org.joda.time.format.DateTimeParserBucket#setPivotYear" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="setPivotYear(x$1:Integer):Unit"></a>
-      <a id="setPivotYear(Integer):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">setPivotYear</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="java.lang.Integer">Integer</span></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>DateTimeParserBucket</dd></dl></div>
@@ -681,6 +707,24 @@ used for a second parse.
       </span>
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version ) see corresponding Javadoc for more information.">setOffset</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Int" class="extype" target="_top">Int</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>DateTimeParserBucket</dd><dt>Annotations</dt><dd>
+                <span class="name">@Deprecated</span>
+              
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version )</i> see corresponding Javadoc for more information.</p></dd></dl></div>
+    </li><li name="org.joda.time.format.DateTimeParserBucket#setPivotYear" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setPivotYear(x$1:Integer):Unit"></a>
+      <a id="setPivotYear(Integer):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version ) see corresponding Javadoc for more information.">setPivotYear</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="java.lang.Integer">Integer</span></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>DateTimeParserBucket</dd><dt>Annotations</dt><dd>
