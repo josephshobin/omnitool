@@ -39,3 +39,7 @@ trait ResultantMonad[M[_]] extends RelMonadPlus[Result, M] {
 object ResultantMonad {
   @inline def apply[M[_]](implicit M: ResultantMonad[M]): ResultantMonad[M] = M
 }
+
+
+
+
