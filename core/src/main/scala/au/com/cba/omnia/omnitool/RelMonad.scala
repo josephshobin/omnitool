@@ -62,7 +62,7 @@ trait RelMonad[R[_], M[_]] extends Monad[M] {
 
   trait RelMonadLaw extends MonadLaw
 
-  def relMonadLaw: RelMonadLaw = new RelMonadLaw {}
+  def relMonadLaw: RelMonadLaw = new RelMonadLaw {}  // TODO: reconsider
 }
 
 object RelMonad {
