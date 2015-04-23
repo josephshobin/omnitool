@@ -102,7 +102,7 @@ final class ResultantMonadOps[M[_], A](val self: M[A])(implicit val M: Resultant
   * The usual use of this is to mix it into the companion object to ensure the implicit resolution
   * priority does not clash with Scalaz.
   */
-trait ToResultantMonadOps extends ToMonadOps with ToPlusOps {
+trait ToResultantMonadOps {
   /** Pimps a [[ResultantMonad]] to have access to the functions in [[ResultantMonadOps]]. */
   implicit def ToResultantMonadOps[M[_], A](v: M[A])(implicit M0: ResultantMonad[M]): ResultantMonadOps[M, A] =
     new ResultantMonadOps[M, A](v)
