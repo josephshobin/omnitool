@@ -79,6 +79,7 @@ LoggerMethodsSpec
     }
     finally {
       file.delete
+      ()
     }
   }
 }

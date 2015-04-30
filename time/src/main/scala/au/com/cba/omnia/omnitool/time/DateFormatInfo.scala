@@ -16,8 +16,7 @@ package au.com.cba.omnia.omnitool.time
 
 import java.util.Locale
 
-import org.joda.time.{Chronology, DateTime, DateTimeField, DateTimeFieldType}
-import org.joda.time.chrono.ISOChronology
+import org.joda.time.{DateTime, DateTimeField, DateTimeFieldType}
 import org.joda.time.format.{DateTimeFormatter, DateTimeParserBucket}
 
 /** Query [[org.joda.time.format.DateTimeFormat]] for more info */

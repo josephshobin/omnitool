@@ -17,8 +17,6 @@ package au.com.cba.omnia.omnitool.time
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
 
-import scalaz._, Scalaz._
-
 import com.cba.omnia.test.{OmniaSpec, TimeArbitrary}
 
 class TimePointSpec extends OmniaSpec with TimeArbitrary { def is = s2"""

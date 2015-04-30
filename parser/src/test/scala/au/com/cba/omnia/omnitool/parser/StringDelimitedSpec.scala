@@ -18,7 +18,7 @@ import java.util.regex.Pattern
 
 import scala.util.matching.Regex
 
-import scalaz._, Scalaz._
+import scalaz.Success
 
 import com.cba.omnia.test.OmniaSpec
 
@@ -29,14 +29,9 @@ String Delimited
 Encoding a list of strings should:
   place the delimiter between the string values $delimited
   backslash escape any delimiter characters or backslashes present inside the strings $escapeDelimiter
-
-Encoding an empty list should decoding to an empty list $emptyList
-
-Encoding a list of strings followed by decoding it should return the same value $encodeThenDecode
-                                                       
-Nesting encodes should work as expected $nestedDecoding
-
-Can encode and decode specific examples $specific
+  Encoding an empty list should decode to an empty list $emptyList
+  Encoding a list of strings followed by decoding it should return the same value $encodeThenDecode
+  Can encode and decode specific examples $specific
 
 """
 

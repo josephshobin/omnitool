@@ -16,7 +16,7 @@ package au.com.cba.omnia.omnitool
 
 import java.io.{Closeable => JCloseable}
 
-case class Closeable[T](close: T => Any)
+case class Closeable[T](close: T => Unit)
 
 case class CloseableSyntax[T](v: T, closeable: Closeable[T]) {
   /** Close the resource */
@@ -30,7 +30,7 @@ object Closeable extends CloseableOps {
   implicit def JCloseableToCloseable[T <: JCloseable] = Closeable[T](_.close)
 
   /** Perform ```thunk``` on ```v``` and then close it using the specified ```close``` */
-  def doAndRelease[T, A](v: T, thunk: T => A, close: T => Any): A = try thunk(v) finally close(v)
+  def doAndRelease[T, A](v: T, thunk: T => A, close: T => Unit): A = try thunk(v) finally close(v)
 }
 
 trait CloseableOps {

@@ -27,24 +27,26 @@ TimeParser
 
 A TimeParser can:
   parse given a DateTimeFormat instance $parse
-  parse given a pattern string $parseString
-  parse using default patterns $parseDefault
+  parse given a pattern string          $parseString
+  parse using default patterns          $parseDefault
 
 """
   def parse = prop { (dt: DateTime) =>
     TimePoint.defaultFormats.foreach { pattern =>
       val s = dt.toString(pattern)
       val fs = s ++ "aa"
-      TimeParser.parse(s, pattern) must_== DateTime.parse(s, pattern).right
+      TimeParser.parse(s, pattern)  must_== DateTime.parse(s, pattern).right
       TimeParser.parse(fs, pattern) must_== s"Failed to parse $fs using the given formatter".left
     }
+
+    ok
   }
 
   def parseString = prop { (dt: DateTime) =>
     List("yyyy-MM-dd", "yyyy-MM").foreach { pattern =>
       val s = dt.toString(pattern)
       val fs = s ++ "aa"
-      TimeParser.parse(s, pattern) must_== DateTime.parse(s, DateTimeFormat.forPattern(pattern)).right
+      TimeParser.parse(s, pattern)  must_== DateTime.parse(s, DateTimeFormat.forPattern(pattern)).right
       TimeParser.parse(fs, pattern) must_== s"Failed to parse $fs as $pattern".left
     }
 
@@ -57,8 +59,10 @@ A TimeParser can:
     TimeParser.defaultFormats.foreach { pattern =>
       val s = dt.toString(pattern)
       val fs = s ++ "aa"
-      TimeParser.parseDefault(s) must_== DateTime.parse(s, pattern).right
+      TimeParser.parseDefault(s)  must_== DateTime.parse(s, pattern).right
       TimeParser.parseDefault(fs) must_== s"Failed to parse $fs using default formats".left
     }
+
+    ok
   }
 }

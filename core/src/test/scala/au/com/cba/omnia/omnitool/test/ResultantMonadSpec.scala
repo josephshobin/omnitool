@@ -17,9 +17,6 @@ package au.com.cba.omnia.omnitool.test
 import scalaz._, Scalaz._
 import scalaz.\&/.{This, That}
 
-import org.specs2.{Specification, ScalaCheck}
-import org.specs2.matcher.{TerminationMatchers, ThrownExpectations}
-
 import au.com.cba.omnia.omnitool.{Result, Ok, Error, OmnitoolTest}
 import au.com.cba.omnia.omnitool.test.Arbitraries._
 import au.com.cba.omnia.omnitool.test.OmnitoolProperties.resultantMonad

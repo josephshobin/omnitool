@@ -14,13 +14,13 @@
 
 package au.com.cba.omnia.omnitool.time
 
+import org.joda.time.LocalDate
+import org.joda.time.format.DateTimeFormatter
+
+import org.specs2.mutable.Tables
+
 import com.cba.omnia.test.TimeArbitrary._
 import com.cba.omnia.test.Spec
-
-import org.joda.time._
-import org.joda.time.format._
-import org.scalacheck._, Gen._
-import org.specs2.mutable.Tables
 
 object DateFormatSpec extends Spec with Tables { def is = s2"""
 DateFormatSpec

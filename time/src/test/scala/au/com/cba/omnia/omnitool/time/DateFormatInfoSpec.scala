@@ -14,12 +14,10 @@
 
 package au.com.cba.omnia.omnitool.time
 
-import com.cba.omnia.test.TimeArbitrary._
-import com.cba.omnia.test.Spec
+import org.joda.time.DateTimeFieldType
+import org.joda.time.format.{DateTimeFormat, DateTimeFormatter}
 
-import org.joda.time._
-import org.joda.time.format._
-import org.scalacheck._, Gen._
+import com.cba.omnia.test.Spec
 
 import au.com.cba.omnia.omnitool.time.Arbitraries._
 

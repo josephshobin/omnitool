@@ -14,18 +14,18 @@
 
 package au.com.cba.omnia.omnitool.time
 
-import DateOrder._
-import Arbitraries._
+import com.github.nscala_time.time.Imports._
+
+import org.joda.time.LocalDate
+
+import org.specs2.mutable.Tables
+import org.specs2.execute.Result
 
 import com.cba.omnia.test.TimeArbitrary._
 import com.cba.omnia.test.Spec
-import com.github.nscala_time.time.Imports._
 
-import org.joda.time._
-import org.joda.time.format._
-import org.scalacheck._, Gen._
-import org.specs2.mutable.Tables
-import org.specs2.execute.Result
+import DateOrder._
+import Arbitraries._
 
 object DateOrderSpec extends Spec with Tables { def is = s2"""
 DateOrderSpec

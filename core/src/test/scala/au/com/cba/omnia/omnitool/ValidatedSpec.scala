@@ -23,7 +23,7 @@ Error handling
 ==============
 
 Validated:
-  can be used to wrap operations that might throw exceptions $safe
+  can be used to wrap operations that might throw exceptions            $safe
   allow for adding additional error messages to already existing errors $addError
 
 """

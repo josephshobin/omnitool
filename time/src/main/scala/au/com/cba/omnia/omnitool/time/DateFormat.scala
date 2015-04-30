@@ -14,8 +14,7 @@
 
 package au.com.cba.omnia.omnitool.time
 
-import org.joda.time._
-import org.joda.time.format._
+import org.joda.time.format.{DateTimeFormat, DateTimeFormatter, DateTimeFormatterBuilder}
 
 /** A collection of joda-time DateTimeFormatters. */
 object DateFormat {

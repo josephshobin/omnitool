@@ -60,8 +60,8 @@ object StringDelimited {
 
     parser.unescape(new CharArrayReader(input.toCharArray)) match {
       case parser.Success(result, xs) => result.successNel
-      case parser.Error(message, _)   => message.failNel
-      case parser.Failure(message, _) => message.failNel
+      case parser.Error(message, _)   => message.failureNel
+      case parser.Failure(message, _) => message.failureNel
     }
   }
 }

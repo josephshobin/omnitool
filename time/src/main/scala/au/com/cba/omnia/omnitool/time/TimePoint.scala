@@ -16,10 +16,10 @@ package au.com.cba.omnia.omnitool.time
 
 import scala.util.Try
 
-import org.joda.time._
-import org.joda.time.format._
+import org.joda.time.{DateTime, DateTimeZone}
+import org.joda.time.format.DateTimeFormatter
 
-import scalaz._, Scalaz._
+import scalaz.\/
 
 
 /**
