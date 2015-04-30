@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>time - au.com.cba.omnia.omnitool.time</title>
@@ -9,6 +8,11 @@
           
       <link href="../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../../index.html';
@@ -26,7 +30,11 @@
       <div id="definition">
         <img src="../../../../../../lib/package_big.png" />
         <p id="owner"><a href="../../../../../package.html" class="extype" name="au">au</a>.<a href="../../../../package.html" class="extype" name="au.com">com</a>.<a href="../../../package.html" class="extype" name="au.com.cba">cba</a>.<a href="../../package.html" class="extype" name="au.com.cba.omnia">omnia</a>.<a href="../package.html" class="extype" name="au.com.cba.omnia.omnitool">omnitool</a></p>
-        <h1>time</h1>
+        <h1>time</h1><span class="permalink">
+      <a href="../../../../../../index.html#au.com.cba.omnia.omnitool.time.package" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -58,7 +66,7 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="au.com.cba.omnia.omnitool.time.LoquaciousDateTimeParserBucket" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="au.com.cba.omnia.omnitool.time.LoquaciousDateTimeParserBucket" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="LoquaciousDateTimeParserBucketextendsDateTimeParserBucket"></a>
       <a id="LoquaciousDateTimeParserBucket:LoquaciousDateTimeParserBucket"></a>
       <h4 class="signature">
@@ -69,9 +77,16 @@
       <span class="symbol">
         <a href="LoquaciousDateTimeParserBucket.html"><span class="name">LoquaciousDateTimeParserBucket</span></a><span class="result"> extends <span class="extype" name="org.joda.time.format.DateTimeParserBucket">DateTimeParserBucket</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">Overrides DateTimeParserBucket, allowing us to see what fields are set by <span class="extype" name="org.joda.time.format.DateTimeFormatter">org.joda.time.format.DateTimeFormatter</span></p>
-    </li><li name="au.com.cba.omnia.omnitool.time.TimePoint" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#au.com.cba.omnia.omnitool.time.package@LoquaciousDateTimeParserBucketextendsDateTimeParserBucket" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Overrides DateTimeParserBucket, allowing us to see what fields are set by <span class="extype" name="org.joda.time.format.DateTimeFormatter">org.joda.time.format.DateTimeFormatter</span></p><div class="fullcomment"><div class="comment cmt"><p>Overrides DateTimeParserBucket, allowing us to see what fields are set by <span class="extype" name="org.joda.time.format.DateTimeFormatter">org.joda.time.format.DateTimeFormatter</span></p><p>WARNING: mutable and non thread-safe. Also, this class does not reset the
+list of field types after parsing, so the list of field types is good for
+one parse only.
+</p></div></div>
+    </li><li name="au.com.cba.omnia.omnitool.time.TimePoint" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="TimePointextendsProductwithSerializable"></a>
       <a id="TimePoint:TimePoint"></a>
       <h4 class="signature">
@@ -80,10 +95,20 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="TimePoint.html"><span class="name">TimePoint</span></a><span class="params">(<span name="instant">instant: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Long" class="extype" target="_top">Long</a></span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+        <a href="TimePoint.html"><span class="name">TimePoint</span></a><span class="params">(<span name="instant">instant: <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Long" class="extype" target="_top">Long</a></span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">A <code>TimePoint</code> is an encoding of a time with up to millisecond precision.</p>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#au.com.cba.omnia.omnitool.time.package@TimePointextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A <code>TimePoint</code> is an encoding of a time with up to millisecond precision.</p><div class="fullcomment"><div class="comment cmt"><p>A <code>TimePoint</code> is an encoding of a time with up to millisecond precision.</p><p>By default this <code>TimePoint</code> shall be treated as milliseconds since
+posix epoch. However, it provides a series of convenience functions for
+converting to and from joda time primitives at a variety of precisions.
+It is expected that joda time be used for any actual date manipulation.</p><p>This data type exists as a simple container format so it can be easily
+and efficiently transported using java serialization for hadoop (at
+least it is efficient to the extend that java serialization allows).
+</p></div></div>
     </li></ol>
             </div>
 
@@ -102,8 +127,12 @@
       <span class="symbol">
         <a href="DateFormat$.html"><span class="name">DateFormat</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">A collection of joda-time DateTimeFormatters.</p>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#au.com.cba.omnia.omnitool.time.package@DateFormat" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A collection of joda-time DateTimeFormatters.</p>
     </li><li name="au.com.cba.omnia.omnitool.time.DateFormatInfo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DateFormatInfo"></a>
       <a id="DateFormatInfo:DateFormatInfo"></a>
@@ -115,8 +144,12 @@
       <span class="symbol">
         <a href="DateFormatInfo$.html"><span class="name">DateFormatInfo</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Query <span class="extype" name="org.joda.time.format.DateTimeFormat">org.joda.time.format.DateTimeFormat</span> for more info</p>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#au.com.cba.omnia.omnitool.time.package@DateFormatInfo" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Query <span class="extype" name="org.joda.time.format.DateTimeFormat">org.joda.time.format.DateTimeFormat</span> for more info</p>
     </li><li name="au.com.cba.omnia.omnitool.time.DateOrder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DateOrder"></a>
       <a id="DateOrder:DateOrder"></a>
@@ -128,8 +161,12 @@
       <span class="symbol">
         <a href="DateOrder$.html"><span class="name">DateOrder</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">A collection of <code>Ordering</code> instances for use
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#au.com.cba.omnia.omnitool.time.package@DateOrder" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A collection of <code>Ordering</code> instances for use
 in explicit sort orders methods when the default nscala
 instances don't cut it (or don't exist).</p>
     </li><li name="au.com.cba.omnia.omnitool.time.TimeParser" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
@@ -143,8 +180,12 @@ instances don't cut it (or don't exist).</p>
       <span class="symbol">
         <a href="TimeParser$.html"><span class="name">TimeParser</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">A collection of methods to safely parse DateTimes from Strings.</p>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#au.com.cba.omnia.omnitool.time.package@TimeParser" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A collection of methods to safely parse DateTimes from Strings.</p>
     </li><li name="au.com.cba.omnia.omnitool.time.TimePoint" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="TimePoint"></a>
       <a id="TimePoint:TimePoint"></a>
@@ -154,10 +195,14 @@ instances don't cut it (or don't exist).</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="TimePoint$.html"><span class="name">TimePoint</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+        <a href="TimePoint$.html"><span class="name">TimePoint</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">A collection of functions to safely create <a href="TimePoint.html" class="extype" name="au.com.cba.omnia.omnitool.time.TimePoint">TimePoint</a>.</p>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#au.com.cba.omnia.omnitool.time.package@TimePoint" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A collection of functions to safely create <a href="TimePoint.html" class="extype" name="au.com.cba.omnia.omnitool.time.TimePoint">TimePoint</a>.</p>
     </li><li name="au.com.cba.omnia.omnitool.time.VersionInfo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="VersionInfo"></a>
       <a id="VersionInfo:VersionInfo"></a>
@@ -169,7 +214,11 @@ instances don't cut it (or don't exist).</p>
       <span class="symbol">
         <a href="VersionInfo$.html"><span class="name">VersionInfo</span></a>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#au.com.cba.omnia.omnitool.time.package@VersionInfo" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li></ol>
             </div>
@@ -196,6 +245,7 @@ instances don't cut it (or don't exist).</p>
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../../lib/template.js"></script>
+
+
     </body>
       </html>

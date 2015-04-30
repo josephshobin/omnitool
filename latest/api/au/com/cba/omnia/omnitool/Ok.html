@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>Ok - au.com.cba.omnia.omnitool.Ok</title>
@@ -9,6 +8,11 @@
           
       <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../index.html';
@@ -26,7 +30,13 @@
       <div id="definition">
         <img src="../../../../../lib/class_big.png" />
         <p id="owner"><a href="../../../../package.html" class="extype" name="au">au</a>.<a href="../../../package.html" class="extype" name="au.com">com</a>.<a href="../../package.html" class="extype" name="au.com.cba">cba</a>.<a href="../package.html" class="extype" name="au.com.cba.omnia">omnia</a>.<a href="package.html" class="extype" name="au.com.cba.omnia.omnitool">omnitool</a></p>
-        <h1>Ok</h1>
+        <h1>Ok</h1><h3><span class="morelinks"><div>Related Doc:
+            <a href="package.html" class="extype" name="au.com.cba.omnia.omnitool">package omnitool</a>
+          </div></span></h3><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -35,15 +45,15 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">Ok</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="value">value: <span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span></span>)</span><span class="result"> extends <a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span>] with <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+        <span class="name">Ok</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="value">value: <span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span></span>)</span><span class="result"> extends <a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span>] with <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Successful <code>Result</code>, public so it can be used for pattern matching, prefer Result.ok for
 construction.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/bbff72899bd5c345189cf6c265e966b70971da32//core/src/main/scala/au/com/cba/omnia/omnitool/Result.scala" target="_blank">Result.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/Dirty(3ca9118a0789276b8e4f0de72a3f7fcdb0a4111e)//core/src/main/scala/au/com/cba/omnia/omnitool/Result.scala" target="_blank">Result.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Serializable" class="extype" target="_top">Serializable</a>, <span class="extype" name="java.io.Serializable">Serializable</span>, <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Product" class="extype" target="_top">Product</a>, <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Equals" class="extype" target="_top">Equals</a>, <a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span>], <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Any" class="extype" target="_top">Any</a></div>
+          <div class="superTypes hiddenContent"><a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a>, <span class="extype" name="java.io.Serializable">Serializable</span>, <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Product" class="extype" target="_top">Product</a>, <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Equals" class="extype" target="_top">Equals</a>, <a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span>], <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Any" class="extype" target="_top">Any</a></div>
         </div></div>
         
 
@@ -92,7 +102,11 @@ construction.
       <span class="symbol">
         <span class="name">Ok</span><span class="params">(<span name="value">value: <span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span></span>)</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@&lt;init&gt;(value:A):au.com.cba.omnia.omnitool.Ok[A]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li></ol>
             </div>
@@ -104,19 +118,6 @@ construction.
         <div id="values" class="values members">
               <h3>Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="!=(x$1:AnyRef):Boolean"></a>
-      <a id="!=(AnyRef):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a>
       <a id="!=(Any):Boolean"></a>
       <h4 class="signature">
@@ -125,10 +126,14 @@ construction.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Any" class="extype" target="_top">Any</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Any" class="extype" target="_top">Any</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
       </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <a id="##():Int"></a>
@@ -138,24 +143,15 @@ construction.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Int" class="extype" target="_top">Int</a></span>
+        <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Int" class="extype" target="_top">Int</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@##():Int" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="==(x$1:AnyRef):Boolean"></a>
-      <a id="==(AnyRef):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a>
       <a id="==(Any):Boolean"></a>
       <h4 class="signature">
@@ -164,10 +160,14 @@ construction.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Any" class="extype" target="_top">Any</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Any" class="extype" target="_top">Any</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
       </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@==(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="au.com.cba.omnia.omnitool.Result#addMessage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="addMessage(message:String,separator:String):au.com.cba.omnia.omnitool.Result[A]"></a>
       <a id="addMessage(String,String):Result[A]"></a>
@@ -179,7 +179,11 @@ construction.
       <span class="symbol">
         <span class="name">addMessage</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="separator">separator: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;: &quot;</span></span>)</span><span class="result">: <a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@addMessage(message:String,separator:String):au.com.cba.omnia.omnitool.Result[A]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Adds an additional error message.</p><div class="fullcomment"><div class="comment cmt"><p>Adds an additional error message. Useful for adding more context as the error goes up the stack.</p><p>The new message is prepended to any existing message.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -193,7 +197,11 @@ construction.
       <span class="symbol">
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
@@ -204,9 +212,13 @@ construction.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">clone</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@clone():Object" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -223,9 +235,13 @@ construction.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
@@ -236,9 +252,13 @@ construction.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">finalize</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@finalize():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -257,7 +277,11 @@ construction.
       <span class="symbol">
         <span class="name">flatMap</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span>) ⇒ <a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Result.flatMap.B">B</span>]</span>)</span><span class="result">: <a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Result.flatMap.B">B</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@flatMap[B](f:A=&gt;au.com.cba.omnia.omnitool.Result[B]):au.com.cba.omnia.omnitool.Result[B]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Bind through the success case, this is useful to chain potentially failing operations.</p><div class="fullcomment"><div class="comment cmt"><p>Bind through the success case, this is useful to chain potentially failing operations.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a></dd></dl></div>
     </li><li name="au.com.cba.omnia.omnitool.Result#fold" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="fold[X](ok:A=&gt;X,error:scalaz.\&amp;/.These[String,Throwable]=&gt;X):X"></a>
@@ -270,7 +294,11 @@ construction.
       <span class="symbol">
         <span class="name">fold</span><span class="tparams">[<span name="X">X</span>]</span><span class="params">(<span name="ok">ok: (<span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span>) ⇒ <span class="extype" name="au.com.cba.omnia.omnitool.Result.fold.X">X</span></span>, <span name="error">error: (<span class="extype" name="scalaz.TheseInstances.These">scalaz.\&amp;/.These</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Throwable">Throwable</span>]) ⇒ <span class="extype" name="au.com.cba.omnia.omnitool.Result.fold.X">X</span></span>)</span><span class="result">: <span class="extype" name="au.com.cba.omnia.omnitool.Result.fold.X">X</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@fold[X](ok:A=&gt;X,error:scalaz.\&amp;/.These[String,Throwable]=&gt;X):X" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt"><code>Catamorphism</code> for result.</p><div class="fullcomment"><div class="comment cmt"><p><code>Catamorphism</code> for result. Concise data deconstruction that can be used as an alternative to
 pattern matching, providing stronger coverage checks.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a></dd><dt>Annotations</dt><dd>
@@ -288,7 +316,11 @@ pattern matching, providing stronger coverage checks.
       <span class="symbol">
         <span class="name">foldAll</span><span class="tparams">[<span name="X">X</span>]</span><span class="params">(<span name="ok">ok: (<span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span>) ⇒ <span class="extype" name="au.com.cba.omnia.omnitool.Result.foldAll.X">X</span></span>, <span name="fail">fail: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="au.com.cba.omnia.omnitool.Result.foldAll.X">X</span></span>, <span name="exception">exception: (<span class="extype" name="scala.Throwable">Throwable</span>) ⇒ <span class="extype" name="au.com.cba.omnia.omnitool.Result.foldAll.X">X</span></span>, <span name="both">both: (<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Throwable">Throwable</span>) ⇒ <span class="extype" name="au.com.cba.omnia.omnitool.Result.foldAll.X">X</span></span>)</span><span class="result">: <span class="extype" name="au.com.cba.omnia.omnitool.Result.foldAll.X">X</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@foldAll[X](ok:A=&gt;X,fail:String=&gt;X,exception:Throwable=&gt;X,both:(String,Throwable)=&gt;X):X" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt"><code>Catamorphism</code> for result and the underlying <code>These</code>.</p><div class="fullcomment"><div class="comment cmt"><p><code>Catamorphism</code> for result and the underlying <code>These</code>. Concise data deconstruction that can be
 used as an alternative to pattern matching, providing stronger coverage checks.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a></dd><dt>Annotations</dt><dd>
@@ -306,7 +338,11 @@ used as an alternative to pattern matching, providing stronger coverage checks.
       <span class="symbol">
         <span class="name">foldMessage</span><span class="tparams">[<span name="X">X</span>]</span><span class="params">(<span name="ok">ok: (<span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span>) ⇒ <span class="extype" name="au.com.cba.omnia.omnitool.Result.foldMessage.X">X</span></span>, <span name="error">error: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="au.com.cba.omnia.omnitool.Result.foldMessage.X">X</span></span>)</span><span class="result">: <span class="extype" name="au.com.cba.omnia.omnitool.Result.foldMessage.X">X</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@foldMessage[X](ok:A=&gt;X,error:String=&gt;X):X" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt"><code>Catamorphism</code> for the sucess case or the error message.</p><div class="fullcomment"><div class="comment cmt"><p><code>Catamorphism</code> for the sucess case or the error message.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a></dd><dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
               
@@ -322,7 +358,11 @@ used as an alternative to pattern matching, providing stronger coverage checks.
       <span class="symbol">
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@getClass():Class[_]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="au.com.cba.omnia.omnitool.Result#getOrElse" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getOrElse(els:=&gt;A):A"></a>
@@ -335,7 +375,11 @@ used as an alternative to pattern matching, providing stronger coverage checks.
       <span class="symbol">
         <span class="name">getOrElse</span><span class="params">(<span name="els">els: ⇒ <span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span></span>)</span><span class="result">: <span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@getOrElse(els:=&gt;A):A" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">In the success case, get the value, otherwise return <code>els</code>, useful for defauling in error case.</p><div class="fullcomment"><div class="comment cmt"><p>In the success case, get the value, otherwise return <code>els</code>, useful for defauling in error case.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a></dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -346,9 +390,13 @@ used as an alternative to pattern matching, providing stronger coverage checks.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
+        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="au.com.cba.omnia.omnitool.Result#map" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="map[B](f:A=&gt;B):au.com.cba.omnia.omnitool.Result[B]"></a>
@@ -361,7 +409,11 @@ used as an alternative to pattern matching, providing stronger coverage checks.
       <span class="symbol">
         <span class="name">map</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span>) ⇒ <span class="extype" name="au.com.cba.omnia.omnitool.Result.map.B">B</span></span>)</span><span class="result">: <a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Result.map.B">B</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@map[B](f:A=&gt;B):au.com.cba.omnia.omnitool.Result[B]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Map across the success case.</p><div class="fullcomment"><div class="comment cmt"><p>Map across the success case.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
@@ -372,9 +424,13 @@ used as an alternative to pattern matching, providing stronger coverage checks.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
@@ -385,9 +441,13 @@ used as an alternative to pattern matching, providing stronger coverage checks.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">notify</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+        <span class="name">notify</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@notify():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
@@ -398,9 +458,13 @@ used as an alternative to pattern matching, providing stronger coverage checks.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@notifyAll():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="au.com.cba.omnia.omnitool.Result#or" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="or(other:=&gt;au.com.cba.omnia.omnitool.Result[A]):au.com.cba.omnia.omnitool.Result[A]"></a>
@@ -413,7 +477,11 @@ used as an alternative to pattern matching, providing stronger coverage checks.
       <span class="symbol">
         <span class="name">or</span><span class="params">(<span name="other">other: ⇒ <a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span>]</span>)</span><span class="result">: <a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@or(other:=&gt;au.com.cba.omnia.omnitool.Result[A]):au.com.cba.omnia.omnitool.Result[A]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Take the first successful result.</p><div class="fullcomment"><div class="comment cmt"><p>Take the first successful result. Useful for chaining optional operations.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a></dd></dl></div>
     </li><li name="au.com.cba.omnia.omnitool.Result#setMessage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setMessage(message:String):au.com.cba.omnia.omnitool.Result[A]"></a>
@@ -426,7 +494,11 @@ used as an alternative to pattern matching, providing stronger coverage checks.
       <span class="symbol">
         <span class="name">setMessage</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@setMessage(message:String):au.com.cba.omnia.omnitool.Result[A]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Set the error message in a failure case.</p><div class="fullcomment"><div class="comment cmt"><p>Set the error message in a failure case. Useful for providing contextual information without
 having to inspect result.</p><p>NB: This discards any existing message.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a></dd></dl></div>
@@ -441,7 +513,11 @@ having to inspect result.</p><p>NB: This discards any existing message.
       <span class="symbol">
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="au.com.cba.omnia.omnitool.Result#toDisjunction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toDisjunction:scalaz.\/[scalaz.\&amp;/.These[String,Throwable],A]"></a>
@@ -454,8 +530,12 @@ having to inspect result.</p><p>NB: This discards any existing message.
       <span class="symbol">
         <span class="name">toDisjunction</span><span class="result">: <span class="extype" name="scalaz.\/">\/</span>[<span class="extype" name="scalaz.TheseInstances.These">scalaz.\&amp;/.These</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Throwable">Throwable</span>], <span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span>]</span>
       </span>
-      </h4>
-      <p class="shortcomment cmt">Convert to scalaz.</p><div class="fullcomment"><div class="comment cmt"><p>Convert to scalaz.\/, this is useful to access its rich library.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a></dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@toDisjunction:scalaz.\/[scalaz.\&amp;/.These[String,Throwable],A]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Convert to scalaz.\/, this is useful to access its rich library.</p><div class="fullcomment"><div class="comment cmt"><p>Convert to scalaz.\/, this is useful to access its rich library.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a></dd></dl></div>
     </li><li name="au.com.cba.omnia.omnitool.Result#toEither" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toEither:Either[scalaz.\&amp;/.These[String,Throwable],A]"></a>
       <a id="toEither:Either[scalaz.\&amp;/.These[String,Throwable],A]"></a>
@@ -467,8 +547,12 @@ having to inspect result.</p><p>NB: This discards any existing message.
       <span class="symbol">
         <span class="name">toEither</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="scalaz.TheseInstances.These">scalaz.\&amp;/.These</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Throwable">Throwable</span>], <span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span>]</span>
       </span>
-      </h4>
-      <p class="shortcomment cmt">Convert to scala.</p><div class="fullcomment"><div class="comment cmt"><p>Convert to scala.Either, this is useful for interop.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a></dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@toEither:Either[scalaz.\&amp;/.These[String,Throwable],A]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Convert to scala.Either, this is useful for interop.</p><div class="fullcomment"><div class="comment cmt"><p>Convert to scala.Either, this is useful for interop.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a></dd></dl></div>
     </li><li name="au.com.cba.omnia.omnitool.Result#toError" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toError:Option[scalaz.\&amp;/.These[String,Throwable]]"></a>
       <a id="toError:Option[scalaz.\&amp;/.These[String,Throwable]]"></a>
@@ -478,10 +562,14 @@ having to inspect result.</p><p>NB: This discards any existing message.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">toError</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="scalaz.TheseInstances.These">scalaz.\&amp;/.These</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Throwable">Throwable</span>]]</span>
+        <span class="name">toError</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="scalaz.TheseInstances.These">scalaz.\&amp;/.These</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Throwable">Throwable</span>]]</span>
       </span>
-      </h4>
-      <p class="shortcomment cmt">Convert the error case to an scala.</p><div class="fullcomment"><div class="comment cmt"><p>Convert the error case to an scala.Option.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a></dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@toError:Option[scalaz.\&amp;/.These[String,Throwable]]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Convert the error case to an scala.Option.</p><div class="fullcomment"><div class="comment cmt"><p>Convert the error case to an scala.Option.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a></dd></dl></div>
     </li><li name="au.com.cba.omnia.omnitool.Result#toOption" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toOption:Option[A]"></a>
       <a id="toOption:Option[A]"></a>
@@ -491,10 +579,14 @@ having to inspect result.</p><p>NB: This discards any existing message.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">toOption</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span>]</span>
+        <span class="name">toOption</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span>]</span>
       </span>
-      </h4>
-      <p class="shortcomment cmt">Convert to scala.</p><div class="fullcomment"><div class="comment cmt"><p>Convert to scala.Option, this is useful as it is common to not care how something fails.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a></dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@toOption:Option[A]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Convert to scala.Option, this is useful as it is common to not care how something fails.</p><div class="fullcomment"><div class="comment cmt"><p>Convert to scala.Option, this is useful as it is common to not care how something fails.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a></dd></dl></div>
     </li><li name="au.com.cba.omnia.omnitool.Ok#value" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="value:A"></a>
       <a id="value:A"></a>
@@ -506,7 +598,11 @@ having to inspect result.</p><p>NB: This discards any existing message.
       <span class="symbol">
         <span class="name">value</span><span class="result">: <span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@value:A" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
@@ -517,9 +613,13 @@ having to inspect result.</p><p>NB: This discards any existing message.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">wait</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@wait():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -536,9 +636,13 @@ having to inspect result.</p><p>NB: This discards any existing message.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Long" class="extype" target="_top">Long</a></span>, <span name="arg1">arg1: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Int" class="extype" target="_top">Int</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Long" class="extype" target="_top">Long</a></span>, <span name="arg1">arg1: <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Int" class="extype" target="_top">Int</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -555,9 +659,13 @@ having to inspect result.</p><p>NB: This discards any existing message.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Long" class="extype" target="_top">Long</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Long" class="extype" target="_top">Long</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@wait(x$1:Long):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -576,7 +684,11 @@ having to inspect result.</p><p>NB: This discards any existing message.
       <span class="symbol">
         <span title="gt4s: $bar$bar$bar" class="name">|||</span><span class="params">(<span name="other">other: ⇒ <a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span>]</span>)</span><span class="result">: <a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.Ok@|||(other:=&gt;au.com.cba.omnia.omnitool.Result[A]):au.com.cba.omnia.omnitool.Result[A]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Alias for <code>or</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Alias for <code>or</code>. Provides nice syntax: <code>Result.fail(&quot;bad&quot;) ||| Result.ok(10)</code></p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a></dd></dl></div>
     </li></ol>
             </div>
@@ -588,19 +700,19 @@ having to inspect result.</p><p>NB: This discards any existing message.
 
         <div id="inheritedMembers">
         <div class="parent" name="scala.Serializable">
-              <h3>Inherited from <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></h3>
+              <h3>Inherited from <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></h3>
             </div><div class="parent" name="java.io.Serializable">
               <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
             </div><div class="parent" name="scala.Product">
-              <h3>Inherited from <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Product" class="extype" target="_top">Product</a></h3>
+              <h3>Inherited from <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Product" class="extype" target="_top">Product</a></h3>
             </div><div class="parent" name="scala.Equals">
-              <h3>Inherited from <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Equals" class="extype" target="_top">Equals</a></h3>
+              <h3>Inherited from <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Equals" class="extype" target="_top">Equals</a></h3>
             </div><div class="parent" name="au.com.cba.omnia.omnitool.Result">
               <h3>Inherited from <a href="Result.html" class="extype" name="au.com.cba.omnia.omnitool.Result">Result</a>[<span class="extype" name="au.com.cba.omnia.omnitool.Ok.A">A</span>]</h3>
             </div><div class="parent" name="scala.AnyRef">
-              <h3>Inherited from <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></h3>
+              <h3>Inherited from <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></h3>
             </div><div class="parent" name="scala.Any">
-              <h3>Inherited from <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.Any" class="extype" target="_top">Any</a></h3>
+              <h3>Inherited from <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Any" class="extype" target="_top">Any</a></h3>
             </div>
         
         </div>
@@ -617,6 +729,7 @@ having to inspect result.</p><p>NB: This discards any existing message.
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../lib/template.js"></script>
+
+
     </body>
       </html>

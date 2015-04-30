@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>log - au.com.cba.omnia.omnitool.log</title>
@@ -9,6 +8,11 @@
           
       <link href="../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../../index.html';
@@ -26,7 +30,11 @@
       <div id="definition">
         <img src="../../../../../../lib/package_big.png" />
         <p id="owner"><a href="../../../../../package.html" class="extype" name="au">au</a>.<a href="../../../../package.html" class="extype" name="au.com">com</a>.<a href="../../../package.html" class="extype" name="au.com.cba">cba</a>.<a href="../../package.html" class="extype" name="au.com.cba.omnia">omnia</a>.<a href="../package.html" class="extype" name="au.com.cba.omnia.omnitool">omnitool</a></p>
-        <h1>log</h1>
+        <h1>log</h1><span class="permalink">
+      <a href="../../../../../../index.html#au.com.cba.omnia.omnitool.log.package" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -58,7 +66,7 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="au.com.cba.omnia.omnitool.log.RichLogger" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="au.com.cba.omnia.omnitool.log.RichLogger" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="RichLoggerextendsAnyRef"></a>
       <a id="RichLogger:RichLogger"></a>
       <h4 class="signature">
@@ -67,10 +75,28 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="RichLogger.html"><span class="name">RichLogger</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.5/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+        <a href="RichLogger.html"><span class="name">RichLogger</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Convienience methods on log4j <span class="extype" name="org.apache.log4j.Logger">org.apache.log4j.Logger</span>.</p>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#au.com.cba.omnia.omnitool.log.package@RichLoggerextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Convienience methods on log4j <span class="extype" name="org.apache.log4j.Logger">org.apache.log4j.Logger</span>.</p><div class="fullcomment"><div class="comment cmt"><p>Convienience methods on log4j <span class="extype" name="org.apache.log4j.Logger">org.apache.log4j.Logger</span>.</p><p>The user can call <a href="RichLogger.html#child(name:String,options:au.com.cba.omnia.omnitool.log.RichLogger.LoggerConfig*):org.apache.log4j.Logger" class="extmbr" name="au.com.cba.omnia.omnitool.log.RichLogger#child">RichLogger.child</a> to create a child of another
+logger with different configuration, or they can call <a href="RichLogger.html#set(options:au.com.cba.omnia.omnitool.log.RichLogger.LoggerConfig*):Unit" class="extmbr" name="au.com.cba.omnia.omnitool.log.RichLogger#set">RichLogger.set</a>
+to change the configuration of an existing logger.</p><p>The user can pass in any number of functions which change a logger's
+configuration. They can use <a href="RichLogger$.html#logToFile(file:String,pattern:String,maxFileSize:String):au.com.cba.omnia.omnitool.log.RichLogger.LoggerConfig" class="extmbr" name="au.com.cba.omnia.omnitool.log.RichLogger#logToFile">RichLogger.logToFile</a> and <a href="RichLogger$.html#logInfo:au.com.cba.omnia.omnitool.log.RichLogger.LoggerConfig" class="extmbr" name="au.com.cba.omnia.omnitool.log.RichLogger#logInfo">RichLogger.logInfo</a>,
+or create their own configuration functions.</p><p>Example usage, creating a child logger that outputs info messages
+to a file, but does not ouput to any of the parent logger appenders:</p><pre><span class="kw">import</span> org.apache.log4j.Logger
+<span class="kw">import</span> au.com.cba.omnia.omnitool.log.RichLogger._
+
+<span class="kw">val</span> mylogger = Logger.getLogger(<span class="lit">"mylogger"</span>)
+
+mylogger.child(<span class="lit">"stats"</span>,
+  _.setAdditivity(<span class="kw">false</span>), <span class="cmt">// a config function that just calls a Logger method</span>
+  logToFile(<span class="lit">"myfile"</span>),    <span class="cmt">// the logToFile config function below</span>
+  logInfo                 <span class="cmt">// the logInfo config function below</span>
+)</pre></div></div>
     </li></ol>
             </div>
 
@@ -89,9 +115,13 @@
       <span class="symbol">
         <a href="RichLogger$.html"><span class="name">RichLogger</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Implicit conversion for <a href="RichLogger.html" class="extype" name="au.com.cba.omnia.omnitool.log.RichLogger">RichLogger</a>,
-and configuration functions to be used with <a href="RichLogger.html#set(options:org.apache.log4j.Logger=&gt;Unit*):Unit" class="extmbr" name="au.com.cba.omnia.omnitool.log.RichLogger#set">RichLogger.set</a> or <a href="RichLogger.html#child(name:String,options:org.apache.log4j.Logger=&gt;Unit*):org.apache.log4j.Logger" class="extmbr" name="au.com.cba.omnia.omnitool.log.RichLogger#child">RichLogger.child</a>.</p>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#au.com.cba.omnia.omnitool.log.package@RichLogger" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Implicit conversion for <a href="RichLogger.html" class="extype" name="au.com.cba.omnia.omnitool.log.RichLogger">RichLogger</a>,
+and configuration functions to be used with <a href="RichLogger.html#set(options:au.com.cba.omnia.omnitool.log.RichLogger.LoggerConfig*):Unit" class="extmbr" name="au.com.cba.omnia.omnitool.log.RichLogger#set">RichLogger.set</a> or <a href="RichLogger.html#child(name:String,options:au.com.cba.omnia.omnitool.log.RichLogger.LoggerConfig*):org.apache.log4j.Logger" class="extmbr" name="au.com.cba.omnia.omnitool.log.RichLogger#child">RichLogger.child</a>.</p>
     </li><li name="au.com.cba.omnia.omnitool.log.VersionInfo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="VersionInfo"></a>
       <a id="VersionInfo:VersionInfo"></a>
@@ -103,7 +133,11 @@ and configuration functions to be used with <a href="RichLogger.html#set(options
       <span class="symbol">
         <a href="VersionInfo$.html"><span class="name">VersionInfo</span></a>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#au.com.cba.omnia.omnitool.log.package@VersionInfo" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li></ol>
             </div>
@@ -130,6 +164,7 @@ and configuration functions to be used with <a href="RichLogger.html#set(options
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../../lib/template.js"></script>
+
+
     </body>
       </html>
