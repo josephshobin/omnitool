@@ -16,9 +16,9 @@
 module RelMonad where
 
 class (Monad m) => RelMonad m r where
-    retRel :: forall a. m a -> r a
-    (>><=) :: forall a b. r a -> (m a -> r b) -> r b
-    joinRR :: forall a. r (r a) -> r a
+    retRel :: m a -> r a
+    (>><=) :: r a -> (m a -> r b) -> r b
+    joinRR :: r (r a) -> r a
                  
 -- Relative monad laws (just like the standard monad laws)
 --   retRel x >><= f    =  f x                          -- idL
@@ -49,13 +49,8 @@ type family RBase (r :: * -> *) :: * -> *  -- r derives a monad instance from RB
 --     squash (f (return[r]  >><= (\ma -> 
 
 
-instance (RelMonad (RBase r) r) => Monad r where    
---    ra >>= f  =  (ra :: r a) >><= (\ma -> (joinRR :: r (r b) -> r b) (retRel ((ma :: (RBase r) a) >>= (return :: a -> (RBase r) a).f)) :: m a -> r b)
-
-    ra >>= f  = ra >><= (k1 :: (RBase r) a -> r b)
-                where k1 :: (RBase r) a -> r b
-                      k1 ma = (joinRR :: r (r b) -> r b) ((retRel :: (RBase r) (r b) -> r (r b) )  (ma >>= return.(f :: a -> r b)))
---                      k2    =  (return :: a -> (RBase r) a).f -- :: m a -> r b)
+instance (RelMonad (RBase r) r) => Monad r where
+    ra >>= f  =  ra >><= (\ma -> joinRR (retRel (ma >>= return.f)))
     return    =  retRel . (return :: a -> RBase r a)
 
 -- Deriving the monad laws. TODO
@@ -195,11 +190,10 @@ instance (RelMonad (RBase r) r) => Monad r where
 --     retRel :: m a -> r a
 --     (>><=) :: r a -> (m a -> m (r b)) -> r b
 
--- -- B{x} ::= return[m] x | my >>=[m] \y -> B{x}
+-- -- B{x} = return[m] x | my >>=[m] \y -> B{x}
 -- --
 -- -- Relative monad laws (just like the standard monad laws)
--- -- 1a retRel x >><= (\y -> return ((f y)) =  f x
--- -- 1b retRel x >><= (\y -> mz y >>=[m] \z -> return (f y)) =  mz x >>=[m] \z -> f x
+-- -- 0. retRel x >><= (\y -> return ((f y)) =  f x
 
 -- --          and  more generally:
 -- -- 1. retRel x >><= (\y -> B{f y}) =  B{f x}                          -- idL   [OLD: where f :: m a -> m (r b) ]
@@ -295,21 +289,16 @@ data ReadMay a = ReadMay (Conf -> Maybe a)
 
 type instance RBase ReadMay = Maybe
 
-instance RelMonad Maybe ReadMay where
+instance RelMonad0 Maybe ReadMay where
     retRel x                = ReadMay (const x)
     (ReadMay reader) >><= f = ReadMay (\conf -> case f(reader conf) of
                                                   (ReadMay res) -> res conf)
 
-    joinRR readMay = readMay >>= fMaybe
-        where fMaybe Nothing = ReadMay (\_ -> Nothing)
-              fMaybe (Just rdMay) = rdMay
---              fMaybe (Just (ReadMay reader)) = ReadMay (\conf -> case f(reader conf) of 
---                                                                   (ReadMay res) -> res conf)
-
---                                       Nothing = ReadMay (\_ -> Nothing)
---    joinRR (Just rdMay) = rdMay
+instance Squash ReadMay where
+    squash Nothing = ReadMay (\_ -> Nothing)
+    squash (Just rdMay) = rdMay
     
---instance RelMonad Maybe ReadMay                                                                         
+instance RelMonad Maybe ReadMay                                                                         
 
 -----------------------------------------------             
 -- Implement functions particular to 'RelMonad [] _'
@@ -326,20 +315,20 @@ rxs ++< rys =
 --------------------------------------------------
 -- Implement retRel and >><= for a particular r, instantiating the above.
 
--- data ReadChoice a = ReadChoice (Conf -> [a])
--- instance Show a => Show (ReadChoice a) where
---     show (ReadChoice reader) = (reader []) >>= show
+data ReadChoice a = ReadChoice (Conf -> [a])
+instance Show a => Show (ReadChoice a) where
+    show (ReadChoice reader) = (reader []) >>= show
 
--- type instance RBase ReadChoice = []
+type instance RBase ReadChoice = []
                                
--- instance RelMonad0 [] ReadChoice where
---     retRel x                   = ReadChoice (const x)
---     (ReadChoice reader) >><= f = ReadChoice (\conf -> case f(reader conf) of
---                                                       (ReadChoice res) -> res conf)
--- instance Squash ReadChoice where
---     squash xs = ReadChoice (\conf -> concat (map (\(ReadChoice x) -> x conf) xs))
+instance RelMonad0 [] ReadChoice where
+    retRel x                   = ReadChoice (const x)
+    (ReadChoice reader) >><= f = ReadChoice (\conf -> case f(reader conf) of
+                                                      (ReadChoice res) -> res conf)
+instance Squash ReadChoice where
+    squash xs = ReadChoice (\conf -> concat (map (\(ReadChoice x) -> x conf) xs))
                    
--- instance RelMonad [] ReadChoice                                                                         
+instance RelMonad [] ReadChoice                                                                         
 
 ------------------------------------------------
 
