@@ -16,54 +16,62 @@
 module RelMonad where
 
 import Control.Monad
+import Data.Functor.Identity
+
+import Control.Monad.Trans.Reader
+
+import Control.Monad.Morph    
 
 -- Same precedence as '>>='    
 infix 1 >%=
 
-class (Monad m) => RelMonad m r where
+-----------------------------------------------------------------------------    
+-- Relative Monads: r is a Relative Monad with respect to m
+--   retRel is the return for r relative to m
+--    >%=   is the bind   for r relative to m
+
+class Monad m => RelMonad m r where
     retRel :: m a -> r a
     (>%=) :: r a -> (m a -> m (r b)) -> r b
+
+    rMonadI :: RMonadI m r
+    rMonadI = RMonadI retRel (>%=)
+
+data RMonadI m r = RMonadI { _rRet  :: forall a.   m a -> r a
+                           , _rBind :: forall a b. r a -> (m a -> m (r b)) -> r b
+                           }
+
+-- instance RelMonad m r => Mmorph 
+                 
+--data  MonadI m =  MonadI { _ret  :: forall a.   a -> m a
+--                         , _bind :: forall a b. a -> (a -> m b) -> m b
+--                         }
+
+--newtype MonadIC m = MonadIC 
     
+--class MonadIC m where
+--    monadIC :: MonadI m
+               
+class Monad m => RelMonadI m r where
+    relMonadI :: RMonadI m r
 
------------------------------------------------------------------------------    
+instance RelMonadI m r => RelMonad m r where
+    retRel  = ret  where RMonadI ret _  = rMonadI 
+    (>%=)   = bind where RMonadI _ bind = rMonadI
+    rMonadI = relMonadI                                       
 
-data Result a = Success a
-              | Failure String
-                deriving (Show, Eq)
+-----------------------------------------------------------------------------
 
-class Monad m => MonadResult m where
-    succeedR :: forall a. a -> m a
-    succeedR = return
-    failR :: String -> m a
-    fold :: forall a b. (a -> m b) -> (String -> m b) -> m a -> m b
+type family MBase (r :: * -> *) :: * -> *  
     
-
-setMessage :: MonadResult m => forall a. String -> m a -> m a
-setMessage msg = fold succeedR (const (failR msg))
-
--- type family RMVia :: (* -> *) -> (* -> *) -> (* -> *)
-
--- class RMVia r1 r3 ~ r2 => RMCompose r1 r2 r3    
-    
--- instance (RMVia r1 r3 ~ r2, RMCompose r1 r2 r3, RelMonad r1 r2, RelMonad r2 r3) => RelMonad r1 r3 where
---     retRel     = (retRel :: r2 a -> r3 a).(retRel :: r1 a -> r2 a)
---     r3x >%= f  =  r3x >%= \(r2x::r2 a) ->
---                   r2x >%= \(r1x::r1 a) ->
---                   ((r1tor1r2 (f r1x)) :: r1 (r2 (r3 bb)))
---         where r1tor1r2 :: r1 (r3 bb) -> r1 (r2 (r3 bb))
---               r1tor1r2 r1b = r1b >>= return.(return :: r3 bb -> r2 (r3 bb))
-
---instance (RMVia r1 r3 ~ r2, RMCompose r1 r2 r3, RelMonad r1 r2, RelMonad r2 r3) => RelMonad r1 r3 where
-
---newtype RMon r1 r2 = RMon { getRMon :: RelMonad r1 r2 }
-
-data RMonadI m r = RMonadI
-    { _rRet  :: forall a.   m a -> r a
-    , _rBind :: forall a b. r a -> (m a -> m (r b)) -> r b
-    }    
-
--- type RBind r1 r2 = forall a b. r2 a -> (r1 a -> r1 (r2 b)) -> r2 b
-
+instance (MBase r ~ m, RelMonad m r) => Monad r where
+    return    =  retRel . (return :: a -> m a)
+                 
+    ra >>= f  =  ra >%= \ma -> (ma >>= ret.f)
+        where ret = return :: r b -> m (r b)
+                    
+-----------------------------------------------------------------------------
+                                 
 rmCompose :: Monad r1 => RMonadI r1 r2 -> RMonadI r2 r3 -> RMonadI r1 r3
 rmCompose (RMonadI ret1to2 (>%%=)) (RMonadI ret2to3 (>%%%=)) =
     RMonadI { _rRet  = ret2to3.ret1to2
@@ -75,24 +83,129 @@ rmCompose (RMonadI ret1to2 (>%%=)) (RMonadI ret2to3 (>%%%=)) =
                     return (ret1to2 (return y))
             }
 
-    
-    
--- bindCompose :: (Monad r1, Monad r2) => (forall a. r1 a -> r2 a) -> (forall a. r2 a -> r3 a) ->
---                RBind r1 r2 -> RBind r2 r3 -> RBind r1 r3
--- bindCompose ret12 ret23 (>%%=) (>%%%=) r3x f = 
---     r3x >%%%= \(r2x::r2 a) ->
---     r2x >%%= \(r1x::r1 a) ->
---         ((f r1x) >>= return.return)
+rmId :: Monad r => RMonadI Identity r
+rmId = RMonadI (return.runIdentity) (>%%=)
+    where (>%%=) :: Monad r => r a -> (Identity a -> Identity (r b)) -> r b
+          mx >%%= f  =  mx >>= \x ->
+                        runIdentity (f (Identity x))
 
--- :: r1 (r2 (r3 b))))
---    where -- r1tor1r2 :: forall bb r1 r2 r3. r1 (r3 bb) -> r1 (r2 (r3 bb))
---          r1tor1r2 r1b = r1b >>= return.(return :: r3 bb -> r2 (r3 bb))
---    where r1tor1r2 :: forall bb r1 r2 r3. r1 (r3 bb) -> r1 (r2 (r3 bb))
---          r1tor1r2 r1b = r1b >>= return.(return :: r3 bb -> r2 (r3 bb))
+----------------------
 
+rmIdTestMaybe :: RMonadI Identity Maybe
+rmIdTestMaybe = rmId
+
+                
+newtype MyMaybe a = MyMaybe (Maybe a)
+
+rmMyTest :: RMonadI Maybe MyMaybe
+rmMyTest = RMonadI { _rRet = MyMaybe
+                   , _rBind = \(MyMaybe x) (f :: Maybe a -> Maybe (MyMaybe b))  ->
+                              MyMaybe (f x >>= \(MyMaybe y) -> y) }
+
+rmComposeTest :: RMonadI Identity MyMaybe
+rmComposeTest = rmId `rmCompose` rmMyTest
+
+                
+instance RelMonad Identity MyMaybe where
+    retRel = _rRet  rmComposeTest
+    (>%=)  = _rBind rmComposeTest
+
+type instance MBase MyMaybe = Identity
+
+myComposedBindTest :: MyMaybe a -> (a -> MyMaybe b) -> MyMaybe b
+myComposedBindTest = (>>=)
+                     
+
+-----------------------------------------------             
+-- Implement functions particular to  'RelMonad Maybe _'
+
+-- Compose with a possibly failing operation f 
+andThen :: (RelMonad Maybe r) => forall a b. r a -> (a -> Maybe b) -> r b
+andThen ra f = ra >%= (\(ma::Maybe a) -> (return::r b -> Maybe (r b)) (retRel (ma >>= f)))
+               
+-- In general, here's a bunch more functions e.g., rMap, or, ensures...
+-- ...
+
+--------------------------------------------------
+-- Implement retRel and >%= for a particular r, instantiating andThen, etc.
+
+type Conf = [(String, String)]
+data ReadMay a = ReadMay (Conf -> Maybe a)
+
+type instance MBase ReadMay = Maybe
+
+instance RelMonad Maybe ReadMay where
+    retRel x               = ReadMay (const x)
+                             
+    (ReadMay reader) >%= f = ReadMay (\conf -> case f(reader conf) of
+                                                 Nothing -> Nothing
+                                                 Just (ReadMay res) -> res conf)
+    
+------------------------------------------------
+
+-- Monad transformer version for Maybe
+
+type ReaderTMaybe a = ReaderT a Maybe 
+
+type instance MBase (ReaderTMaybe a) = Maybe
+    
+instance RelMonad Maybe (ReaderTMaybe a) where
+  retRel x     = ReaderT $ \_ -> x
+  reader >%= f = ReaderT $ \r -> case f (runReaderT reader r) of
+                                  Just inner -> runReaderT inner r
+                                  Nothing    -> Nothing
+----------------------
+-- Monad transformer ReaderT version for generic monad r
+
+type instance MBase (ReaderT e r) = r
+    
+instance Monad r => RelMonad r (ReaderT e r) where
+  retRel x     = ReaderT $ \_ -> x
+  reader >%= f = ReaderT $ \r ->
+                 f (runReaderT reader r) >>= \y ->
+                 runReaderT y r
+
+instance (Monad m, Monad r, RelMonad m r, ReaderT e r ~ rr) => RelMonadI m (ReaderT e r) where
+    relMonadI = (rMonadI :: RMonadI m r) `rmCompose` (rMonadI :: RMonadI r rr)
+                
+                -- (RMonadI retRel (>%=) :: RMonadI m rr)  --  This shouldn't work?
+                                                      
+   --(RMonadI _ rBind) = rmReadT -- (RMonadI retRel (>%=)) `rmCompose` (RMonadI retRel (>%=))
+
+----------------------
+
+-- type MyMonad a = ReaderT
+        
+
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------    
+
+data Result a = Success a
+              | Failure String
+                deriving (Show, Eq)
+
+-- This is an example of an type class extending 'Monad' that is an alternative
+-- to using 'RelMonad'.  Roughly, when r is a monad, using 'MonadResult r'
+-- seems equivalent to using 'RelMonad Maybe r', but 'RelMonad' allows
+-- generalizing over 'm' in 'RelMonad m r'.
+
+class Monad m => MonadResult m where
+    succeedR :: forall a. a -> m a
+    failR    :: String -> m a
+    fold     :: forall a b. (a -> m b) -> (String -> m b) -> m a -> m b
+
+    succeedR = return
+
+
+setMessage :: MonadResult m => forall a. String -> m a -> m a
+setMessage msg = fold succeedR (const (failR msg))
+
+
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
 
 -- instance MonadResult m => MonadResult (readerT m) where
---     failR s = (\ _ -> failR s)
+--     failR s = const (failR s)
 --     fold f g ma = ReaderT ( \cf -> fold (\a -> runReaderT(f a) cf) (\s -> runReaderT (g s) cf) (ma cf) )
 
 -----------------------------------------------------------------------------
@@ -111,10 +224,9 @@ rmCompose (RMonadI ret1to2 (>%%=)) (RMonadI ret2to3 (>%%%=)) =
 -----------------------------------------------    
 
 -- 'r' derives a monad instance from 'MBase r'
-type family MBase (r :: * -> *) :: * -> *  
               
-class JoinR r where
-    joinR :: r (r a) -> r a
+-- class JoinR r where
+--    joinR :: r (r a) -> r a
 
 -- Laws
 --    'joinR rra  =  rra >>=[r] id
@@ -143,12 +255,6 @@ class JoinR r where
                        
 --     return    =  retRel . (return :: a -> MBase r a)
 
-instance (JoinR r, RelMonad (MBase r) r) => Monad r where
-    
-    ra >>= f  =  ra >%= \ma -> (ma >>= retMRB.f)
-        where retMRB = return :: r b -> (MBase r) (r b)
-                       
-    return    =  retRel . (return :: a -> MBase r a)
                  
                                   
 -- -- Equivalent, suggested by Jacob, requires GHC 7.10 (right?) or adding Functor m to RelMonad m r
@@ -382,30 +488,6 @@ instance (JoinR r, RelMonad (MBase r) r) => Monad r where
 
 
                  
------------------------------------------------             
--- Implement functions particular to  'RelMonad Maybe _'
-
--- Compose with a possibly failing operation f 
-andThen :: (RelMonad Maybe r) => forall a b. r a -> (a -> Maybe b) -> r b
-andThen ra f = ra >%= (\ma -> (return::r b -> Maybe (r b)) (retRel (ma >>= f)))
-               
--- In general, here's a bunch more functions e.g., rMap, or, ensures...
--- ...
-
---------------------------------------------------
--- Implement retRel and >%= for a particular r, instantiating andThen, etc.
-
-type Conf = [(String, String)]
-data ReadMay a = ReadMay (Conf -> Maybe a)
-
-type instance MBase ReadMay = Maybe
-
-instance RelMonad Maybe ReadMay where
-    retRel x               = ReadMay (const x)
-                             
-    (ReadMay reader) >%= f = ReadMay (\conf -> case f(reader conf) of
-                                                 Nothing -> Nothing
-                                                 Just (ReadMay res) -> res conf)
                                                                    
 -- -- With JoinR
 -- instance RelMonad Maybe ReadMay where
@@ -465,18 +547,12 @@ instance RelMonad Maybe ReadMay where
 
 ------------------------------------------------
 
--- Monad transformer version
---import Control.Monad.Trans.Reader
 
--- type ReaderTMaybe = ReaderT Int Maybe 
+--         Just inner -> runReaderT inner r
+                          --         Nothing    -> Nothing
+                          -- )
 
--- type instance MBase ReaderTMaybe = Maybe    
--- instance RelMonad ReaderTMaybe where
---   retRel x = ReaderT $ \_ -> x
---   reader >%= f = ReaderT (\r -> case f (runReaderT reader r) of
---                                   Just inner -> runReaderT inner r
---                                   Nothing    -> Nothing
---                           )
+
 -----------------------------------------------
 
 -- Specific to (MBase r)=Execution
