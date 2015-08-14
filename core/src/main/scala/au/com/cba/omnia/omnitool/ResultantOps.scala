@@ -14,6 +14,8 @@
 
 package au.com.cba.omnia.omnitool
 
+import scala.util.Try
+
 import scalaz.syntax.monad._
 
 /**
@@ -31,6 +33,22 @@ trait ResultantOps[M[_]] {
   /** Builds an operation from a [[Result]]. */
   def result[A](v: => Result[A]): M[A] =
     monad.rPoint(v)
+
+  /** Builds an operation from an `Either[String, A]`. */
+  def eitherFail[A](v: => Either[String, A]): M[A] =
+    result(Result.eitherFail(v))
+
+  /** Builds an operation from an `Either[Throwable, A]`. */
+  def eitherException[A](v: => Either[Throwable, A]): M[A] =
+    result(Result.eitherException(v))
+
+  /** Builds an operation from an `Either[(String, Throwable), A]`. */
+  def eitherError[A](v: => Either[(String, Throwable), A]): M[A] =
+    result(Result.eitherError(v))
+
+  /** Builds an operation from a [[Try]]. */
+  def fromTry[A](v: => Try[A]): M[A] =
+    result(Result.fromTry(v))
 
   /** Build a failed operation from the specified message. */
   def fail[A](message: String): M[A] =

@@ -15,6 +15,7 @@
 package au.com.cba.omnia.omnitool
 
 import scala.util.control.NonFatal
+import scala.util.{Try, Success, Failure}
 
 import scalaz._, Scalaz._, \&/._
 
@@ -173,6 +174,30 @@ object Result {
   /** Smart constructor for a failing case with only an exception. */
   def exception[A](t: Throwable): Result[A] =
     these(That(t))
+
+  /** Smart constructor for converting from an `Either[String, A]`. */
+  def eitherFail[A](value: Either[String, A]): Result[A] = value match {
+    case Left(e)  => fail(e)
+    case Right(v) => ok(v)
+  }
+
+  /** Smart constructor for converting from an `Either[Throwable, A]`. */
+  def eitherException[A](value: Either[Throwable, A]): Result[A] = value match {
+    case Left(e)  => exception(e)
+    case Right(v) => ok(v)
+  }
+
+  /** Smart constructor for converting from an `Either[(String, Throwable), A]`. */
+  def eitherError[A](value: Either[(String, Throwable), A]): Result[A] = value match {
+    case Left((err, exc)) => error(err, exc)
+    case Right(v)         => ok(v)
+  }
+
+  /** Smart constructor for converting from a `Try[A]`. */
+  def fromTry[A](value: Try[A]): Result[A] = value match {
+    case Failure(e) => exception(e)
+    case Success(v) => ok(v)
+  }
 
   /**
     * Fails if condition is not met
