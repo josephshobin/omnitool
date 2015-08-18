@@ -50,7 +50,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Convenient operations that you can do on the companion of a <a href="ResultantMonad.html" class="extype" name="au.com.cba.omnia.omnitool.ResultantMonad">ResultantMonad</a>.</p><p>The companion object should extend this class to avoid clashing with Scalaz implicits.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/Dirty(3ca9118a0789276b8e4f0de72a3f7fcdb0a4111e)//core/src/main/scala/au/com/cba/omnia/omnitool/ResultantOps.scala" target="_blank">ResultantOps.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/Dirty(6c5e938d5e15831c6a87ddbdae3b7112b3193376)//core/src/main/scala/au/com/cba/omnia/omnitool/ResultantOps.scala" target="_blank">ResultantOps.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Any" class="extype" target="_top">Any</a></div>
         </div></div>
@@ -207,6 +207,57 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="au.com.cba.omnia.omnitool.ResultantOps#eitherError" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="eitherError[A](v:=&gt;Either[(String,Throwable),A]):M[A]"></a>
+      <a id="eitherError[A](⇒Either[(String,Throwable),A]):M[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eitherError</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="v">v: ⇒ <span class="extype" name="scala.Either">Either</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Throwable">Throwable</span>), <span class="extype" name="au.com.cba.omnia.omnitool.ResultantOps.eitherError.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="au.com.cba.omnia.omnitool.ResultantOps.M">M</span>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantOps.eitherError.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.ResultantOps@eitherError[A](v:=&gt;Either[(String,Throwable),A]):M[A]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Builds an operation from an <code>Either[(String, Throwable), A]</code>.</p>
+    </li><li name="au.com.cba.omnia.omnitool.ResultantOps#eitherException" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="eitherException[A](v:=&gt;Either[Throwable,A]):M[A]"></a>
+      <a id="eitherException[A](⇒Either[Throwable,A]):M[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eitherException</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="v">v: ⇒ <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="scala.Throwable">Throwable</span>, <span class="extype" name="au.com.cba.omnia.omnitool.ResultantOps.eitherException.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="au.com.cba.omnia.omnitool.ResultantOps.M">M</span>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantOps.eitherException.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.ResultantOps@eitherException[A](v:=&gt;Either[Throwable,A]):M[A]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Builds an operation from an <code>Either[Throwable, A]</code>.</p>
+    </li><li name="au.com.cba.omnia.omnitool.ResultantOps#eitherFail" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="eitherFail[A](v:=&gt;Either[String,A]):M[A]"></a>
+      <a id="eitherFail[A](⇒Either[String,A]):M[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eitherFail</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="v">v: ⇒ <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="au.com.cba.omnia.omnitool.ResultantOps.eitherFail.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="au.com.cba.omnia.omnitool.ResultantOps.M">M</span>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantOps.eitherFail.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.ResultantOps@eitherFail[A](v:=&gt;Either[String,A]):M[A]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Builds an operation from an <code>Either[String, A]</code>.</p>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -334,6 +385,23 @@
       <p class="shortcomment cmt">Ensures a M operation returning a boolean success flag fails if successful</p><div class="fullcomment"><div class="comment cmt"><p>Ensures a M operation returning a boolean success flag fails if successful</p><p>Provided instead of <span class="extype" name="scalaz.MonadPlus">scalaz.MonadPlus</span> typeclass, as M does not
 quite meet the required laws.
 </p></div></div>
+    </li><li name="au.com.cba.omnia.omnitool.ResultantOps#fromTry" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="fromTry[A](v:=&gt;scala.util.Try[A]):M[A]"></a>
+      <a id="fromTry[A](⇒Try[A]):M[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fromTry</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="v">v: ⇒ <span class="extype" name="scala.util.Try">Try</span>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantOps.fromTry.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="au.com.cba.omnia.omnitool.ResultantOps.M">M</span>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantOps.fromTry.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.ResultantOps@fromTry[A](v:=&gt;scala.util.Try[A]):M[A]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Builds an operation from a <span class="extype" name="Try">Try</span>.</p>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
