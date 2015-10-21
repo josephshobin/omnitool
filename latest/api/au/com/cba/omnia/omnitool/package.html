@@ -47,7 +47,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/9c8580f6b060f0fa2fbb43a508bc83f451b3a698//core/src/main/scala/au/com/cba/omnia/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/700b9d0eab782df97391dfb631531618fc51136a//core/src/main/scala/au/com/cba/omnia/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Any" class="extype" target="_top">Any</a></div>
         </div></div>
@@ -244,6 +244,28 @@ construction.</p>
       </a>
     </span>
       
+    </li><li name="au.com.cba.omnia.omnitool.RelMonad" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="RelMonad[R[_],M[_]]extendsAnyRef"></a>
+      <a id="RelMonad[R[_],M[_]]:RelMonad[R,M]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="RelMonad.html"><span class="name">RelMonad</span></a><span class="tparams">[<span name="R">R<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="M">M<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.package@RelMonad[R[_],M[_]]extendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Base trait for relative monads.</p><div class="fullcomment"><div class="comment cmt"><p>Base trait for relative monads.</p><p>Relative monad instances relate two functors in a way generalising the
+relationship between pure expressions and ordinary monads.</p><p>Often we compose operations from one or more simple R's by choosing an
+actual more complex M that has relative instances from each R.</p><p>Conceptual information about relative monads, including a formulation of
+their laws, is described in the paper &quot;Monads Need Not Be Endofunctors&quot;,
+available at http://arxiv.org/pdf/1412.7148.pdf
+</p></div></div>
     </li><li name="au.com.cba.omnia.omnitool.Result" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="Result[A]extendsAnyRef"></a>
       <a id="Result[A]:Result[A]"></a>
@@ -419,6 +441,23 @@ priority does not clash with Scalaz.
       </a>
     </span>
       <p class="shortcomment cmt">A number parsing library that avoids the overhead of throwing/catching exceptions.</p>
+    </li><li name="au.com.cba.omnia.omnitool.RelMonad" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RelMonad"></a>
+      <a id="RelMonad:RelMonad"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="RelMonad$.html"><span class="name">RelMonad</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#au.com.cba.omnia.omnitool.package@RelMonad" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Methods and trivial instances for relative monads.</p>
     </li><li name="au.com.cba.omnia.omnitool.Result" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Result"></a>
       <a id="Result:Result"></a>

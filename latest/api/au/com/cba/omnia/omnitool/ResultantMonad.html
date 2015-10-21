@@ -55,7 +55,7 @@
 <code>ResultantMonad</code> extends this relative monad into an ordinary monad.
 See the _relative monad_ concept in &quot;Monads need not be endofunctors&quot; by Altenkirch, Chapman &amp; Uustalu.
 See the <code>DB</code> monad in CommBank/answer for a concrete example.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/9c8580f6b060f0fa2fbb43a508bc83f451b3a698//core/src/main/scala/au/com/cba/omnia/omnitool/ResultantMonad.scala" target="_blank">ResultantMonad.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/CommBank/omnitool/tree/700b9d0eab782df97391dfb631531618fc51136a//core/src/main/scala/au/com/cba/omnia/omnitool/ResultantMonad.scala" target="_blank">ResultantMonad.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scalaz.Monad">Monad</span>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonad.M">M</span>], <span class="extype" name="scalaz.Bind">Bind</span>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonad.M">M</span>], <span class="extype" name="scalaz.Applicative">Applicative</span>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonad.M">M</span>], <span class="extype" name="scalaz.Apply">Apply</span>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonad.M">M</span>], <span class="extype" name="scalaz.Functor">Functor</span>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonad.M">M</span>], <span class="extype" name="scalaz.InvariantFunctor">InvariantFunctor</span>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonad.M">M</span>], <span class="extype" name="scalaz.Plus">Plus</span>[<span class="extype" name="au.com.cba.omnia.omnitool.ResultantMonad.M">M</span>], <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.11.6/index.html#scala.Any" class="extype" target="_top">Any</a></div>
         </div></div>
@@ -1293,7 +1293,7 @@ See the <code>DB</code> monad in CommBank/answer for a concrete example.
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Monad</dd></dl></div>
     </li><li name="scalaz.Bind#join" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="join[A&lt;:&lt;?&gt;](ffa:&lt;?&gt;):F[A]"></a>
+      <a id="join[A](ffa:F[F[A]]):F[A]"></a>
       <a id="join[A](M[M[A]]):M[A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
