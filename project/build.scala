@@ -28,7 +28,7 @@ object build extends Build {
       updateOptions := updateOptions.value.withCachedResolution(true)
     )
 
-  val omniaTestVersion = "2.4.0-20150430001856-089da9b"
+  val omniaTestVersion = "2.4.2-20160117232959-9cbba1d"
 
   lazy val root =
     Project(
