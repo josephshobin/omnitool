@@ -37,7 +37,7 @@ object build extends Build {
       settings =
         standardSettings ++
         uniform.project("omnitool-all", "au.com.cba.omnia.omnitool.all") ++
-          uniform.ghsettings ++
+        uniform.ghsettings ++
         Seq(publishArtifact := false)
     )
       .aggregate(core, parser, time, fileProject, log)
@@ -57,6 +57,18 @@ object build extends Build {
         publishArtifact in Test := true
       )
   )
+
+  lazy val coreTest = Project(
+    id ="omnitool-core-test",
+    base = file("core-test"),
+    settings =
+      standardSettings ++
+        uniform.project("omnitool-core-test", "au.com.cba.omnia.omnitool.core.test") ++
+        Seq(
+          libraryDependencies := depend.testing(configuration = "compile")
+        )
+  ).dependsOn(core)
+
 
   lazy val parser = Project(
     id ="omnitool-parser",
