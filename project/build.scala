@@ -40,7 +40,7 @@ object build extends Build {
         uniform.ghsettings ++
         Seq(publishArtifact := false)
     )
-      .aggregate(core, parser, time, fileProject, log)
+      .aggregate(core, parser, time, fileProject, log, coreTest)
 
   lazy val core = Project(
     id ="omnitool-core",
