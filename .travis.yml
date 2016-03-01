@@ -6,9 +6,6 @@ cache:
   directories:
   - $HOME/.ivy2
   - $HOME/.m2
-before_install:
-- openssl aes-256-cbc -K $encrypted_9700f2655498_key -iv $encrypted_9700f2655498_iv
-  -in .travis/deploy-key.enc -out .travis/deploy-key.pem -d
 install:
 - git clone https://github.com/CommBank/ci.git
 - chmod ugo+x ci/*
@@ -16,10 +13,12 @@ install:
 - ci/sbt-setup-version.sh
 script:
 - sbt -Dsbt.global.base=$TRAVIS_BUILD_DIR/ci '; test; package' && ci/sbt-deploy.sh
-  && .travis/gh-pages.sh
+  && .travis/sbt-gh-pages-ssh.sh
 after_script:
 - rm -rf ci
 env:
   global:
-  - secure: UqzUmLoSRgYmam7+RglovHjsDEfG6pYNOprkVS/DCbq2ejxlNzB8DW4jueyIvSRsbzduI3ODkpYj5tXbBSfvqqa6mys5nXrig1PvxB13rF36aycMzaUkHm3vo2kw6tRV89s9gmG5lLH/+/jGByLAaF9JpXwTTa9NcaLccbxC/8M=
-  - secure: UIIqZPbXnfDnO6GZxqylwhfkNlJDjZQoWPb+VdWGoTBq2vpC6mP4sDQyEvn3p+TgNhNg0mR9mzIa3SffaTuteFympouIUiMqPydW44vFBJMI5XJ/UcGbGoJpzu24D3Mc2TYqxKdZTUlazbMZk/kbQObVWW6j7BBxgzmUBvO4btE=
+    secure: hPe5+yzAEEHztNermLWwb1vbUXm/kN6tr4rUn314NZvWi8wZN/plQH2kjPlwlhrEhJJDLVWGCRIbeUnPqEwwCYpWYhq/w8QhaLO9J45U9rh2teEhuY5Prmil7okuNkyVbRHEyG3Ul4gRPNICzlRcS3jZ1DKOZdu/bBbKy/YeQkQ=
+before_install:
+- openssl aes-256-cbc -K $encrypted_9700f2655498_key -iv $encrypted_9700f2655498_iv
+  -in .travis/deploy-key.enc -out .travis/deploy-key.pem -d
