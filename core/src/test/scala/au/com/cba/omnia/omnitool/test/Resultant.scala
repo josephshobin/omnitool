@@ -20,8 +20,9 @@ import scalaz.Equal
 
 import org.scalacheck.Arbitrary, Arbitrary.arbitrary
 
-import au.com.cba.omnia.omnitool.{Result, ResultantMonad, ResultantMonadOps, ResultantOps, ToResultantMonadOps}
+import au.com.cba.omnia.omnitool.{RelMonad, Result, ResultantMonad, ResultantMonadOps, ResultantOps, ToResultantMonadOps}
 import au.com.cba.omnia.omnitool.test.Arbitraries._
+import au.com.cba.omnia.omnitool.ResultantMonad._
 
 /** Dumpy implementation of an instance of a ResultantMonad. */
 case class Resultant[A](f: Int => Result[A]) {
@@ -30,7 +31,7 @@ case class Resultant[A](f: Int => Result[A]) {
 
 /** Arbitraries and typeclass implementations of [[Resultant]]. */
 object Resultant extends ResultantOps[Resultant] with ToResultantMonadOps {
-  implicit val monad: ResultantMonad[Resultant] = new ResultantMonad[Resultant] {
+  implicit val monad: ResultantMonad[Resultant] = new RelMonad[Result, Resultant] {
     /** Similar to a `Monad.point` but expects a `Result`. */
     def rPoint[A](v: => Result[A]): Resultant[A] = Resultant(_ => v)
 

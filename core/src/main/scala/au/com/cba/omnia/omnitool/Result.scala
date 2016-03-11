@@ -241,6 +241,8 @@ object Result {
     def bind[A, B](a: Result[A])(f: A => Result[B]) = a flatMap f
   }
 
+  implicit def ResultRelResult: RelMonad[Result, Result] = new RelMonad.SelfR[Result]
+
   /** scalaz Equal instance for Result. */
   implicit def ResultEqual[A : Equal]: Equal[Result[A]] = {
     implicit def ThrowableEqual = Equal.equalA[Throwable]

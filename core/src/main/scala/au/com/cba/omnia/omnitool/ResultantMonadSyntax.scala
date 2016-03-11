@@ -18,8 +18,11 @@ import scalaz.\&/.These
 import scalaz.syntax.{ToPlusOps, ToMonadOps}
 import scalaz.syntax.monad._
 
+import ResultantMonad._
+
 /** Convenient operations that you can do on a [[ResultantMonad]]. */
 final class ResultantMonadOps[M[_], A](val self: M[A])(implicit val M: ResultantMonad[M]) {
+  import ResultantMonad._
   import ResultantMonadSyntax._
 
   /** Chain a context free result (i.e. requires no configuration) to this operation. */
@@ -71,7 +74,7 @@ final class ResultantMonadOps[M[_], A](val self: M[A])(implicit val M: Resultant
     *
     * If `action` fails that error is swallowed and only the initial error is returned.
     */
-  def onException[B](action: M[B]): M[A] =
+  def onException[B](action: => M[B]): M[A] =
     recoverWith { case e => action.rFlatMap(_ => M.rPoint(Result.these(e))) }
 
   /**
@@ -81,7 +84,7 @@ final class ResultantMonadOps[M[_], A](val self: M[A])(implicit val M: Resultant
     * If `self` was successful and `sequel` fails it returns the failure from `sequel`. Otherwise
     * the result of `self` is returned.
     */
-  def ensure[B](sequel: M[B]): M[A] = for {
+  def ensure[B](sequel: => M[B]): M[A] = for {
     r <- onException(sequel)
     _ <- sequel
   } yield r

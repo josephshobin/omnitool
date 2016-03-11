@@ -34,7 +34,7 @@ Result should:
   toOption should always be Some for Ok                                        $toOptionOk
   toOption should always be None for Error                                     $toOptionError
   getOrElse should always return value for Ok                                  $getOrElseOk
-  getOrElse should always return else for Error                                $getOrElseError
+  getOrElse should always return else for Error                 xf               $getOrElseError
   ||| is alias for `or`                                                        $orAlias
   or returns first Ok                                                          $orFirstOk
   or skips first Error                                                         $orFirstError

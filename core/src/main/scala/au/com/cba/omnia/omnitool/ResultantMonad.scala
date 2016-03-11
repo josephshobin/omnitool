@@ -16,7 +16,8 @@ package au.com.cba.omnia.omnitool
 
 import scala.util.control.NonFatal
 
-import scalaz.{Monad, Plus}
+import scalaz.{Monad, Plus, MonadError}
+import scalaz.\&/._
 
 /**
   * A specialised monad `M[A]` for some operation that produces a `Result[A]`.
@@ -26,12 +27,14 @@ import scalaz.{Monad, Plus}
   * See the _relative monad_ concept in "Monads need not be endofunctors" by Altenkirch, Chapman & Uustalu.
   * See the `DB` monad in CommBank/answer for a concrete example.
   */
-trait ResultantMonad[M[_]] extends Plus[M] with Monad[M] {
+object ResultantMonad {
+ implicit class ResultantMonad[M[_]](RM: RelMonad[Result, M]) extends Plus[M] with Monad[M]
+    with MonadError[({type F[_, A] = M[A]})#F, These[String, Throwable]] {
   /** Similar to a `Monad.point` but expects a `Result`. */
-  def rPoint[A](v: => Result[A]): M[A]
+  def rPoint[A](v: => Result[A]): M[A] = RM.rPoint(v)
 
   /** Similar to a `Monad.bind` but binds a `Result`. */
-  def rBind[A, B](ma: M[A])(f: Result[A] => M[B]): M[B]
+  def rBind[A, B](ma: M[A])(f: Result[A] => M[B]): M[B] = RM.rBind(ma)(f)
 
   /** `Monad.point` also called `return`. */
   def point[A](v: => A): M[A] = rPoint(Result.safe(v))
@@ -50,7 +53,7 @@ trait ResultantMonad[M[_]] extends Plus[M] with Monad[M] {
   /**
     * `MonadPlus.plus`. Evaluates `alternative` if `ma` fails.
     *
-    * Returns the error of `ma` iff both `ma` and `alternative` fail.
+    * Returns the error of `alternative` iff both `ma` and `alternative` fail.
     */
   def plus[A](ma: M[A], alternative: => M[A]): M[A] = 
     rBind(ma)(a => a.fold(
@@ -58,11 +61,27 @@ trait ResultantMonad[M[_]] extends Plus[M] with Monad[M] {
       _ => alternative
     ))
 
+  type errTy = These[String, Throwable]
+
+  // Overrides for MonadError
+  override def handleError[A](ma: M[A])(recovery: errTy ⇒ M[A]): M[A] =  // TODO: refactor
+    rBind(ma)(r => r.fold(
+               _     => rPoint(r),
+               error => recovery(error)
+    ))
+  override def raiseError[A](errors: errTy) = rPoint(Result.these[A](errors))
+
   trait ResultantMonadLaw extends MonadLaw with PlusLaw
 
   def resultantMonadLaw: ResultantMonadLaw = new ResultantMonadLaw {}
 }
-
-object ResultantMonad {
-  @inline def apply[M[_]](implicit M: ResultantMonad[M]): ResultantMonad[M] = M
 }
+// object ResultantMonad {
+//   @inline def apply[M[_]](implicit M: ResultantMonad[M]): ResultantMonad[M] = M
+
+//   implicit def fromRelMonad[RR[_]](RR: RelMonad[Result, RR]): ResultantMonad[RR] = new ResultantMonad[RR] {
+//     def rPoint[A](v: => Result[A]): RR[A] = RR.rPoint(v)
+//     def rBind[A, B](rA: RR[A])(f: Result[A] => RR[B]): RR[B] = RR.rBind(rA)(f)
+//   }
+
+//}

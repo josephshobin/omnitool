@@ -18,6 +18,8 @@ import scala.util.Try
 
 import scalaz.syntax.monad._
 
+import ResultantMonad._
+
 /**
   * Convenient operations that you can do on the companion of a [[ResultantMonad]].
   *
