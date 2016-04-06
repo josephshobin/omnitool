@@ -202,7 +202,7 @@ object Result {
   /**
     * Fails if condition is not met
     *
-    * Provided instead of [[scalaz.MonadPlus]] typeclass, as Hdfs does not
+    * Provided instead of `scalaz.MonadPLus` typeclass, as Hdfs does not
     * quite meet the required laws.
     */
   def guard(ok: Boolean, message: String): Result[Unit] =
@@ -211,7 +211,7 @@ object Result {
   /**
     * Ensures a Result operation returning a boolean success flag fails if unsuccessfull
     *
-    * Provided instead of [[scalaz.MonadPlus]] typeclass, as Result does not
+    * Provided instead of `scalaz.MonadPLus` typeclass, as Result does not
     * quite meet the required laws.
     */
   def mandatory(result: Result[Boolean], message: String): Result[Unit] =
@@ -220,7 +220,7 @@ object Result {
   /**
     * Ensures a Result operation returning a boolean success flag fails if succeesfull
     *
-    * Provided instead of [[scalaz.MonadPlus]] typeclass, as Result does not
+    * Provided instead of `scalaz.MonadPLus` typeclass, as Result does not
     * quite meet the required laws.
     */
   def forbidden(result: Result[Boolean], message: String): Result[Unit] =
@@ -229,7 +229,7 @@ object Result {
   /**
     * Fails if condition is met
     *
-    * Provided instead of [[scalaz.MonadPlus]] typeclass, as Hdfs does not
+    * Provided instead of `scalaz.MonadPLus` typeclass, as Hdfs does not
     * quite meet the required laws.
     */
   def prevent(fail: Boolean, message: String): Result[Unit] =

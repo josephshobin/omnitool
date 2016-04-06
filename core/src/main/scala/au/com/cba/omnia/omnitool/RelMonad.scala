@@ -14,7 +14,7 @@
 
 package au.com.cba.omnia.omnitool
 
-import scalaz.{Functor, Monad, Id, ReaderT, ~>}
+import scalaz.{Monad, ReaderT, ~>}
 import scalaz.Scalaz.Id
 
 
@@ -46,7 +46,7 @@ trait RelMonad[R[_], M[_]] extends (R ~> M) {
 }
 
 /** Import %~>._ to write R %~> M instead of RelMonad[R, M] */
-package object %~> {
+object %~> {
   type %~>[R[_], M[_]] = RelMonad[R, M]   // Alias the trait
   val  %~>             = RelMonad         // Alias the companion object
 }
@@ -110,27 +110,9 @@ object RelMonad {
     val _: RelMonad[M, ReaderN] = this  // Check the type in a nicer form.
   }
 
-  // /* extend RelMonad[M, N] instances to RelMonad[ReaderT[M, Rd, _], ReaderT[N, Rd, _]] */
-  // // BROKEN: THIS MAY NOT BE POSSIBLE TO IMPLEMENT.
-  // class ReaderTReaderTR[M[_] : Monad, N[_] : Monad, Rd](MrelN: RelMonad[M, N]) extends RelMonad[
-  //   ({ type readerM[A]=ReaderT[M, Rd, A] })#readerM,
-  //   ({ type readerN[A]=ReaderT[N, Rd, A] })#readerN
-  // ]{
-  //   val M = Monad[M]
-  //   val N = Monad[N]
-
-  //   type ReaderM[A] = ReaderT[M, Rd, A]
-  //   type ReaderN[A] = ReaderT[N, Rd, A]
-  //   val readerM = Monad[ReaderM]
-  //   val readerN = Monad[ReaderN]
-  //   def mkReaderM[A](f: Rd => M[A]) = new ReaderT[M, Rd, A](f)
-  //   def mkReaderN[A](f: Rd => N[A]) = new ReaderT[N, Rd, A](f)
-
-  //   def rPoint[A](v: => ReaderM[A]): ReaderN[A] = mkReaderN(r => MrelN.rPoint(v.run(r)))
-  //   def rBind[A, B](rNA: ReaderN[A])(f: ReaderM[A] => ReaderN[B]): ReaderN[B] =
-  //     readerN.join(mkReaderN[ReaderN[B]](rd =>
-  //                    MrelN.rBind(rNA(rd))(ma => N.point(f(mkReaderM(_ => ma)))) // TODO: replace _
-  //                  ))
-  //   val (_: RelMonad[ReaderM, ReaderN]) = this  // To be sure the types are right
-  // }
+  /** A trait for "self composing" RelMonad instances. */
+  trait GenRelMonad[R[_], M[_]] {
+    def compose[L[_]](implicit LRelR: RelMonad[L, R]): RelMonad[L, M]
+    def self: RelMonad[R, M] = compose[R](SelfR[R])
+  }
 }

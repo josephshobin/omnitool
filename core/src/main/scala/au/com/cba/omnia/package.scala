@@ -16,8 +16,12 @@ package au.com.cba.omnia
 
 import scalaz.ValidationNel
 
-package object omnitool {
+//import au.com.cba.omnia.omnitool.ResultantMonadPackage
+
+package object omnitool extends au.com.cba.omnia.omnitool.ResultantMonadPackage {
   type Validated[T] = ValidationNel[String, T]
 
   implicit def ValidatedToRichValidated[T](v: Validated[T]) = RichValidated[T](v)
+
+
 }

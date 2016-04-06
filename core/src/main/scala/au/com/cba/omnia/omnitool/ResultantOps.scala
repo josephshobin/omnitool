@@ -18,8 +18,6 @@ import scala.util.Try
 
 import scalaz.syntax.monad._
 
-import ResultantMonad._
-
 /**
   * Convenient operations that you can do on the companion of a [[ResultantMonad]].
   *
@@ -48,7 +46,7 @@ trait ResultantOps[M[_]] {
   def eitherError[A](v: => Either[(String, Throwable), A]): M[A] =
     result(Result.eitherError(v))
 
-  /** Builds an operation from a [[Try]]. */
+  /** Builds an operation from a `Try`. */
   def fromTry[A](v: => Try[A]): M[A] =
     result(Result.fromTry(v))
 
@@ -67,7 +65,7 @@ trait ResultantOps[M[_]] {
   /**
     * Fails if condition is not met
     *
-    * Provided instead of [[scalaz.MonadPlus]] typeclass, as M does not
+    * Provided instead of `scalaz.MonadPlus` typeclass, as M does not
     * quite meet the required laws.
     */
   def guard(ok: Boolean, message: String): M[Unit] =
@@ -76,7 +74,7 @@ trait ResultantOps[M[_]] {
   /**
     * Fails if condition is met
     *
-    * Provided instead of [[scalaz.MonadPlus]] typeclass, as M does not
+    * Provided instead of `scalaz.MonadPLus` typeclass, as M does not
     * quite meet the required laws.
     */
   def prevent(fail: Boolean, message: String): M[Unit] =
@@ -85,7 +83,7 @@ trait ResultantOps[M[_]] {
   /**
     * Ensures a M operation returning a boolean success flag fails if unsuccessful
     *
-    * Provided instead of [[scalaz.MonadPlus]] typeclass, as M does not
+    * Provided instead of `scalaz.MonadPLus` typeclass, as M does not
     * quite meet the required laws.
     */
   def mandatory(action: M[Boolean], message: String): M[Unit] =
@@ -94,7 +92,7 @@ trait ResultantOps[M[_]] {
   /**
     * Ensures a M operation returning a boolean success flag fails if successful
     *
-    * Provided instead of [[scalaz.MonadPlus]] typeclass, as M does not
+    * Provided instead of `scalaz.MonadPLus` typeclass, as M does not
     * quite meet the required laws.
     */
   def forbidden(action: M[Boolean], message: String): M[Unit] =

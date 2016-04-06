@@ -18,11 +18,8 @@ import scalaz.\&/.These
 import scalaz.syntax.{ToPlusOps, ToMonadOps}
 import scalaz.syntax.monad._
 
-import ResultantMonad._
-
 /** Convenient operations that you can do on a [[ResultantMonad]]. */
 final class ResultantMonadOps[M[_], A](val self: M[A])(implicit val M: ResultantMonad[M]) {
-  import ResultantMonad._
   import ResultantMonadSyntax._
 
   /** Chain a context free result (i.e. requires no configuration) to this operation. */
