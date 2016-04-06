@@ -235,6 +235,12 @@ object Result {
   def prevent(fail: Boolean, message: String): Result[Unit] =
     guard(!fail, message)
 
+  /** ResultantMonad instance for Result. */
+  implicit def ResultResultantMonad: ResultantMonad[Result] = new ResultantMonad[Result] {
+    def rPoint[A](v: => Result[A]): Result[A] = v
+    def rBind[A, B](ma: Result[A])(f: Result[A] => Result[B]): Result[B] = f(ma)
+  }
+
   /** scalaz Monad instance for Result. */
   implicit def ResultMonad: Monad[Result] = new Monad[Result] {
     def point[A](v: => A) = ok(v)
