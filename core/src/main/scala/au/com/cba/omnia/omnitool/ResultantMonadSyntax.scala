@@ -14,12 +14,18 @@
 
 package au.com.cba.omnia.omnitool
 
+import scala.util.control.NonFatal
+
+import scalaz.{Monad, Plus, MonadError}
+import scalaz.\&/._
+
 import scalaz.\&/.These
 import scalaz.syntax.{ToPlusOps, ToMonadOps}
 import scalaz.syntax.monad._
 
+
 /** Convenient operations that you can do on a [[ResultantMonad]]. */
-final class ResultantMonadOps[M[_], A](val self: M[A])(implicit val M: ResultantMonad[M]) {
+final class ResultantMonadOps[M[_], A](val self: M[A])(implicit val M: RelMonad[Result, M]) {
   import ResultantMonadSyntax._
 
   /** Chain a context free result (i.e. requires no configuration) to this operation. */
@@ -104,8 +110,75 @@ final class ResultantMonadOps[M[_], A](val self: M[A])(implicit val M: Resultant
   */
 trait ToResultantMonadOps {
   /** Pimps a [[ResultantMonad]] to have access to the functions in [[ResultantMonadOps]]. */
-  implicit def ToResultantMonadOps[M[_], A](v: M[A])(implicit M0: ResultantMonad[M]): ResultantMonadOps[M, A] =
+  implicit def ToResultantMonadOps[M[_], A](v: M[A])(implicit M0: RelMonad[Result, M]): ResultantMonadOps[M, A] =
     new ResultantMonadOps[M, A](v)
+
+    class RichResultantMonad[M[_]](RM: RelMonad[Result, M]) extends //RelMonad[Result, M]
+  Plus[M] with Monad[M] with MonadError[({type F[_, A] = M[A]})#F, These[String, Throwable]] {
+    /** Similar to a `Monad.point` but expects a `Result`. */
+    def rPoint[A](v: => Result[A]): M[A] = RM.rPoint(v)
+
+    /** Similar to a `Monad.bind` but binds a `Result`. */
+    def rBind[A, B](ma: M[A])(f: Result[A] => M[B]): M[B] = RM.rBind(ma)(f)
+
+    /** `Monad.point` also called `return`. */
+    def point[A](v: => A): M[A] = rPoint(Result.safe(v))
+
+    /** `Monad.bind` also called `flatMap`. */
+    def bind[A, B](ma: M[A])(f: A => M[B]): M[B] = 
+      rBind(ma)(x => try {
+        x.map(f).fold(
+          identity,
+          errors => rPoint(Result.these[B](errors))
+        )
+      } catch {
+        case NonFatal(ex) => rPoint(Result.error("Exception occurred inside a bind", ex))
+      })
+
+    /**
+      * `MonadPlus.plus`. Evaluates `alternative` if `ma` fails.
+      *
+      * Returns the error of `alternative` iff both `ma` and `alternative` fail.
+      */
+    def plus[A](ma: M[A], alternative: => M[A]): M[A] = 
+      rBind(ma)(a => a.fold(
+        _ => rPoint(a),
+        _ => alternative
+      ))
+
+    // Overrides for MonadError
+    type errTy = These[String, Throwable]
+    override def handleError[A](ma: M[A])(recovery: errTy ⇒ M[A]): M[A] =  // TODO: refactor
+      rBind(ma)(r => r.fold(
+                 _     => rPoint(r),
+                 error => recovery(error)
+      ))
+    override def raiseError[A](errors: errTy) = rPoint(Result.these[A](errors))
+
+    trait ResultantMonadLaw extends MonadLaw with PlusLaw
+
+    def resultantMonadLaw: ResultantMonadLaw = new ResultantMonadLaw {}
+}
+
+  implicit def toImplicitRichResultantMonad[M[_]](RM: RelMonad[Result, M]): RichResultantMonad[M] = new RichResultantMonad[M](RM)
+
+  implicit def toRichResultantMonad[M[_]](implicit RM: RelMonad[Result, M]): RichResultantMonad[M] = new RichResultantMonad[M](RM)
+
+  // implicit def fromRelMonad[M[_]](implicit RM: RelMonad[Result, M]): ResultantMonad[M] = new ResultantMonad[M] {
+  //   def rPoint[A](ra: => Result[A]) = RM.rPoint[A](ra)
+  //   def rBind[A, B](ma: M[A])(f: Result[A] => M[B]): M[B] = RM.rBind(ma)(f)
+  // }
+
+  // implicit def fromImplicitRelMonad[M[_]](RM: RelMonad[Result, M]): ResultantMonad[M] = new ResultantMonad[M] {
+  //   def rPoint[A](ra: => Result[A]) = RM.rPoint[A](ra)
+  //   def rBind[A, B](ma: M[A])(f: Result[A] => M[B]): M[B] = RM.rBind(ma)(f)
+  // }
+
+  // implicit def toRelMonad[M[_]](RM: ResultantMonad[M]): RelMonad[Result, M] = new RelMonad[Result, M] {
+  //   def rPoint[A](ra: => Result[A]) = RM.rPoint[A](ra)
+  //   def rBind[A, B](ma: M[A])(f: Result[A] => M[B]): M[B] = RM.rBind(ma)(f)
+  // }
+
 }
 
 /** Pimps a [[ResultantMonad]] to have access to the functions in [[ResultantMonadOps]]. */

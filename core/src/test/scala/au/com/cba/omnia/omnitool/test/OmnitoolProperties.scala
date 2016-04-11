@@ -21,6 +21,8 @@ import org.scalacheck.{Arbitrary, Gen, Prop, Properties}
 import org.scalacheck.Prop.forAll
 
 import au.com.cba.omnia.omnitool.ResultantMonad
+import au.com.cba.omnia.omnitool.ResultantMonadSyntax._
+
 
 /** Scalacheck Properties for Omnitool. */
 object OmnitoolProperties {

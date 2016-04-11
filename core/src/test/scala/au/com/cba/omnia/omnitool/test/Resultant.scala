@@ -21,8 +21,8 @@ import scalaz.Equal
 import org.scalacheck.Arbitrary, Arbitrary.arbitrary
 
 import au.com.cba.omnia.omnitool.{RelMonad, Result, ResultantMonad, ResultantMonadOps, ResultantOps, ToResultantMonadOps}
+import au.com.cba.omnia.omnitool.ResultantMonadSyntax._
 import au.com.cba.omnia.omnitool.test.Arbitraries._
-import au.com.cba.omnia.omnitool.ResultantMonad
 
 /** Dumpy implementation of an instance of a ResultantMonad. */
 case class Resultant[A](f: Int => Result[A]) {

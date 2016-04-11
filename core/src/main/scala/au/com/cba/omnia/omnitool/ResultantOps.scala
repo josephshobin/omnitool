@@ -18,13 +18,15 @@ import scala.util.Try
 
 import scalaz.syntax.monad._
 
+import ResultantMonadSyntax._
+
 /**
   * Convenient operations that you can do on the companion of a [[ResultantMonad]].
   *
   * The companion object should extend this class to avoid clashing with Scalaz implicits.
   */
 trait ResultantOps[M[_]] {
-  implicit val monad: ResultantMonad[M]
+  implicit val monad: RelMonad[Result, M]
 
   /** Build an operation from a value. The resultant DB operation will not throw an exception. */
   def value[A](v: => A): M[A] =
