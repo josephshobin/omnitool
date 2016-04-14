@@ -17,7 +17,6 @@ package au.com.cba.omnia.omnitool
 import scalaz.{Monad, ReaderT, ~>}
 import scalaz.Scalaz.Id
 
-
 /** Base trait for relative monads.
   *
   * Relative monad instances relate two functors in a way generalising the 

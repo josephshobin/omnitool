@@ -18,8 +18,6 @@ import scalaz._, Scalaz._
 import scalaz.\&/.{This, That}
 
 import au.com.cba.omnia.omnitool.{Result, Ok, Error, OmnitoolTest}
-import au.com.cba.omnia.omnitool.ResultantMonadSyntax._
-
 
 import au.com.cba.omnia.omnitool.test.Arbitraries._
 import au.com.cba.omnia.omnitool.test.OmnitoolProperties.resultantMonad
@@ -66,8 +64,10 @@ Resultant Monad should:
     }
   )
 
+  def R = Resultant.monad
+
   def rMap = prop((x: Resultant[Int]) =>
-    x.rMap(r => r.map(_ + 1)).rMap(r => r.map(_ - 1)) must equal(x)
+    R.rMap(R.rMap(x)(r => r.map(_ + 1)))(r => r.map(_ - 1)) must equal(x)
   )
 
   def andThen = prop((x: Resultant[Int]) =>
