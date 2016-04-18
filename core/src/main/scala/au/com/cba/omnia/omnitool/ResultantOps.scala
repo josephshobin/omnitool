@@ -28,8 +28,11 @@ trait MonadAndPlus[M[_]] extends Monad[M] with Plus[M]
   * The companion object should extend this class to avoid clashing with Scalaz implicits.
   */
 trait ResultantOps[M[_]] extends MonadSyntax[M] with PlusSyntax[M] {
-  val monad: RelMonad[Result, M]
-  val F: MonadAndPlus[M] = monad
+  def ResultRel: RelMonad[Result, M]
+  def F: MonadAndPlus[M] = ResultRel          // For MonadSyntax and PlusSyntax
+
+  @deprecated("Use ResultRel instead")
+  def monad = ResultRel
 
   /** Build an operation from a value. The resultant DB operation will not throw an exception. */
   def value[A](v: => A): M[A] =

@@ -30,7 +30,7 @@ case class Resultant[A](f: Int => Result[A]) {
 
 /** Arbitraries and typeclass implementations of [[Resultant]]. */
 object Resultant extends ResultantOps[Resultant] with ToResultantMonadOps {
-  implicit val monad: ResultantMonad[Resultant] = new RelMonad[Result, Resultant] {
+  implicit def ResultRel: ResultantMonad[Resultant] = new RelMonad[Result, Resultant] {
     /** Similar to a `Monad.point` but expects a `Result`. */
     def rPoint[A](v: => Result[A]): Resultant[A] = Resultant(_ => v)
 
