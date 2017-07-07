@@ -24,11 +24,15 @@ object build extends Build {
     Defaults.coreDefaultSettings ++
     uniformDependencySettings ++
     strictDependencySettings ++
-    uniform.docSettings("https://github.com/CommBank/edge") ++ Seq(
-      updateOptions := updateOptions.value.withCachedResolution(true)
+    uniform.docSettings("https://commbank.github.io/omnitool/latest/api/index.html") ++ Seq(
+      updateOptions := updateOptions.value.withCachedResolution(true),
+      scalacOptions += "-Xfatal-warnings",
+      scalacOptions in (Compile, console) ~= (_.filterNot(_ == "-Xfatal-warnings")),
+      scalacOptions in (Compile, doc)     ~= (_ filterNot(_ == "-Xfatal-warnings")),
+      scalacOptions in (Test, console) := (scalacOptions in (Compile, console)).value
     )
 
-  val omniaTestVersion = "2.4.9-20170501020205-d105008"
+  val omniaTestVersion = "3.1.0-20170615020116-a79544c"
 
   lazy val root =
     Project(
@@ -38,7 +42,18 @@ object build extends Build {
         standardSettings ++
         uniform.project("omnitool-all", "au.com.cba.omnia.omnitool.all") ++
         uniform.ghsettings ++
-        Seq(publishArtifact := false)
+        Seq(
+          libraryDependencies :=
+            depend.time() ++
+            depend.scalaz() ++
+            depend.logging(),
+          apiMappings in (ScalaUnidoc, unidoc) <++= (fullClasspath in Compile).map(cp => Seq(
+            assignApiUrl(cp, "joda-time", "joda-time", "http://www.joda.org/joda-time/apidocs/"),
+            assignApiUrl(cp, "log4j", "log4j", "http://logging.apache.org/log4j/1.2/apidocs/"),
+            assignApiUrl(cp, "org.scalaz", "scalaz-core", "https://static.javadoc.io/org.scalaz/scalaz_2.11/7.1.1/")
+          ).flatten.toMap),
+          publishArtifact := false
+        )
     )
       .aggregate(core, parser, time, fileProject, log, coreTest)
 
@@ -92,9 +107,6 @@ object build extends Build {
       standardSettings ++
       uniform.project("omnitool-time", "au.com.cba.omnia.omnitool.time") ++
       Seq(
-        apiMappings in (ScalaUnidoc, unidoc) <++= (fullClasspath in Compile).map(cp => Seq(
-          assignApiUrl(cp, "joda-time", "joda-time", "http://www.joda.org/joda-time/apidocs/")
-        ).flatten.toMap),
         libraryDependencies :=
           depend.time() ++
           depend.scalaz() ++
@@ -130,9 +142,6 @@ object build extends Build {
       standardSettings ++
       uniform.project("omnitool-log", "au.com.cba.omnia.omnitool.log") ++
       Seq(
-        apiMappings in (ScalaUnidoc, unidoc) <++= (fullClasspath in Compile).map(cp => Seq(
-          assignApiUrl(cp, "log4j", "log4j", "http://logging.apache.org/log4j/1.2/apidocs/")
-        ).flatten.toMap),
         libraryDependencies :=
           depend.logging() ++
           Seq(

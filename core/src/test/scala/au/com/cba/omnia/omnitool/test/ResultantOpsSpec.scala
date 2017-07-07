@@ -16,9 +16,8 @@ package au.com.cba.omnia.omnitool.test
 
 import scalaz._, Scalaz._
 import scalaz.\&/.{Both, This, That}
-import scalaz.scalacheck.ScalazProperties.{monad, plus}
 
-import au.com.cba.omnia.omnitool.{Result, Ok, Error, OmnitoolTest}
+import au.com.cba.omnia.omnitool.{Result, Error, OmnitoolTest}
 import au.com.cba.omnia.omnitool.test.Arbitraries._
 
 class ResultantOpsSpec extends OmnitoolTest with ResultantMatchers { def is = s2"""

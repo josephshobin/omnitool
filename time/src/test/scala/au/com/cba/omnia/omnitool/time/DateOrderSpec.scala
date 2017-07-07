@@ -21,8 +21,8 @@ import org.joda.time.LocalDate
 import org.specs2.mutable.Tables
 import org.specs2.execute.Result
 
-import com.cba.omnia.test.TimeArbitrary._
-import com.cba.omnia.test.Spec
+import au.com.cba.omnia.test.TimeArbitrary._
+import au.com.cba.omnia.test.Spec
 
 import DateOrder._
 import Arbitraries._

@@ -17,7 +17,7 @@ package au.com.cba.omnia.omnitool.time
 import org.joda.time.DateTimeFieldType
 import org.joda.time.format.{DateTimeFormat, DateTimeFormatter}
 
-import com.cba.omnia.test.Spec
+import au.com.cba.omnia.test.Spec
 
 import au.com.cba.omnia.omnitool.time.Arbitraries._
 

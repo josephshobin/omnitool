@@ -14,8 +14,6 @@
 
 package au.com.cba.omnia.omnitool.file.ops
 
-import scala.collection.mutable.ListBuffer
-
 import java.io.{File, FileInputStream}
 
 import java.util.zip.GZIPInputStream
@@ -23,7 +21,7 @@ import java.util.zip.GZIPInputStream
 import com.google.common.base.Charsets
 import com.google.common.io.Files
 
-import com.cba.omnia.test.Spec
+import au.com.cba.omnia.test.Spec
 
 object TempSpec extends Spec { def is = s2"""
 DateFormatSpec

@@ -20,7 +20,7 @@ import scalaz.Equal
 
 import org.scalacheck.Arbitrary, Arbitrary.arbitrary
 
-import au.com.cba.omnia.omnitool.{Result, ResultantMonad, ResultantMonadOps, ResultantOps, ToResultantMonadOps}
+import au.com.cba.omnia.omnitool.{Result, ResultantMonad, ResultantOps, ToResultantMonadOps}
 import au.com.cba.omnia.omnitool.test.Arbitraries._
 
 /** Dumpy implementation of an instance of a ResultantMonad. */

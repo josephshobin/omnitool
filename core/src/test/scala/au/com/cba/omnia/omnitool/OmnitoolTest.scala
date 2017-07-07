@@ -14,6 +14,6 @@
 
 package au.com.cba.omnia.omnitool
 
-import com.cba.omnia.test.OmniaSpec
+import au.com.cba.omnia.test.OmniaSpec
 
 abstract class OmnitoolTest extends OmniaSpec

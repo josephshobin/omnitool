@@ -20,7 +20,7 @@ import scala.io.Source
 
 import org.apache.log4j.{Level, Logger}
 
-import com.cba.omnia.test.Spec
+import au.com.cba.omnia.test.Spec
 
 import au.com.cba.omnia.omnitool.log.RichLogger._
 

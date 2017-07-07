@@ -19,7 +19,7 @@ import org.joda.time.format.DateTimeFormat
 
 import scalaz._, Scalaz._
 
-import com.cba.omnia.test.{OmniaSpec, TimeArbitrary}
+import au.com.cba.omnia.test.{OmniaSpec, TimeArbitrary}
 
 class TimeParserSpec extends OmniaSpec with TimeArbitrary { def is = s2"""
 TimeParser

@@ -17,8 +17,7 @@ package au.com.cba.omnia.omnitool.test
 import scalaz.Equal
 import scalaz.scalacheck.ScalazProperties.{monad, plus}
 
-import org.scalacheck.{Arbitrary, Gen, Prop, Properties}
-import org.scalacheck.Prop.forAll
+import org.scalacheck.{Arbitrary, Properties}
 
 import au.com.cba.omnia.omnitool.ResultantMonad
 

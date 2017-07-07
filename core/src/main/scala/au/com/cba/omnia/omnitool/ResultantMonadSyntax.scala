@@ -15,7 +15,6 @@
 package au.com.cba.omnia.omnitool
 
 import scalaz.\&/.These
-import scalaz.syntax.{ToPlusOps, ToMonadOps}
 import scalaz.syntax.monad._
 
 /** Convenient operations that you can do on a [[ResultantMonad]]. */

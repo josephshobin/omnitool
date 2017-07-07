@@ -46,7 +46,7 @@ trait ResultantOps[M[_]] {
   def eitherError[A](v: => Either[(String, Throwable), A]): M[A] =
     result(Result.eitherError(v))
 
-  /** Builds an operation from a [[Try]]. */
+  /** Builds an operation from a [[scala.util.Try]]. */
   def fromTry[A](v: => Try[A]): M[A] =
     result(Result.fromTry(v))
 

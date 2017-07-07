@@ -14,13 +14,9 @@
 
 package au.com.cba.omnia.omnitool.parser
 
-import java.util.regex.Pattern
-
-import scala.util.matching.Regex
-
 import scalaz.Success
 
-import com.cba.omnia.test.OmniaSpec
+import au.com.cba.omnia.test.OmniaSpec
 
 class StringDelimitedSpec extends OmniaSpec { def is = s2"""
 String Delimited
