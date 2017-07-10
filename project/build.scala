@@ -28,8 +28,9 @@ object build extends Build {
       updateOptions := updateOptions.value.withCachedResolution(true),
       scalacOptions += "-Xfatal-warnings",
       scalacOptions in (Compile, console) ~= (_.filterNot(_ == "-Xfatal-warnings")),
-      scalacOptions in (Compile, doc)     ~= (_ filterNot(_ == "-Xfatal-warnings")),
-      scalacOptions in (Test, console) := (scalacOptions in (Compile, console)).value
+      scalacOptions in (Compile, doc)     ~= (_.filterNot(_ == "-Xfatal-warnings")),
+      scalacOptions in (Test, console)    ~= (_.filterNot(_ == "-Xfatal-warnings")),
+      scalacOptions in (Test, doc)        ~= (_.filterNot(_ == "-Xfatal-warnings"))
     )
 
   val omniaTestVersion = "3.1.0-20170615020116-a79544c"
