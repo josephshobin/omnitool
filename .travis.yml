@@ -1,0 +1,26 @@
+language: scala
+jdk:
+- oraclejdk7
+sudo: false
+cache:
+  directories:
+  - $HOME/.ivy2
+  - $HOME/.m2
+install:
+- curl https://commbank.artifactoryonline.com/commbank/binaries/ci/ci-3.3.0-20160817231550-75d3c9c.tar.gz | tar xz
+  && ci/sbt-ci-setup.sh
+  && ci/sbt-ci-setup-version.sh
+script:
+- sbt -Dsbt.global.base=$TRAVIS_BUILD_DIR/ci '; test; package'
+  && ci/sbt-ci-deploy.sh maven http://commbank.artifactoryonline.com/commbank ext-releases-local
+  && ci/sbt-ci-build-doc.sh https://commbank.github.io/ https://github.com/CommBank/omnitool/
+  && ci/ci-push-branch.sh gh-pages
+after_script:
+- rm -rf ci
+env:
+  global:
+  - secure: ZrXVlLr8qOgpDTXDpzwdrho8uPs9fh7X88YP8UBCSvK7B5MnYKFrtQTHkNsHhGtEjRDRJLCD/DtvFhHLOCh1dmzsjryXQIExj3hF4QuRhkj1lniWI20BObXaVy0IK0uRHzMKM9q2LuOgq3ENwgy3TZhSiYtC2YiwAXKIuYMGTRo=
+  - secure: E7cc8wObh4WnIQtrtdgxIqc3bKPHxn+Ide/HPkbEXIfZ8njREuO5ekd/L7b+kg7ZRZj6J9vvG8Kl0GG9+Qs5xp98sLr64FozYjZyGNfvUh5c3+trp95ecSzz4PWe5VPOkt5sFVFoZEwFOz3Jt6Srq+g5KLivVnQsaqhrfJxO6h4=
+before_install:
+- openssl aes-256-cbc -K $encrypted_9700f2655498_key -iv $encrypted_9700f2655498_iv
+  -in .ci/deploy-key.enc -out .ci/deploy-key.pem -d
