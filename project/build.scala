@@ -33,7 +33,7 @@ object build extends Build {
       scalacOptions in (Test, doc)        ~= (_.filterNot(_ == "-Xfatal-warnings"))
     )
 
-  val omniaTestVersion = "3.1.0-20170615020116-a79544c"
+  val omniaTestVersion = "3.1.1-20180128124057-a95827b"
 
   lazy val root =
     Project(
