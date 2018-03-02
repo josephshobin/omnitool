@@ -1,4 +1,0 @@
-name: omnitool
-exclude: [Gemfile]
-markdown: kramdown
-releaseVersion: 1.14.10-20180211124219-a6e8c63
