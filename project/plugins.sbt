@@ -1,4 +1,4 @@
-//   Copyright 2014 Commonwealth Bank of Australia
+//   Copyright 2014-2018 Commonwealth Bank of Australia
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
 //   you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
 
 resolvers += Resolver.url("commbank-releases-ivy", new URL("http://commbank.artifactoryonline.com/commbank/ext-releases-local-ivy"))(Patterns("[organization]/[module]_[scalaVersion]_[sbtVersion]/[revision]/[artifact](-[classifier])-[revision].[ext]"))
 
-val uniformVersion = "1.15.3-20180301000630-722f1f2"
+val uniformVersion = "2.1.1-20181018051749-51b477b"
 
 addSbtPlugin("au.com.cba.omnia" % "uniform-core"       % uniformVersion)
 

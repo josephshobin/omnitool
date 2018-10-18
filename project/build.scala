@@ -1,4 +1,4 @@
-//   Copyright 2014 Commonwealth Bank of Australia
+//   Copyright 2014-2018 Commonwealth Bank of Australia
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
 //   you may not use this file except in compliance with the License.
@@ -33,7 +33,7 @@ object build extends Build {
       scalacOptions in (Test, doc)        ~= (_.filterNot(_ == "-Xfatal-warnings"))
     )
 
-  val omniaTestVersion = "3.1.2-20180302071352-dcd4d3d"
+  val omniaTestVersion = "3.1.4-20180902220137-ad5e617-cdh-513"
 
   lazy val root =
     Project(
@@ -48,11 +48,14 @@ object build extends Build {
             depend.time() ++
             depend.scalaz() ++
             depend.logging(),
-          apiMappings in (ScalaUnidoc, unidoc) <++= (fullClasspath in Compile).map(cp => Seq(
-            assignApiUrl(cp, "joda-time", "joda-time", "http://www.joda.org/joda-time/apidocs/"),
-            assignApiUrl(cp, "log4j", "log4j", "http://logging.apache.org/log4j/1.2/apidocs/"),
-            assignApiUrl(cp, "org.scalaz", "scalaz-core", "https://static.javadoc.io/org.scalaz/scalaz_2.11/7.1.1/")
-          ).flatten.toMap),
+          apiMappings in (ScalaUnidoc, unidoc) ++= {
+            val cp = (fullClasspath in Compile).value
+            Seq(
+              assignApiUrl(cp, "joda-time", "joda-time", "http://www.joda.org/joda-time/apidocs/"),
+              assignApiUrl(cp, "log4j", "log4j", "http://logging.apache.org/log4j/1.2/apidocs/"),
+              assignApiUrl(cp, "org.scalaz", "scalaz-core", "https://static.javadoc.io/org.scalaz/scalaz_2.11/7.1.1/")
+            ).flatten.toMap
+          },
           publishArtifact := false
         )
     )
